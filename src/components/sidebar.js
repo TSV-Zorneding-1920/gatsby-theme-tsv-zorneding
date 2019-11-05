@@ -5,25 +5,24 @@ import MiniPosts from "./sidebar/mini-posts";
 import { Link } from "gatsby";
 import logo from "../../img/logo.png";
 
-const mql = window.matchMedia(`(min-width: 1280px)`);
-
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: !mql.matches
+      active: false
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
   }
   componentDidMount() {
+    this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWindowDimensions);
   }
   updateWindowDimensions() {
-    this.setState({ active: !mql.matches });
+    this.setState({ active: window.innerWidth < 1280 });
   }
   toggleSidebar() {
     this.setState({
