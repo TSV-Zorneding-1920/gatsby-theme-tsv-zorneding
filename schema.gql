@@ -1,0 +1,175 @@
+### Type definitions saved at 2019-10-07T17:17:32.193Z ###
+
+type File implements Node @dontInfer {
+  birthtime: Date @deprecated(reason: "Use `birthTime` instead")
+  birthtimeMs: Float @deprecated(reason: "Use `birthTime` instead")
+  sourceInstanceName: String
+  absolutePath: String
+  relativePath: String
+  extension: String
+  size: Int
+  prettySize: String
+  modifiedTime: Date @dateformat
+  accessTime: Date @dateformat
+  changeTime: Date @dateformat
+  birthTime: Date @dateformat
+  root: String
+  dir: String
+  base: String
+  ext: String
+  name: String
+  relativeDirectory: String
+  dev: Int
+  mode: Int
+  nlink: Int
+  uid: Int
+  gid: Int
+  rdev: Int
+  blksize: Int
+  ino: Float
+  blocks: Int
+  atimeMs: Float
+  mtimeMs: Float
+  ctimeMs: Float
+  atime: Date @dateformat
+  mtime: Date @dateformat
+  ctime: Date @dateformat
+}
+
+type ImageSharp implements Node @childOf(mimeTypes: [], types: ["File"], many: false) @dontInfer
+
+type MarkdownHeading {
+  value: String
+  depth: Int
+}
+
+enum MarkdownHeadingLevels {
+  h1
+  h2
+  h3
+  h4
+  h5
+  h6
+}
+
+enum MarkdownExcerptFormats {
+  PLAIN
+  HTML
+  MARKDOWN
+}
+
+type MarkdownWordCount {
+  paragraphs: Int
+  sentences: Int
+  words: Int
+}
+
+type MarkdownRemark implements Node @childOf(mimeTypes: ["text/markdown", "text/x-markdown"], types: [], many: false) @dontInfer {
+  frontmatter: MarkdownRemarkFrontmatter
+  excerpt: String
+  rawMarkdownBody: String
+  fileAbsolutePath: String
+  fields: MarkdownRemarkFields
+}
+
+type MarkdownRemarkFrontmatter {
+  title: String
+  templateKey: String
+  showTitle: Boolean
+  sections: [MarkdownRemarkFrontmatterSections]
+  date: Date @dateformat
+  featured: Boolean
+  sticky: Boolean
+  featuredimage: File @fileByRelativePath
+  tags: [String]
+}
+
+type MarkdownRemarkFrontmatterSections {
+  image: File @fileByRelativePath
+  type: String
+  body: String
+  html: String
+  count: Int
+  offset: Int
+  tags: [String]
+  title: String
+  info: [MarkdownRemarkFrontmatterSectionsInfo]
+  images: [MarkdownRemarkFrontmatterSectionsImages]
+}
+
+type MarkdownRemarkFrontmatterSectionsInfo {
+  icon: String
+  body: String
+  title: String
+}
+
+type MarkdownRemarkFrontmatterSectionsImages {
+  image: File @fileByRelativePath
+}
+
+type MarkdownRemarkFields {
+  slug: String
+}
+
+type Directory implements Node @dontInfer {
+  sourceInstanceName: String
+  absolutePath: String
+  relativePath: String
+  extension: String
+  size: Int
+  prettySize: String
+  modifiedTime: Date @dateformat
+  accessTime: Date @dateformat
+  changeTime: Date @dateformat
+  birthTime: Date @dateformat
+  root: String
+  dir: String
+  base: String
+  ext: String
+  name: String
+  relativeDirectory: String
+  dev: Int
+  mode: Int
+  nlink: Int
+  uid: Int
+  gid: Int
+  rdev: Int
+  blksize: Int
+  ino: Float
+  blocks: Int
+  atimeMs: Float
+  mtimeMs: Float
+  ctimeMs: Float
+  birthtimeMs: Float
+  atime: Date @dateformat
+  mtime: Date @dateformat
+  ctime: Date @dateformat
+  birthtime: Date @dateformat
+}
+
+type EventsYaml implements Node @dontInfer {
+  description: String
+  label: String
+  date: Date @dateformat
+}
+
+type DataYaml implements Node @dontInfer {
+  site_title: String
+  posts: DataYamlPosts
+  menu_entry: [DataYamlMenu_entry]
+}
+
+type DataYamlPosts {
+  front_limit: Int
+}
+
+type DataYamlMenu_entry {
+  page: String
+  title: String
+  menu_entry: [DataYamlMenu_entryMenu_entry]
+}
+
+type DataYamlMenu_entryMenu_entry {
+  page: String
+  title: String
+}
