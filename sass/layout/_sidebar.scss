@@ -56,7 +56,8 @@
 			@include padding($pad, $pad, (0, 0, $pad, 0));
 			position: relative;
 			width: _size(sidebar-width);
-
+			word-wrap: break-word;
+			
 			> * {
 				border-bottom: solid 2px _palette(border);
 				margin: 0 0 (_size(element-margin) * 1.75) 0;
