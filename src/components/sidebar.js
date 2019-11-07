@@ -2,7 +2,6 @@ import React from "react";
 import EventList from "./sidebar/event-list";
 import Menu from "./sidebar/menu";
 import MiniPosts from "./sidebar/mini-posts";
-import { Link } from "gatsby";
 import logo from "../../img/logo.png";
 
 class Sidebar extends React.Component {
@@ -53,8 +52,21 @@ class Sidebar extends React.Component {
               © {new Date().getFullYear()} - TSV Zorneding
             </p>
             <p>
-              <Link to="/impressum">Impressum</Link> -{" "}
-              <Link to="/datenschutz">Datenschutzerklärung</Link>
+              <a
+                href="https://www.tsv-zorneding.de/?Impressum"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Impressum
+              </a>{" "}
+              -{" "}
+              <a
+                href="https://www.tsv-zorneding.de/?Datenschutz"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Datenschutzerklärung
+              </a>
             </p>
           </footer>
         </div>
