@@ -50,6 +50,15 @@ module.exports = ({ NETLIFY_ENV, title }) => ({
             }
           },
           {
+            resolve: `@raae/gatsby-remark-oembed`,
+            options: {
+              usePrefix: false,
+              providers: {
+                include: ["Twitter", "Instagram", "YouTube", "Facebook"]
+              }
+            }
+          },
+          {
             resolve: "gatsby-remark-images",
             options: {
               // It's important to specify the maxWidth (in pixels) of
