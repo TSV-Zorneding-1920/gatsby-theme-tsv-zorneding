@@ -71,14 +71,14 @@ const Menu = ({ title }) => {
                 {entry.menu_entry.map(function(subentry, k) {
                   return (
                     <li key={k}>
-                      <Link to={"/" + subentry.page}>{subentry.title}</Link>
+                      <Link to={subentry.page}>{subentry.title}</Link>
                     </li>
                   );
                 })}
               </SubMenu>
             ) : (
               <li key={i}>
-                <Link to={"/" + entry.page}>{entry.title}</Link>
+                <Link to={entry.page}>{entry.title}</Link>
               </li>
             );
           })}
