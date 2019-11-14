@@ -173,7 +173,9 @@ module.exports = ({ NETLIFY_ENV, title }) => ({
     {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
-        modulePath: `${__dirname}/cms/cms.js`
+        modulePath: `${__dirname}/cms/cms.js`,
+        manualInit: true,
+        htmlTitle: `Administration TSV Zorneding`
       }
     },
     "gatsby-plugin-netlify" // make sure to keep it last in the array
