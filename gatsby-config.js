@@ -175,7 +175,8 @@ module.exports = ({ NETLIFY_ENV, title }) => ({
       options: {
         modulePath: `${__dirname}/cms/cms.js`,
         manualInit: true,
-        htmlTitle: `Administration TSV Zorneding`
+        htmlTitle: `Administration TSV Zorneding`,
+        htmlFavicon: `${__dirname}/img/favicon-32x32.png`
       }
     },
     "gatsby-plugin-netlify" // make sure to keep it last in the array

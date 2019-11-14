@@ -18,10 +18,13 @@ CMS.init({
     },
     media_folder: "static/img",
     public_folder: "/img",
+    logo_url: "https://angry-galileo-a8762c.netlify.com/icons/icon-256x256.png",
+    display_url: "https://angry-galileo-a8762c.netlify.com",
+    show_preview_links: false,
     collections: [
       {
         name: "blog",
-        label: "Blog1",
+        label: "Blog",
         folder: "src/pages/blog",
         create: true,
         slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
