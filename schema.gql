@@ -1,4 +1,4 @@
-### Type definitions saved at 2019-10-07T17:17:32.193Z ###
+### Type definitions saved at 2019-11-08T17:14:27.143Z ###
 
 type File implements Node @dontInfer {
   birthtime: Date @deprecated(reason: "Use `birthTime` instead")
@@ -85,15 +85,15 @@ type MarkdownRemarkFrontmatter {
 }
 
 type MarkdownRemarkFrontmatterSections {
-  image: File @fileByRelativePath
-  type: String
-  body: String
-  html: String
-  count: Int
   offset: Int
-  tags: [String]
+  type: String
   title: String
   info: [MarkdownRemarkFrontmatterSectionsInfo]
+  count: Int
+  body: String
+  image: File @fileByRelativePath
+  html: String
+  tags: [String]
   images: [MarkdownRemarkFrontmatterSectionsImages]
 }
 
@@ -101,6 +101,7 @@ type MarkdownRemarkFrontmatterSectionsInfo {
   icon: String
   body: String
   title: String
+  image_small: File @fileByRelativePath
 }
 
 type MarkdownRemarkFrontmatterSectionsImages {
@@ -154,13 +155,7 @@ type EventsYaml implements Node @dontInfer {
 }
 
 type DataYaml implements Node @dontInfer {
-  site_title: String
-  posts: DataYamlPosts
   menu_entry: [DataYamlMenu_entry]
-}
-
-type DataYamlPosts {
-  front_limit: Int
 }
 
 type DataYamlMenu_entry {

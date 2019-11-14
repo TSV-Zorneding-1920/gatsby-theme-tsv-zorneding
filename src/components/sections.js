@@ -98,6 +98,32 @@ const Sections = ({ sections }) => {
         </div>
       );
     }
+    if (section.type === "image_text") {
+      return (
+        <div key={i}>
+          <div className="features">
+            {section.info.map(function(post, j) {
+              console.log(post);
+              return (
+                <article key={j}>
+                  <PreviewCompatibleImage
+                    imageInfo={{
+                      image: post.image_small,
+                      alt: `featured image thumbnail for post`
+                    }}
+                  />
+                  <div className="content">
+                    <h3>{post.title}</h3>
+                    <MarkdownContent content={post.body} />
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+          <hr className="major"></hr>
+        </div>
+      );
+    }
     return <></>;
   });
   return <>{content}</>;
@@ -142,6 +168,13 @@ export const query = graphql`
         body
         icon
         title
+        image_small {
+          childImageSharp {
+            fixed(width: 100, height: 100) {
+              ...GatsbyImageSharpFixed_withWebp_noBase64
+            }
+          }
+        }
       }
     }
   }
