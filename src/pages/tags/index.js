@@ -2,7 +2,7 @@ import React from "react";
 import { kebabCase } from "lodash";
 import { Link, graphql } from "gatsby";
 import Layout from "../../layout/layout";
-import SEO from "../../components/seo";
+import { SEO } from "gatsby-theme-seo";
 
 const TagsPage = ({
   data: {
@@ -14,7 +14,7 @@ const TagsPage = ({
 }) => (
   <Layout>
     <section className="section">
-      <SEO title={`Schlagwörter | ${title}`} />
+      <SEO title={`Schlagwörter | ${title}`} lang="de" pathname="/tags" />
       <div className="container content">
         <div className="columns">
           <div

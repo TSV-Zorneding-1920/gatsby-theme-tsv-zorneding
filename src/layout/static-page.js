@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "./layout";
-import SEO from "../components/seo";
+import { SEO } from "gatsby-theme-seo";
 import StaticPageTemplate from "../templates/static-page";
 
 const StaticPage = ({ data }) => {
@@ -10,8 +10,10 @@ const StaticPage = ({ data }) => {
   return (
     <Layout>
       <SEO
-        title={`${post.frontmatter.title}`}
-        description={`${post.excerpt}`}
+        title={post.frontmatter.title}
+        description={post.excerpt}
+        lang="de"
+        pathname={post.fields.slug}
       />
       <StaticPageTemplate
         title={post.frontmatter.title}
@@ -32,6 +34,9 @@ export const staticPageQuery = graphql`
   query StaticPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       excerpt
+      fields {
+        slug
+      }
       frontmatter {
         title
         showTitle

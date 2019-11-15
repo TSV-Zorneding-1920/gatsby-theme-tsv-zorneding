@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "./layout";
-import SEO from "../components/seo";
+import { SEO } from "gatsby-theme-seo";
 import BlogRoll from "../components/blog-roll";
 import { graphql } from "gatsby";
 import { Link } from "gatsby";
@@ -18,7 +18,11 @@ export default class BlogList extends React.Component {
 
     return (
       <Layout>
-        <SEO title="Aktuelle Neuigkeiten" />
+        <SEO
+          title="Aktuelle Neuigkeiten"
+          lang="de"
+          pathname={"/blog/" + currentPage.toString()}
+        />
         <section>
           <header className="main">
             <h1>Aktuelle Neuigkeiten</h1>

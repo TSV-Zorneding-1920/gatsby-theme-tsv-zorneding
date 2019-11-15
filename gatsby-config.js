@@ -1,6 +1,6 @@
 module.exports = ({ NETLIFY_ENV, title }) => ({
   plugins: [
-    "gatsby-plugin-react-helmet",
+    "gatsby-theme-seo",
     "gatsby-plugin-sass",
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
@@ -98,7 +98,6 @@ module.exports = ({ NETLIFY_ENV, title }) => ({
         crossOrigin: `use-credentials`
       }
     },
-    "gatsby-plugin-sitemap",
     "gatsby-plugin-offline",
     "gatsby-plugin-feed",
     {
