@@ -28,7 +28,7 @@ const BlogPost = ({ data }) => {
           post.frontmatter.seoimage.childImageSharp.fixed
         }
       />
-      <JSONLD>
+      <JSONLD dangerouslyExposeHtml={true}>
         <Generic
           type="blogPosting"
           jsonldtype="BlogPosting"
@@ -39,9 +39,18 @@ const BlogPost = ({ data }) => {
             abstract: post.excerpt,
             dateCreated: post.frontmatter.date,
             datePublished: post.frontmatter.date,
+            dateModified: post.frontmatter.date,
             publisher: {
               "@type": "Organization",
-              name: data.site.siteMetadata.author
+              name: data.site.siteMetadata.author,
+              logo: {
+                "@type": "ImageObject",
+                url: `${data.site.siteMetadata.siteUrl}/icons/icon-256x256.png`
+              }
+            },
+            mainEntityOfPage: {
+              "@type": "Website",
+              name: data.site.siteMetadata.title
             },
             image
           }}

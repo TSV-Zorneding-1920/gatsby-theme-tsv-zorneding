@@ -27,7 +27,7 @@ const PrimaryLayout = ({ children }) => (
     `}
     render={data => (
       <div id="wrapper">
-        <JSONLD>
+        <JSONLD dangerouslyExposeHtml={true}>
           <Generic
             type="website"
             jsonldtype="Website"
