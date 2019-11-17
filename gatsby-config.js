@@ -64,7 +64,7 @@ module.exports = ({ NETLIFY_ENV, title }) => ({
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 1500,
+              maxWidth: 1180,
               wrapperStyle: "width:100%;",
               linkImagesToOriginal: false,
               quality: 75,

@@ -7,6 +7,7 @@ import ImageGallery from "react-image-gallery";
 import { HTMLContent } from "./content";
 import { MarkdownContent } from "./content";
 import { graphql } from "gatsby";
+import Contact from "../components/contact";
 
 const Sections = ({ sections }) => {
   const content = sections.map(function(section, i) {
@@ -98,20 +99,25 @@ const Sections = ({ sections }) => {
         </div>
       );
     }
+    if (section.type === "contact") {
+      return <Contact />;
+    }
     if (section.type === "image_text") {
       return (
         <div key={i}>
           <div className="features">
             {section.info.map(function(post, j) {
-              console.log(post);
               return (
                 <article key={j}>
-                  <PreviewCompatibleImage
-                    imageInfo={{
-                      image: post.image_small,
-                      alt: `featured image thumbnail for post`
-                    }}
-                  />
+                  <span style={{ margin: 10 + "px" }}>
+                    <PreviewCompatibleImage
+                      imageInfo={{
+                        image: post.image_small,
+                        alt: `featured image thumbnail for post`
+                      }}
+                    />
+                  </span>
+
                   <div className="content">
                     <h3>{post.title}</h3>
                     <MarkdownContent content={post.body} />
