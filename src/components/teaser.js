@@ -9,7 +9,7 @@ const Teaser = ({ description, link, title, featuredimage }) => (
       <DefaultImage
         imageInfo={{
           image: featuredimage,
-          alt: `featured image thumbnail for post`,
+          alt: `featured image thumbnail for post ${title}`,
           style: { maxHeight: 250 }
         }}
         className="image object"
