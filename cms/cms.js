@@ -16,6 +16,7 @@ CMS.init({
         deleteMedia: "[skip ci] Delete '{{path}}'"
       }
     },
+    locale: "de",
     media_folder: "static/img",
     public_folder: "/img",
     logo_url: "https://angry-galileo-a8762c.netlify.com/icons/icon-256x256.png",
