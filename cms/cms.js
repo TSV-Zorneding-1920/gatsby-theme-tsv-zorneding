@@ -4,6 +4,8 @@ import BlogPostPreview from "./preview-templates/BlogPostPreview";
 import styles from "!css-loader!sass-loader!./../sass/main.scss";
 import { de } from "netlify-cms-locales";
 
+CMS.registerLocale("de", de);
+
 CMS.init({
   config: {
     backend: {
@@ -20,7 +22,7 @@ CMS.init({
     locale: "de",
     media_folder: "static/img",
     public_folder: "/img",
-    logo_url: "https://angry-galileo-a8762c.netlify.com/icons/icon-256x256.png",
+    logo_url: "https://angry-galileo-a8762c.netlify.com/icons/icon-144x144.png",
     display_url: "https://angry-galileo-a8762c.netlify.com",
     show_preview_links: false,
     collections: [
@@ -300,8 +302,5 @@ CMS.init({
   }
 });
 
-CMS.registerLocale("de", de);
-
 CMS.registerPreviewStyle(styles.toString(), { raw: true });
-
 CMS.registerPreviewTemplate("blog", BlogPostPreview);
