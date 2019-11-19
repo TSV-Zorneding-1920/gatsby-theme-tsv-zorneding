@@ -2,6 +2,7 @@ import CMS from "netlify-cms-app";
 
 import BlogPostPreview from "./preview-templates/BlogPostPreview";
 import styles from "!css-loader!sass-loader!./../sass/main.scss";
+import { de } from "netlify-cms-locales";
 
 CMS.init({
   config: {
@@ -298,6 +299,8 @@ CMS.init({
     ]
   }
 });
+
+CMS.registerLocale("de", de);
 
 CMS.registerPreviewStyle(styles.toString(), { raw: true });
 
