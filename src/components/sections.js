@@ -10,6 +10,9 @@ import { graphql } from "gatsby";
 import Contact from "../components/contact";
 
 const Sections = ({ sections }) => {
+  if (!sections) {
+    return <></>;
+  }
   const content = sections.map(function(section, i) {
     if (section.type === "body") {
       return (
