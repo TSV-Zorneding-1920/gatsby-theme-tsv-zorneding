@@ -23,7 +23,7 @@ CMS.init({
     media_folder: "static/img",
     public_folder: "/img",
     logo_url: "https://angry-galileo-a8762c.netlify.com/icons/icon-144x144.png",
-    display_url: "https://angry-galileo-a8762c.netlify.com",
+    //display_url: "https://angry-galileo-a8762c.netlify.com",
     show_preview_links: false,
     collections: [
       {
@@ -107,7 +107,7 @@ CMS.init({
             default: true
           },
           {
-            label: "Home Section",
+            label: "Sektionen",
             name: "sections",
             widget: "list",
             types: [
@@ -199,6 +199,12 @@ CMS.init({
                 ]
               },
               {
+                label: "Kontakt",
+                name: "contatct",
+                widget: "object",
+                fields: []
+              },
+              {
                 label: "Info",
                 name: "info",
                 widget: "object",
@@ -207,6 +213,47 @@ CMS.init({
                     label: "Titel",
                     name: "title",
                     widget: "string"
+                  },
+                  {
+                    label: "Element",
+                    name: "info",
+                    widget: "list",
+                    fields: [
+                      {
+                        label: "Titel",
+                        name: "title",
+                        widget: "string"
+                      },
+                      {
+                        label: "Icon",
+                        name: "icon",
+                        widget: "string"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                label: "Bild + Text",
+                name: "image_text",
+                widget: "object",
+                fields: [
+                  {
+                    label: "Element",
+                    name: "info",
+                    widget: "list",
+                    fields: [
+                      {
+                        label: "Bild",
+                        name: "image_small",
+                        widget: "image"
+                      },
+                      {
+                        label: "Text",
+                        name: "body",
+                        widget: "markdown"
+                      }
+                    ]
                   }
                 ]
               }
