@@ -200,7 +200,7 @@ CMS.init({
               },
               {
                 label: "Kontakt",
-                name: "contatct",
+                name: "contact",
                 widget: "object",
                 fields: []
               },
@@ -244,6 +244,11 @@ CMS.init({
                     widget: "list",
                     fields: [
                       {
+                        label: "Titel",
+                        name: "title",
+                        widget: "string"
+                      },
+                      {
                         label: "Bild",
                         name: "image_small",
                         widget: "image"
@@ -269,7 +274,7 @@ CMS.init({
         },
         delete: false,
         files: [
-          {
+          /*           {
             file: "src/data/events.yml",
             label: "Veranstaltungen",
             name: "events",
@@ -297,7 +302,7 @@ CMS.init({
                 ]
               }
             ]
-          },
+          }, */
           {
             file: "src/data/menu.yml",
             label: "Navigation",
