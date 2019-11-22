@@ -3,13 +3,22 @@ import CMS from "netlify-cms-app";
 import BlogPostPreview from "./preview-templates/BlogPostPreview";
 import styles from "!css-loader!sass-loader!./../sass/main.scss";
 import { de } from "netlify-cms-locales";
+import Body from "../src/components/sections/body";
+import IFrame from "../src/components/sections/iframe";
+import Carousel from "../src/components/sections/carousel";
 
 CMS.registerLocale("de", de);
+
+const staticBlocks = [
+  new Body().admin(),
+  new IFrame().admin(),
+  new Carousel().admin()
+];
 
 CMS.init({
   config: {
     backend: {
-      name: "git-gateway",
+      name: "test-repo",
       branch: "master",
       commit_messages: {
         create: "Create {{collection}} '{{slug}}'",
@@ -110,26 +119,7 @@ CMS.init({
             label: "Sektionen",
             name: "sections",
             widget: "list",
-            types: [
-              {
-                label: "Gallerie",
-                name: "carousel",
-                widget: "object",
-                fields: [
-                  {
-                    label: "Bilder",
-                    name: "images",
-                    widget: "list",
-                    fields: [
-                      {
-                        label: "Bild",
-                        name: "image",
-                        widget: "image"
-                      }
-                    ]
-                  }
-                ]
-              },
+            types: staticBlocks.concat([
               {
                 label: "Bild",
                 name: "image",
@@ -139,18 +129,6 @@ CMS.init({
                     label: "Bild",
                     name: "image",
                     widget: "image"
-                  }
-                ]
-              },
-              {
-                label: "Inhalt",
-                name: "body",
-                widget: "object",
-                fields: [
-                  {
-                    label: "Inhalt",
-                    name: "body",
-                    widget: "markdown"
                   }
                 ]
               },
@@ -183,18 +161,6 @@ CMS.init({
                     name: "count",
                     widget: "number",
                     default: 3
-                  }
-                ]
-              },
-              {
-                label: "iFrame",
-                name: "iframe",
-                widget: "object",
-                fields: [
-                  {
-                    label: "HTML",
-                    name: "html",
-                    widget: "text"
                   }
                 ]
               },
@@ -262,7 +228,7 @@ CMS.init({
                   }
                 ]
               }
-            ]
+            ])
           }
         ]
       },

@@ -2,6 +2,27 @@ import React from "react";
 import ImageGallery from "react-image-gallery";
 
 class Carousel extends React.Component {
+  admin() {
+    return {
+      label: "Gallerie",
+      name: "carousel",
+      widget: "object",
+      fields: [
+        {
+          label: "Bilder",
+          name: "images",
+          widget: "list",
+          fields: [
+            {
+              label: "Bild",
+              name: "image",
+              widget: "image"
+            }
+          ]
+        }
+      ]
+    };
+  }
   render() {
     const images = this.props.images.map(function(image) {
       return {
