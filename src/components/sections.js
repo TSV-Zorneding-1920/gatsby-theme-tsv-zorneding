@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import TeaserList from "./teaser-list";
 import BannerList from "./banner-list";
 import PreviewCompatibleImage from "./preview-compatible-image";
-import ImageGallery from "react-image-gallery";
-import { HTMLContent } from "./content";
 import { MarkdownContent } from "./content";
 import { graphql } from "gatsby";
 import Contact from "../components/contact";
+import Body from "./sections/body";
+import IFrame from "./sections/iframe";
+import Carousel from "./sections/carousel";
 
 const Sections = ({ sections }) => {
   if (!sections) {
@@ -15,33 +16,15 @@ const Sections = ({ sections }) => {
   }
   const content = sections.map(function(section, i) {
     if (section.type === "body") {
-      return (
-        <div className="row" key={i}>
-          <MarkdownContent content={section.body} />
-        </div>
-      );
+      return <Body content={section.body} key={i} />;
     }
 
     if (section.type === "iframe") {
-      return <HTMLContent key={i} content={section.html} className="row" />;
+      return <IFrame html={section.html} key={i} />;
     }
 
     if (section.type === "carousel") {
-      const images = section.images.map(function(image) {
-        return {
-          original: image.image.childImageSharp.orig.src,
-          thumbnail: image.image.childImageSharp.thumb.src
-        };
-      });
-      return (
-        <div key={i} style={{ maxWidth: "700px", margin: "auto" }}>
-          <ImageGallery
-            items={images}
-            showFullscreenButton={false}
-            showPlayButton={false}
-          />
-        </div>
-      );
+      return <Carousel images={section.images} key={i} />;
     }
 
     if (section.type === "teaser_list") {
