@@ -1,14 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TeaserList from "./teaser-list";
-import BannerList from "./banner-list";
-import PreviewCompatibleImage from "./preview-compatible-image";
-import { MarkdownContent } from "./content";
+import BannerList from "./sections/banner-list";
 import { graphql } from "gatsby";
-import Contact from "../components/contact";
+import Contact from "./sections/contact";
 import Body from "./sections/body";
 import IFrame from "./sections/iframe";
 import Carousel from "./sections/carousel";
+import IconList from "./sections/icon-list";
+import ImageTextSmall from "./sections/image-text-small";
+import Image from "./sections/image";
+import TeaserList from "./sections/teaser-list";
+import ImageText from "./sections/image-text";
 
 const Sections = ({ sections }) => {
   if (!sections) {
@@ -29,92 +31,37 @@ const Sections = ({ sections }) => {
 
     if (section.type === "teaser_list") {
       return (
-        <div key={i}>
-          <TeaserList
-            offset={section.offset}
-            count={section.count}
-            tags={section.tags}
-          />
-          <hr className="major"></hr>
-        </div>
+        <TeaserList
+          key={i}
+          offset={section.offset}
+          count={section.count}
+          tags={section.tags}
+        />
       );
     }
 
     if (section.type === "banner") {
       return (
-        <div key={i}>
-          <BannerList offset={section.offset} />
-          <hr className="major"></hr>
-        </div>
+        <BannerList key={i} offset={section.offset} count={section.count} />
       );
     }
 
     if (section.type === "image") {
-      return (
-        <div key={i}>
-          <PreviewCompatibleImage
-            imageInfo={{
-              image: section.image,
-              alt: `featured image thumbnail for post`
-            }}
-          />
-          <hr className="major"></hr>
-        </div>
-      );
+      return <Image key={i} image={section.image} />;
     }
-    if (section.type === "info") {
+    if (section.type === "icon_list") {
       return (
-        <div key={i}>
-          <header className="major">
-            <h2>{section.title}</h2>
-          </header>
-          <div className="features">
-            {section.info.map(function(post, j) {
-              return (
-                <article key={j}>
-                  <span className={post.icon + " icon solid"}></span>
-                  <div className="content">
-                    <h3>{post.title}</h3>
-                    <MarkdownContent content={post.body} />
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-          <hr className="major"></hr>
-        </div>
+        <IconList key={i} element={section.element} title={section.title} />
       );
     }
     if (section.type === "contact") {
-      return <Contact />;
+      return <Contact key={i} />;
+    }
+    if (section.type === "image_text_small") {
+      return <ImageTextSmall key={i} info={section.info} />;
     }
     if (section.type === "image_text") {
-      return (
-        <div key={i}>
-          <div className="features">
-            {section.info.map(function(post, j) {
-              return (
-                <article key={j}>
-                  <span style={{ margin: 10 + "px" }}>
-                    <PreviewCompatibleImage
-                      imageInfo={{
-                        image: post.image_small,
-                        alt: `featured image thumbnail for post`
-                      }}
-                    />
-                  </span>
-
-                  <div className="content">
-                    <h3>{post.title}</h3>
-                    <MarkdownContent content={post.body} />
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-          <hr className="major"></hr>
-        </div>
-      );
+      return <ImageText key={i} nodes={section.nodes} title={section.title} />;
     }
     return <></>;
   });
@@ -129,45 +76,17 @@ export default Sections;
 
 export const query = graphql`
   fragment SectionsFragment on MarkdownRemarkFrontmatter {
+    ...SectionBodyFragment
+    ...SectionCarouselFragment
+    ...SectionIFrameFragment
+    ...SectionIconListFragment
+    ...SectionImageTextSmallFragment
+    ...SectionImageFragment
+    ...SectionTeaserListFragment
+    ...SectionBannerListFragment
+    ...SectionImageTextFragment
     sections {
-      body
-      count
-      offset
       type
-      tags
-      html
-      image {
-        childImageSharp {
-          fluid(maxWidth: 1180, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      images {
-        image {
-          childImageSharp {
-            thumb: fixed(width: 100, height: 60) {
-              src
-            }
-            orig: fixed(width: 700, height: 400, quality: 100) {
-              src
-            }
-          }
-        }
-      }
-      title
-      info {
-        body
-        icon
-        title
-        image_small {
-          childImageSharp {
-            fixed(width: 100, height: 100) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
-          }
-        }
-      }
     }
   }
 `;

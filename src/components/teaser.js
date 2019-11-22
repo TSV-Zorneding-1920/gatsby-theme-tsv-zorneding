@@ -1,11 +1,22 @@
 import React from "react";
-import { Link } from "gatsby";
+import Link from "./link";
 import PropTypes from "prop-types";
 import DefaultImage from "./default-image";
 
 const Teaser = ({ description, link, title, featuredimage }) => (
   <article>
-    <Link to={link}>
+    {link ? (
+      <Link to={link}>
+        <DefaultImage
+          imageInfo={{
+            image: featuredimage,
+            alt: `featured image thumbnail for post ${title}`,
+            style: { maxHeight: 250 }
+          }}
+          className="image object"
+        />
+      </Link>
+    ) : (
       <DefaultImage
         imageInfo={{
           image: featuredimage,
@@ -14,23 +25,25 @@ const Teaser = ({ description, link, title, featuredimage }) => (
         }}
         className="image object"
       />
-    </Link>
+    )}
     <h3>{title}</h3>
     {description && <p>{description}</p>}
-    <ul className="actions">
-      <li>
-        <Link to={link} className="button">
-          Mehr →
-        </Link>
-      </li>
-    </ul>
+    {link && (
+      <ul className="actions">
+        <li>
+          <Link to={link} className="button">
+            Mehr →
+          </Link>
+        </li>
+      </ul>
+    )}
   </article>
 );
 
 Teaser.propTypes = {
   description: PropTypes.string,
   link: PropTypes.string,
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   featuredimage: PropTypes.object
 };
 

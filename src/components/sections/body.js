@@ -1,15 +1,16 @@
 import React from "react";
 import { MarkdownContent } from "../content";
+import { graphql } from "gatsby";
 
 class Body extends React.Component {
   admin() {
     return {
-      label: "Inhalt",
+      label: "Text",
       name: "body",
       widget: "object",
       fields: [
         {
-          label: "Inhalt",
+          label: "Text",
           name: "body",
           widget: "markdown"
         }
@@ -26,3 +27,11 @@ class Body extends React.Component {
 }
 
 export default Body;
+
+export const query = graphql`
+  fragment SectionBodyFragment on MarkdownRemarkFrontmatter {
+    sections {
+      body
+    }
+  }
+`;

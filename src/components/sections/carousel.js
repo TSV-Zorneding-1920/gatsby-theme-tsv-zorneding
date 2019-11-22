@@ -1,5 +1,6 @@
 import React from "react";
 import ImageGallery from "react-image-gallery";
+import { graphql } from "gatsby";
 
 class Carousel extends React.Component {
   admin() {
@@ -44,3 +45,22 @@ class Carousel extends React.Component {
 }
 
 export default Carousel;
+
+export const query = graphql`
+  fragment SectionCarouselFragment on MarkdownRemarkFrontmatter {
+    sections {
+      images {
+        image {
+          childImageSharp {
+            thumb: fixed(width: 100, height: 60) {
+              src
+            }
+            orig: fixed(width: 700, height: 400, quality: 100) {
+              src
+            }
+          }
+        }
+      }
+    }
+  }
+`;

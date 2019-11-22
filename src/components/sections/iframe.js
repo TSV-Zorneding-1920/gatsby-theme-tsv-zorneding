@@ -1,5 +1,6 @@
 import React from "react";
 import { HTMLContent } from "../content";
+import { graphql } from "gatsby";
 
 class IFrame extends React.Component {
   admin() {
@@ -22,3 +23,11 @@ class IFrame extends React.Component {
 }
 
 export default IFrame;
+
+export const query = graphql`
+  fragment SectionIFrameFragment on MarkdownRemarkFrontmatter {
+    sections {
+      html
+    }
+  }
+`;

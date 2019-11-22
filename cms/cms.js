@@ -3,22 +3,37 @@ import CMS from "netlify-cms-app";
 import BlogPostPreview from "./preview-templates/BlogPostPreview";
 import styles from "!css-loader!sass-loader!./../sass/main.scss";
 import { de } from "netlify-cms-locales";
+
+import BannerList from "../src/components/sections/banner-list";
 import Body from "../src/components/sections/body";
-import IFrame from "../src/components/sections/iframe";
 import Carousel from "../src/components/sections/carousel";
+import Contact from "../src/components/sections/contact";
+import IconList from "../src/components/sections/icon-list";
+import IFrame from "../src/components/sections/iframe";
+import Image from "../src/components/sections/image";
+import ImageText from "../src/components/sections/image-text";
+import ImageTextSmall from "../src/components/sections/image-text-small";
+import TeaserList from "../src/components/sections/teaser-list";
 
 CMS.registerLocale("de", de);
 
 const staticBlocks = [
+  new BannerList().admin(),
   new Body().admin(),
+  new Carousel().admin(),
+  new Contact().admin(),
+  new IconList().admin(),
   new IFrame().admin(),
-  new Carousel().admin()
+  new Image().admin(),
+  new ImageText().admin(),
+  new ImageTextSmall().admin(),
+  new TeaserList().admin()
 ];
 
 CMS.init({
   config: {
     backend: {
-      name: "test-repo",
+      name: "git-gateway",
       branch: "master",
       commit_messages: {
         create: "Create {{collection}} '{{slug}}'",
@@ -119,116 +134,7 @@ CMS.init({
             label: "Sektionen",
             name: "sections",
             widget: "list",
-            types: staticBlocks.concat([
-              {
-                label: "Bild",
-                name: "image",
-                widget: "object",
-                fields: [
-                  {
-                    label: "Bild",
-                    name: "image",
-                    widget: "image"
-                  }
-                ]
-              },
-              {
-                label: "Banner",
-                name: "banner",
-                widget: "object",
-                fields: [
-                  {
-                    label: "Offset",
-                    name: "offset",
-                    widget: "number",
-                    default: 0
-                  }
-                ]
-              },
-              {
-                label: "Blogliste",
-                name: "teaser_list",
-                widget: "object",
-                fields: [
-                  {
-                    label: "Offset",
-                    name: "offset",
-                    widget: "number",
-                    default: 0
-                  },
-                  {
-                    label: "Count",
-                    name: "count",
-                    widget: "number",
-                    default: 3
-                  }
-                ]
-              },
-              {
-                label: "Kontakt",
-                name: "contact",
-                widget: "object",
-                fields: []
-              },
-              {
-                label: "Info",
-                name: "info",
-                widget: "object",
-                fields: [
-                  {
-                    label: "Titel",
-                    name: "title",
-                    widget: "string"
-                  },
-                  {
-                    label: "Element",
-                    name: "info",
-                    widget: "list",
-                    fields: [
-                      {
-                        label: "Titel",
-                        name: "title",
-                        widget: "string"
-                      },
-                      {
-                        label: "Icon",
-                        name: "icon",
-                        widget: "string"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                label: "Bild + Text",
-                name: "image_text",
-                widget: "object",
-                fields: [
-                  {
-                    label: "Element",
-                    name: "info",
-                    widget: "list",
-                    fields: [
-                      {
-                        label: "Titel",
-                        name: "title",
-                        widget: "string"
-                      },
-                      {
-                        label: "Bild",
-                        name: "image_small",
-                        widget: "image"
-                      },
-                      {
-                        label: "Text",
-                        name: "body",
-                        widget: "markdown"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ])
+            types: staticBlocks
           }
         ]
       },
@@ -302,11 +208,7 @@ CMS.init({
                       {
                         label: "Seite",
                         name: "page",
-                        widget: "relation",
-                        collection: "pages",
-                        displayFields: ["title"],
-                        searchFields: ["title", "slug"],
-                        valueField: "slug"
+                        widget: "string"
                       }
                     ]
                   }
