@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from "gatsby";
 import { JSONLD, Generic } from "react-structured-data";
 import Sidebar from "../components/sidebar";
 import Header from "../components/header";
+import { SEO } from "gatsby-theme-seo";
 
 const PrimaryLayout = ({ children }) => (
   <StaticQuery
@@ -13,6 +14,7 @@ const PrimaryLayout = ({ children }) => (
           siteMetadata {
             title
             section
+            description
             siteUrl
             author
             social {
@@ -27,6 +29,11 @@ const PrimaryLayout = ({ children }) => (
     `}
     render={data => (
       <div id="wrapper">
+        <SEO
+          title="Startseite"
+          description={data.site.siteMetadata.description}
+          lang="de"
+        />
         <JSONLD dangerouslyExposeHtml={true}>
           <Generic
             type="website"

@@ -20,6 +20,7 @@ export default class BlogList extends React.Component {
       <Layout>
         <SEO
           title="Aktuelle Neuigkeiten"
+          description="Aktuelle Neuigkeiten"
           lang="de"
           pathname={"/blog/" + currentPage.toString()}
         />

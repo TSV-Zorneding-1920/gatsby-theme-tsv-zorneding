@@ -99,7 +99,6 @@ module.exports = ({ NETLIFY_ENV, title }) => ({
       }
     },
     "gatsby-plugin-offline",
-    "gatsby-plugin-feed",
     {
       resolve: `gatsby-plugin-feed`,
       options: {
