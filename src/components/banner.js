@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
-import Img from "gatsby-image";
 import PropTypes from "prop-types";
+import DefaultImage from "./default-image";
 
 const Banner = ({ description, link, title, featuredimage }) => (
   <section id="banner">
@@ -23,10 +23,14 @@ const Banner = ({ description, link, title, featuredimage }) => (
       )}
     </div>
     {featuredimage && (
-      <Img
-        fluid={featuredimage.childImageSharp.fluid}
-        className="image object"
-      />
+      <Link to={link} className="image">
+        <DefaultImage
+          imageInfo={{
+            image: featuredimage,
+            alt: `featured image thumbnail for post ${title}`
+          }}
+        />
+      </Link>
     )}
   </section>
 );

@@ -6,7 +6,7 @@ import DefaultImage from "./default-image";
 const Teaser = ({ description, link, title, featuredimage }) => (
   <article>
     {link ? (
-      <Link to={link}>
+      <Link to={link} className="image">
         <DefaultImage
           imageInfo={{
             image: featuredimage,

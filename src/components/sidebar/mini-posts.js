@@ -17,7 +17,7 @@ const MiniPosts = () => {
         {posts.map(function(post, i) {
           return (
             <article key={i}>
-              <Link to={post.node.fields.slug}>
+              <Link to={post.node.fields.slug} className="image">
                 <PreviewCompatibleImage
                   imageInfo={{
                     image: post.node.frontmatter.featuredimage,

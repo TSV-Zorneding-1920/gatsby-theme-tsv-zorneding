@@ -3,6 +3,7 @@ import EventList from "./sidebar/event-list";
 import Menu from "./sidebar/menu";
 import MiniPosts from "./sidebar/mini-posts";
 import logo from "../../img/logo.png";
+import jubilogo from "../../img/190910_TSV_100Jahre_logo.png";
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -35,6 +36,18 @@ class Sidebar extends React.Component {
         <div className="inner">
           <section style={{ textAlign: "center", paddingBottom: "2em" }}>
             <img src={logo} alt="Logo vom TSV Zorneding" />
+            <a
+              href="https://www.100jahretsv.de"
+              target="_blank"
+              className="image"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={jubilogo}
+                alt="Logo 100 Jahre TSV Zorneding"
+                width="148px"
+              />
+            </a>
           </section>
 
           {/*           <section id="search" className="alt">
