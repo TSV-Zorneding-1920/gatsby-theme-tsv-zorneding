@@ -10,6 +10,11 @@ class Carousel extends React.Component {
       widget: "object",
       fields: [
         {
+          label: "Titel",
+          name: "title",
+          widget: "string"
+        },
+        {
           label: "Bilder",
           name: "images",
           widget: "list",
@@ -33,13 +38,21 @@ class Carousel extends React.Component {
     });
 
     return (
-      <div style={{ maxWidth: "700px", margin: "auto" }}>
-        <ImageGallery
-          items={images}
-          showFullscreenButton={false}
-          showPlayButton={false}
-        />
-      </div>
+      <>
+        {this.props.title && (
+          <header className="major">
+            <h2>{this.props.title}</h2>
+          </header>
+        )}
+        <div style={{ maxWidth: "700px", margin: "auto" }}>
+          <ImageGallery
+            items={images}
+            showFullscreenButton={false}
+            showPlayButton={false}
+          />
+        </div>
+        <hr />
+      </>
     );
   }
 }
@@ -49,6 +62,7 @@ export default Carousel;
 export const query = graphql`
   fragment SectionCarouselFragment on MarkdownRemarkFrontmatter {
     sections {
+      title
       images {
         image {
           childImageSharp {

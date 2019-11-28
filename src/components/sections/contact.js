@@ -7,12 +7,36 @@ class Contact extends React.Component {
       label: "Kontakt",
       name: "contact",
       widget: "object",
-      fields: []
+      fields: [
+        {
+          label: "Titel",
+          name: "title",
+          widget: "string"
+        }
+      ]
     };
   }
   render() {
-    return <ContactComponent />;
+    return (
+      <>
+        {this.props.title && (
+          <header className="major">
+            <h2>{this.props.title}</h2>
+          </header>
+        )}
+        <ContactComponent />
+        <hr />
+      </>
+    );
   }
 }
 
 export default Contact;
+
+export const query = graphql`
+  fragment SectionContactFragment on MarkdownRemarkFrontmatter {
+    sections {
+      title
+    }
+  }
+`;

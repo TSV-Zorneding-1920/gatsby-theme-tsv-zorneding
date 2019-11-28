@@ -10,6 +10,11 @@ class Image extends React.Component {
       widget: "object",
       fields: [
         {
+          label: "Titel",
+          name: "title",
+          widget: "string"
+        },
+        {
           label: "Bild",
           name: "image",
           widget: "image"
@@ -20,6 +25,11 @@ class Image extends React.Component {
   render() {
     return (
       <>
+        {this.props.title && (
+          <header className="major">
+            <h2>{this.props.title}</h2>
+          </header>
+        )}
         <PreviewCompatibleImage
           imageInfo={{
             image: this.props.image,
@@ -37,6 +47,7 @@ export default Image;
 export const query = graphql`
   fragment SectionImageFragment on MarkdownRemarkFrontmatter {
     sections {
+      title
       image {
         childImageSharp {
           fluid(maxWidth: 1180, quality: 100) {

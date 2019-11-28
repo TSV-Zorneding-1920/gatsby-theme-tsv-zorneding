@@ -18,15 +18,15 @@ const Sections = ({ sections }) => {
   }
   const content = sections.map(function(section, i) {
     if (section.type === "body") {
-      return <Body content={section.body} key={i} />;
+      return <Body content={section.body} key={i} title={section.title} />;
     }
 
     if (section.type === "iframe") {
-      return <IFrame html={section.html} key={i} />;
+      return <IFrame html={section.html} key={i} title={section.title} />;
     }
 
     if (section.type === "carousel") {
-      return <Carousel images={section.images} key={i} />;
+      return <Carousel images={section.images} key={i} title={section.title} />;
     }
 
     if (section.type === "teaser_list") {
@@ -36,18 +36,24 @@ const Sections = ({ sections }) => {
           offset={section.offset}
           count={section.count}
           tags={section.tags}
+          title={section.title}
         />
       );
     }
 
     if (section.type === "banner") {
       return (
-        <BannerList key={i} offset={section.offset} count={section.count} />
+        <BannerList
+          key={i}
+          offset={section.offset}
+          count={section.count}
+          title={section.title}
+        />
       );
     }
 
     if (section.type === "image") {
-      return <Image key={i} image={section.image} />;
+      return <Image key={i} image={section.image} title={section.title} />;
     }
     if (section.type === "icon_list") {
       return (
@@ -55,10 +61,12 @@ const Sections = ({ sections }) => {
       );
     }
     if (section.type === "contact") {
-      return <Contact key={i} />;
+      return <Contact key={i} title={section.title} />;
     }
     if (section.type === "image_text_small") {
-      return <ImageTextSmall key={i} info={section.info} />;
+      return (
+        <ImageTextSmall key={i} info={section.info} title={section.title} />
+      );
     }
     if (section.type === "image_text") {
       return <ImageText key={i} nodes={section.nodes} title={section.title} />;
@@ -78,6 +86,7 @@ export const query = graphql`
   fragment SectionsFragment on MarkdownRemarkFrontmatter {
     ...SectionBodyFragment
     ...SectionCarouselFragment
+    ...SectionContactFragment
     ...SectionIFrameFragment
     ...SectionIconListFragment
     ...SectionImageTextSmallFragment

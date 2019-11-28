@@ -10,6 +10,11 @@ class Body extends React.Component {
       widget: "object",
       fields: [
         {
+          label: "Titel",
+          name: "title",
+          widget: "string"
+        },
+        {
           label: "Text",
           name: "body",
           widget: "markdown"
@@ -20,6 +25,11 @@ class Body extends React.Component {
   render() {
     return (
       <div className="row">
+        {this.props.title && (
+          <header className="major">
+            <h2>{this.props.title}</h2>
+          </header>
+        )}
         <MarkdownContent content={this.props.content} />
       </div>
     );
@@ -32,6 +42,7 @@ export const query = graphql`
   fragment SectionBodyFragment on MarkdownRemarkFrontmatter {
     sections {
       body
+      title
     }
   }
 `;

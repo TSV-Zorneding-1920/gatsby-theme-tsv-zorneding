@@ -10,6 +10,11 @@ class IFrame extends React.Component {
       widget: "object",
       fields: [
         {
+          label: "Titel",
+          name: "title",
+          widget: "string"
+        },
+        {
           label: "HTML",
           name: "html",
           widget: "text"
@@ -18,7 +23,16 @@ class IFrame extends React.Component {
     };
   }
   render() {
-    return <HTMLContent content={this.props.html} className="row" />;
+    return (
+      <>
+        {this.props.title && (
+          <header className="major">
+            <h2>{this.props.title}</h2>
+          </header>
+        )}
+        <HTMLContent content={this.props.html} />
+      </>
+    );
   }
 }
 
@@ -27,6 +41,7 @@ export default IFrame;
 export const query = graphql`
   fragment SectionIFrameFragment on MarkdownRemarkFrontmatter {
     sections {
+      title
       html
     }
   }
