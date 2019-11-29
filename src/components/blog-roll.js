@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-import DefaultImage from "./default-image";
+import PreviewCompatibleImage from "./preview-compatible-image";
 
 class BlogRoll extends React.Component {
   render() {
@@ -13,7 +13,7 @@ class BlogRoll extends React.Component {
           posts.map(({ node: post }) => (
             <div className="box" key={post.id}>
               <Link to={post.fields.slug} className="image left fit">
-                <DefaultImage
+                <PreviewCompatibleImage
                   imageInfo={{
                     image: post.frontmatter.featuredimage,
                     alt: `featured image thumbnail for post ${post.frontmatter.title}`

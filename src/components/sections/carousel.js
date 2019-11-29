@@ -12,7 +12,8 @@ class Carousel extends React.Component {
         {
           label: "Titel",
           name: "title",
-          widget: "string"
+          widget: "string",
+          required: false
         },
         {
           label: "Bilder",

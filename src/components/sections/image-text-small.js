@@ -13,7 +13,8 @@ class ImageTextSmall extends React.Component {
         {
           label: "Titel",
           name: "title",
-          widget: "string"
+          widget: "string",
+          required: false
         },
         {
           label: "Element",
@@ -28,12 +29,14 @@ class ImageTextSmall extends React.Component {
             {
               label: "Bild",
               name: "image_small",
-              widget: "image"
+              widget: "image",
+              default: "/img/default.jpg"
             },
             {
               label: "Text",
               name: "body",
-              widget: "markdown"
+              widget: "markdown",
+              required: false
             }
           ]
         }

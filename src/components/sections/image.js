@@ -12,12 +12,14 @@ class Image extends React.Component {
         {
           label: "Titel",
           name: "title",
-          widget: "string"
+          widget: "string",
+          required: false
         },
         {
           label: "Bild",
           name: "image",
-          widget: "image"
+          widget: "image",
+          default: "/img/default.jpg"
         }
       ]
     };

@@ -12,19 +12,23 @@ class TeaserList extends React.Component {
         {
           label: "Titel",
           name: "title",
-          widget: "string"
+          widget: "string",
+          required: false
         },
         {
           label: "Versatz",
           name: "offset",
           widget: "number",
-          default: 0
+          default: 0,
+          hint:
+            "0 - Liste startet mit dem aktuellsten Eintrag, 1 - Liste startet mit dem zweiten Eintrag, usw... "
         },
         {
           label: "Anzahl",
           name: "count",
           widget: "number",
-          default: 3
+          default: 3,
+          hint: "Anzahl der Einträge in der Liste"
         },
         {
           label: "Tags",

@@ -1,33 +1,35 @@
 import React from "react";
 import { kebabCase } from "lodash";
-import { HTMLContent } from "../components/content";
+import Content from "../components/content";
 import TeaserList from "../components/teaser-list";
-import DefaultImage from "../components/default-image";
+import PreviewCompatibleImage from "../components/preview-compatible-image";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
 const BlogPostTemplate = ({
   content,
+  contentComponent,
   tags,
   title,
   slug,
   date,
   featuredimage
 }) => {
+  const PostContent = contentComponent || Content;
   return (
     <section>
       <header className="main">
         <h1>{title}</h1>
       </header>
       <span className="image object main">
-        <DefaultImage
+        <PreviewCompatibleImage
           imageInfo={{
             image: featuredimage,
             alt: `featured image thumbnail for post ${title}`
           }}
         />
       </span>
-      <HTMLContent content={content} />
+      <PostContent content={content} />
       <p>{date}</p>
       <hr />
 
@@ -52,6 +54,7 @@ const BlogPostTemplate = ({
 
 BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
+  contentComponent: PropTypes.func,
   tags: PropTypes.array,
   title: PropTypes.string,
   slug: PropTypes.string,

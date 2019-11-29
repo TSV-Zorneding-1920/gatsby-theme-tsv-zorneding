@@ -1,5 +1,6 @@
 import React from "react";
 import ContactComponent from "../contact";
+import { graphql } from "gatsby";
 
 class Contact extends React.Component {
   admin() {
@@ -11,7 +12,8 @@ class Contact extends React.Component {
         {
           label: "Titel",
           name: "title",
-          widget: "string"
+          widget: "string",
+          required: false
         }
       ]
     };

@@ -5,6 +5,7 @@ import Layout from "./layout";
 import { SEO } from "gatsby-theme-seo";
 import BlogPostTemplate from "../templates/blog-post";
 import { JSONLD, Generic } from "react-structured-data";
+import { HTMLContent } from "../components/content";
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data;
@@ -58,6 +59,7 @@ const BlogPost = ({ data }) => {
       </JSONLD>
       <BlogPostTemplate
         content={post.html}
+        contentComponent={HTMLContent}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
         slug={post.fields.slug}

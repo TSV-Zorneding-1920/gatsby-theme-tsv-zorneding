@@ -23,24 +23,25 @@ class ImageText extends React.Component {
             {
               label: "Titel",
               name: "title",
-              widget: "string",
-              required: true
+              widget: "string"
             },
             {
               label: "Bild",
               name: "image",
               widget: "image",
-              required: true
+              default: "/img/default.jpg"
             },
             {
               label: "Text",
               name: "body",
-              widget: "markdown"
+              widget: "markdown",
+              required: false
             },
             {
               label: "Link",
               name: "link",
-              widget: "string"
+              widget: "string",
+              required: false
             }
           ]
         }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
-import DefaultImage from "./default-image";
+import PreviewCompatibleImage from "./preview-compatible-image";
 
 const Banner = ({ description, link, title, featuredimage }) => (
   <section id="banner">
@@ -24,7 +24,7 @@ const Banner = ({ description, link, title, featuredimage }) => (
     </div>
     {featuredimage && (
       <Link to={link} className="image">
-        <DefaultImage
+        <PreviewCompatibleImage
           imageInfo={{
             image: featuredimage,
             alt: `featured image thumbnail for post ${title}`

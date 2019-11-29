@@ -12,7 +12,8 @@ class IconList extends React.Component {
         {
           label: "Titel",
           name: "title",
-          widget: "string"
+          widget: "string",
+          required: false
         },
         {
           label: "Element",
@@ -28,6 +29,12 @@ class IconList extends React.Component {
               label: "Icon",
               name: "icon",
               widget: "string"
+            },
+            {
+              label: "Text",
+              name: "body",
+              widget: "markdown",
+              required: false
             }
           ]
         }

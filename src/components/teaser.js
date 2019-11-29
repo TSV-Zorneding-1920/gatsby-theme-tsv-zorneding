@@ -1,13 +1,13 @@
 import React from "react";
 import Link from "./link";
 import PropTypes from "prop-types";
-import DefaultImage from "./default-image";
+import PreviewCompatibleImage from "./preview-compatible-image";
 
 const Teaser = ({ description, link, title, featuredimage }) => (
   <article>
     {link ? (
       <Link to={link} className="image">
-        <DefaultImage
+        <PreviewCompatibleImage
           imageInfo={{
             image: featuredimage,
             alt: `featured image thumbnail for post ${title}`,
@@ -17,7 +17,7 @@ const Teaser = ({ description, link, title, featuredimage }) => (
         />
       </Link>
     ) : (
-      <DefaultImage
+      <PreviewCompatibleImage
         imageInfo={{
           image: featuredimage,
           alt: `featured image thumbnail for post ${title}`,
