@@ -33,7 +33,7 @@ const staticBlocks = [
 CMS.init({
   config: {
     backend: {
-      name: "test-repo",
+      name: "git-gateway",
       branch: "master",
       commit_messages: {
         create: "Create {{collection}} '{{slug}}'",
