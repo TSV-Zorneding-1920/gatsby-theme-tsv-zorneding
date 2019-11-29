@@ -1,40 +1,4 @@
-### Type definitions saved at 2019-11-22T16:05:15.029Z ###
-
-type File implements Node @dontInfer {
-  birthtime: Date @deprecated(reason: "Use `birthTime` instead")
-  birthtimeMs: Float @deprecated(reason: "Use `birthTime` instead")
-  sourceInstanceName: String
-  absolutePath: String
-  relativePath: String
-  extension: String
-  size: Int
-  prettySize: String
-  modifiedTime: Date @dateformat
-  accessTime: Date @dateformat
-  changeTime: Date @dateformat
-  birthTime: Date @dateformat
-  root: String
-  dir: String
-  base: String
-  ext: String
-  name: String
-  relativeDirectory: String
-  dev: Int
-  mode: Int
-  nlink: Int
-  uid: Int
-  gid: Int
-  rdev: Int
-  blksize: Int
-  ino: Float
-  blocks: Int
-  atimeMs: Float
-  mtimeMs: Float
-  ctimeMs: Float
-  atime: Date @dateformat
-  mtime: Date @dateformat
-  ctime: Date @dateformat
-}
+### Type definitions saved at 2019-11-29T15:28:04.063Z ###
 
 enum ImageFormat {
   NO_CHANGE
@@ -248,7 +212,7 @@ type MarkdownWordCount {
   words: Int
 }
 
-type MarkdownRemark implements Node @childOf(mimeTypes: ["text/markdown", "text/x-markdown"], types: [], many: false) @dontInfer {
+type MarkdownRemark implements Node @childOf(mimeTypes: ["text/markdown", "text/x-markdown"], types: [], many: false) @derivedTypes @dontInfer {
   frontmatter: MarkdownRemarkFrontmatter
   excerpt: String
   rawMarkdownBody: String
@@ -256,7 +220,7 @@ type MarkdownRemark implements Node @childOf(mimeTypes: ["text/markdown", "text/
   fields: MarkdownRemarkFields
 }
 
-type MarkdownRemarkFrontmatter {
+type MarkdownRemarkFrontmatter @derivedTypes {
   title: String
   templateKey: String
   showTitle: Boolean
@@ -268,36 +232,55 @@ type MarkdownRemarkFrontmatter {
   tags: [String]
 }
 
-type MarkdownRemarkFrontmatterSections {
-  type: String
-  info: [MarkdownRemarkFrontmatterSectionsInfo]
+type MarkdownRemarkFrontmatterSections @derivedTypes {
   image: File @fileByRelativePath
+  type: String
   body: String
-  html: String
   count: Int
   offset: Int
   tags: [String]
-  images: [MarkdownRemarkFrontmatterSectionsImages]
-  nodes: [MarkdownRemarkFrontmatterSectionsNodes]
   title: String
   element: [MarkdownRemarkFrontmatterSectionsElement]
+  images: [MarkdownRemarkFrontmatterSectionsImages]
+  info: [MarkdownRemarkFrontmatterSectionsInfo]
+  html: String
+  nodes: [MarkdownRemarkFrontmatterSectionsNodes]
 }
 
-type MarkdownRemarkFrontmatterSectionsInfo {
-  image_small: File @fileByRelativePath
-  body: String
-  title: String
-}
-
-type MarkdownRemarkFrontmatterSectionsImages {
-  image: File @fileByRelativePath
-}
-
-type MarkdownRemarkFrontmatterSectionsNodes {
-  image: File @fileByRelativePath
-  body: String
-  title: String
-  link: String
+type File implements Node @dontInfer {
+  birthtime: Date @deprecated(reason: "Use `birthTime` instead")
+  birthtimeMs: Float @deprecated(reason: "Use `birthTime` instead")
+  sourceInstanceName: String
+  absolutePath: String
+  relativePath: String
+  extension: String
+  size: Int
+  prettySize: String
+  modifiedTime: Date @dateformat
+  accessTime: Date @dateformat
+  changeTime: Date @dateformat
+  birthTime: Date @dateformat
+  root: String
+  dir: String
+  base: String
+  ext: String
+  name: String
+  relativeDirectory: String
+  dev: Int
+  mode: Int
+  nlink: Int
+  uid: Int
+  gid: Int
+  rdev: Int
+  blksize: Int
+  ino: Float
+  blocks: Int
+  atimeMs: Float
+  mtimeMs: Float
+  ctimeMs: Float
+  atime: Date @dateformat
+  mtime: Date @dateformat
+  ctime: Date @dateformat
 }
 
 type MarkdownRemarkFrontmatterSectionsElement {
@@ -306,8 +289,53 @@ type MarkdownRemarkFrontmatterSectionsElement {
   title: String
 }
 
+type MarkdownRemarkFrontmatterSectionsImages {
+  image: File @fileByRelativePath
+}
+
+type MarkdownRemarkFrontmatterSectionsInfo {
+  image_small: File @fileByRelativePath
+  body: String
+  title: String
+}
+
+type MarkdownRemarkFrontmatterSectionsNodes {
+  body: String
+  image: File @fileByRelativePath
+  image_small: File @fileByRelativePath
+  title: String
+  link: String
+}
+
 type MarkdownRemarkFields {
   slug: String
+}
+
+type DataYaml implements Node @derivedTypes @dontInfer {
+  menu_entry: [DataYamlMenu_entry]
+}
+
+type DataYamlMenu_entry @derivedTypes {
+  page: String
+  title: String
+  menu_entry: [DataYamlMenu_entryMenu_entry]
+}
+
+type DataYamlMenu_entryMenu_entry @derivedTypes {
+  title: String
+  page: String
+  menu_entry: [DataYamlMenu_entryMenu_entryMenu_entry]
+}
+
+type DataYamlMenu_entryMenu_entryMenu_entry {
+  title: String
+  page: String
+}
+
+type EventsYaml implements Node @dontInfer {
+  description: String
+  label: String
+  date: Date @dateformat
 }
 
 type Directory implements Node @dontInfer {
@@ -344,25 +372,4 @@ type Directory implements Node @dontInfer {
   mtime: Date @dateformat
   ctime: Date @dateformat
   birthtime: Date @dateformat
-}
-
-type EventsYaml implements Node @dontInfer {
-  description: String
-  label: String
-  date: Date @dateformat
-}
-
-type DataYaml implements Node @dontInfer {
-  menu_entry: [DataYamlMenu_entry]
-}
-
-type DataYamlMenu_entry {
-  page: String
-  title: String
-  menu_entry: [DataYamlMenu_entryMenu_entry]
-}
-
-type DataYamlMenu_entryMenu_entry {
-  page: String
-  title: String
 }

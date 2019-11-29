@@ -42,6 +42,10 @@ const Menu = ({ title }) => {
               menu_entry {
                 page
                 title
+                menu_entry {
+                  page
+                  title
+                }
               }
               title
             }
@@ -69,11 +73,31 @@ const Menu = ({ title }) => {
             return entry.menu_entry ? (
               <SubMenu text={entry.title} key={i}>
                 {entry.menu_entry.map(function(subentry, k) {
-                  return (
-                    <li key={k}>
-                      <Link to={subentry.page}>{subentry.title}</Link>
-                    </li>
-                  );
+                  if (subentry.page) {
+                    return (
+                      <li key={k}>
+                        <Link to={subentry.page}>{subentry.title}</Link>
+                      </li>
+                    );
+                  } else if (subentry.menu_entry) {
+                    return (
+                      <SubMenu text={subentry.title} key={`sub ${i}`}>
+                        {subentry.menu_entry.map(function(subentry, k) {
+                          if (subentry.page) {
+                            return (
+                              <li key={k}>
+                                <Link to={subentry.page}>{subentry.title}</Link>
+                              </li>
+                            );
+                          } else {
+                            return <></>;
+                          }
+                        })}
+                      </SubMenu>
+                    );
+                  } else {
+                    return <></>;
+                  }
                 })}
               </SubMenu>
             ) : (
