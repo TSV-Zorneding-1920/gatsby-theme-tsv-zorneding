@@ -34,7 +34,7 @@ class Image extends React.Component {
         )}
         <PreviewCompatibleImage
           imageInfo={{
-            image: this.props.image_large,
+            image: this.props.image,
             alt: `featured image thumbnail for post`
           }}
         />

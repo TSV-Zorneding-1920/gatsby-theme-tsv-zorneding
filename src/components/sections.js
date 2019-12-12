@@ -67,7 +67,9 @@ const Sections = ({ sections }) => {
     }
 
     if (section.type === "image") {
-      return <Image key={i} image={section.image} title={section.title} />;
+      return (
+        <Image key={i} image={section.image_large} title={section.title} />
+      );
     }
     if (section.type === "icon_list") {
       return (
