@@ -108,7 +108,6 @@ CMS.init({
         name: "pages",
         label: "Statische Seiten",
         folder: "src/pages",
-        path: "{{folder}}/{{slug}}",
         create: true,
         editor: {
           preview: false
@@ -119,12 +118,6 @@ CMS.init({
             name: "templateKey",
             widget: "hidden",
             default: "static-page"
-          },
-          {
-            label: "Folder",
-            name: "folder",
-            widget: "string",
-            default: "/"
           },
           {
             label: "Titel",
