@@ -1,4 +1,4 @@
-### Type definitions saved at 2019-11-29T15:28:04.063Z ###
+### Type definitions saved at 2019-12-12T06:38:38.409Z ###
 
 enum ImageFormat {
   NO_CHANGE
@@ -233,18 +233,24 @@ type MarkdownRemarkFrontmatter @derivedTypes {
 }
 
 type MarkdownRemarkFrontmatterSections @derivedTypes {
-  image: File @fileByRelativePath
-  type: String
   body: String
+  type: String
+  images: [MarkdownRemarkFrontmatterSectionsImages]
   count: Int
   offset: Int
   tags: [String]
-  title: String
-  element: [MarkdownRemarkFrontmatterSectionsElement]
-  images: [MarkdownRemarkFrontmatterSectionsImages]
   info: [MarkdownRemarkFrontmatterSectionsInfo]
+  title: String
+  image: File @fileByRelativePath
   html: String
+  headline: String
+  link: String
+  element: [MarkdownRemarkFrontmatterSectionsElement]
   nodes: [MarkdownRemarkFrontmatterSectionsNodes]
+}
+
+type MarkdownRemarkFrontmatterSectionsImages {
+  image: File @fileByRelativePath
 }
 
 type File implements Node @dontInfer {
@@ -283,26 +289,21 @@ type File implements Node @dontInfer {
   ctime: Date @dateformat
 }
 
-type MarkdownRemarkFrontmatterSectionsElement {
-  icon: String
-  body: String
-  title: String
-}
-
-type MarkdownRemarkFrontmatterSectionsImages {
-  image: File @fileByRelativePath
-}
-
 type MarkdownRemarkFrontmatterSectionsInfo {
   image_small: File @fileByRelativePath
   body: String
   title: String
 }
 
+type MarkdownRemarkFrontmatterSectionsElement {
+  body: String
+  icon: String
+  title: String
+}
+
 type MarkdownRemarkFrontmatterSectionsNodes {
   body: String
   image: File @fileByRelativePath
-  image_small: File @fileByRelativePath
   title: String
   link: String
 }

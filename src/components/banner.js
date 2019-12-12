@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import Link from "./link";
 import PropTypes from "prop-types";
 import PreviewCompatibleImage from "./preview-compatible-image";
 
@@ -7,9 +7,13 @@ const Banner = ({ description, link, title, featuredimage }) => (
   <section id="banner">
     <div className="content">
       <header>
-        <Link to={link}>
+        {link ? (
+          <Link to={link}>
+            <h1>{title}</h1>
+          </Link>
+        ) : (
           <h1>{title}</h1>
-        </Link>
+        )}
       </header>
       <p>{description}</p>
       {link && (
@@ -22,7 +26,7 @@ const Banner = ({ description, link, title, featuredimage }) => (
         </ul>
       )}
     </div>
-    {featuredimage && (
+    {featuredimage && link ? (
       <Link to={link} className="image">
         <PreviewCompatibleImage
           imageInfo={{
@@ -31,6 +35,16 @@ const Banner = ({ description, link, title, featuredimage }) => (
           }}
         />
       </Link>
+    ) : (
+      featuredimage && (
+        <PreviewCompatibleImage
+          imageInfo={{
+            image: featuredimage,
+            alt: `featured image thumbnail for post ${title}`
+          }}
+          className="image object"
+        />
+      )
     )}
   </section>
 );

@@ -46,8 +46,9 @@ const Sections = ({ sections }) => {
       return (
         <Banner
           key={i}
-          image={section.image}
+          featuredimage={section.image}
           title={section.title}
+          headline={section.headline}
           link={section.link}
           body={section.body}
         />
