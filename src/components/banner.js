@@ -2,6 +2,7 @@ import React from "react";
 import Link from "./link";
 import PropTypes from "prop-types";
 import PreviewCompatibleImage from "./preview-compatible-image";
+import { MarkdownContent } from "./content";
 
 const Banner = ({ description, link, title, featuredimage }) => (
   <section id="banner">
@@ -15,7 +16,7 @@ const Banner = ({ description, link, title, featuredimage }) => (
           <h1>{title}</h1>
         )}
       </header>
-      <p>{description}</p>
+      {description && <MarkdownContent content={description} />}
       {link && (
         <ul className="actions">
           <li>
