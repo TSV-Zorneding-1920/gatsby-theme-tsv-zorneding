@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import BannerList from "./sections/banner-list";
+import Banner from "./sections/banner";
 import { graphql } from "gatsby";
 import Contact from "./sections/contact";
 import Body from "./sections/body";
@@ -42,6 +43,18 @@ const Sections = ({ sections }) => {
     }
 
     if (section.type === "banner") {
+      return (
+        <Banner
+          key={i}
+          image={section.image}
+          title={section.title}
+          link={section.link}
+          body={section.body}
+        />
+      );
+    }
+
+    if (section.type === "banner_list") {
       return (
         <BannerList
           key={i}
@@ -85,6 +98,7 @@ export default Sections;
 export const query = graphql`
   fragment SectionsFragment on MarkdownRemarkFrontmatter {
     ...SectionBodyFragment
+    ...SectionBannerFragment
     ...SectionCarouselFragment
     ...SectionContactFragment
     ...SectionIFrameFragment
