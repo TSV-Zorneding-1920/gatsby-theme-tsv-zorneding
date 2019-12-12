@@ -5,8 +5,8 @@ import { graphql } from "gatsby";
 class BannerList extends React.Component {
   admin() {
     return {
-      label: "Banner",
-      name: "banner",
+      label: "Bannerliste",
+      name: "banner_list",
       widget: "object",
       fields: [
         {

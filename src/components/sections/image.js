@@ -34,7 +34,7 @@ class Image extends React.Component {
         )}
         <PreviewCompatibleImage
           imageInfo={{
-            image: this.props.image,
+            image: this.props.image_large,
             alt: `featured image thumbnail for post`
           }}
         />
@@ -50,7 +50,7 @@ export const query = graphql`
   fragment SectionImageFragment on MarkdownRemarkFrontmatter {
     sections {
       title
-      image {
+      image_large: image {
         childImageSharp {
           fluid(maxWidth: 1180, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp_noBase64
