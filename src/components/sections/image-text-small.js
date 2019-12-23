@@ -89,7 +89,7 @@ export const query = graphql`
         title
         image_small {
           childImageSharp {
-            fixed(width: 100, height: 100) {
+            fixed(width: 100, height: 100, cropFocus: ENTROPY) {
               ...GatsbyImageSharpFixed_withWebp_noBase64
             }
           }
