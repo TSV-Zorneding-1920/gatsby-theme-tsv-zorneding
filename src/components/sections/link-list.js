@@ -52,7 +52,6 @@ class LinkList extends React.Component {
             );
           })}
         </ul>
-        <hr />
       </>
     );
   }
