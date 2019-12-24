@@ -1,6 +1,6 @@
 import React from "react";
-import { MarkdownContent } from "../content";
 import { graphql } from "gatsby";
+import Link from "../link";
 
 class LinkList extends React.Component {
   admin() {
@@ -43,19 +43,15 @@ class LinkList extends React.Component {
             <h2>{this.props.title}</h2>
           </header>
         )}
-        <div className="features">
+        <ul>
           {this.props.element.map(function(post, j) {
             return (
-              <article key={j}>
-                <span className={post.icon + " icon solid"}></span>
-                <div className="content">
-                  <h3>{post.title}</h3>
-                  <MarkdownContent content={post.body} />
-                </div>
-              </article>
+              <li key={j}>
+                <Link to={post.link}>{post.title}</Link>
+              </li>
             );
           })}
-        </div>
+        </ul>
         <hr />
       </>
     );

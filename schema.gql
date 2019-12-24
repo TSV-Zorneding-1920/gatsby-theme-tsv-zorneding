@@ -1,4 +1,76 @@
-### Type definitions saved at 2019-12-12T06:38:38.409Z ###
+### Type definitions saved at 2019-12-24T08:48:27.778Z ###
+
+type File implements Node @dontInfer {
+  sourceInstanceName: String!
+  absolutePath: String!
+  relativePath: String!
+  extension: String!
+  size: Int!
+  prettySize: String!
+  modifiedTime: Date! @dateformat
+  accessTime: Date! @dateformat
+  changeTime: Date! @dateformat
+  birthTime: Date! @dateformat
+  root: String!
+  dir: String!
+  base: String!
+  ext: String!
+  name: String!
+  relativeDirectory: String!
+  dev: Int!
+  mode: Int!
+  nlink: Int!
+  uid: Int!
+  gid: Int!
+  rdev: Int!
+  ino: Float!
+  atimeMs: Float!
+  mtimeMs: Float!
+  ctimeMs: Float!
+  atime: Date! @dateformat
+  mtime: Date! @dateformat
+  ctime: Date! @dateformat
+  birthtime: Date @deprecated(reason: "Use `birthTime` instead")
+  birthtimeMs: Float @deprecated(reason: "Use `birthTime` instead")
+  blksize: Int
+  blocks: Int
+}
+
+type Directory implements Node @dontInfer {
+  sourceInstanceName: String!
+  absolutePath: String!
+  relativePath: String!
+  extension: String!
+  size: Int!
+  prettySize: String!
+  modifiedTime: Date! @dateformat
+  accessTime: Date! @dateformat
+  changeTime: Date! @dateformat
+  birthTime: Date! @dateformat
+  root: String!
+  dir: String!
+  base: String!
+  ext: String!
+  name: String!
+  relativeDirectory: String!
+  dev: Int!
+  mode: Int!
+  nlink: Int!
+  uid: Int!
+  gid: Int!
+  rdev: Int!
+  ino: Float!
+  atimeMs: Float!
+  mtimeMs: Float!
+  ctimeMs: Float!
+  atime: Date! @dateformat
+  mtime: Date! @dateformat
+  ctime: Date! @dateformat
+  birthtime: Date @deprecated(reason: "Use `birthTime` instead")
+  birthtimeMs: Float @deprecated(reason: "Use `birthTime` instead")
+  blksize: Int
+  blocks: Int
+}
 
 enum ImageFormat {
   NO_CHANGE
@@ -235,58 +307,22 @@ type MarkdownRemarkFrontmatter @derivedTypes {
 type MarkdownRemarkFrontmatterSections @derivedTypes {
   body: String
   type: String
-  images: [MarkdownRemarkFrontmatterSectionsImages]
   count: Int
   offset: Int
-  tags: [String]
-  info: [MarkdownRemarkFrontmatterSectionsInfo]
-  title: String
   image: File @fileByRelativePath
   html: String
-  headline: String
+  images: [MarkdownRemarkFrontmatterSectionsImages]
+  tags: [String]
+  title: String
+  info: [MarkdownRemarkFrontmatterSectionsInfo]
   link: String
+  headline: String
   element: [MarkdownRemarkFrontmatterSectionsElement]
   nodes: [MarkdownRemarkFrontmatterSectionsNodes]
 }
 
 type MarkdownRemarkFrontmatterSectionsImages {
   image: File @fileByRelativePath
-}
-
-type File implements Node @dontInfer {
-  birthtime: Date @deprecated(reason: "Use `birthTime` instead")
-  birthtimeMs: Float @deprecated(reason: "Use `birthTime` instead")
-  sourceInstanceName: String
-  absolutePath: String
-  relativePath: String
-  extension: String
-  size: Int
-  prettySize: String
-  modifiedTime: Date @dateformat
-  accessTime: Date @dateformat
-  changeTime: Date @dateformat
-  birthTime: Date @dateformat
-  root: String
-  dir: String
-  base: String
-  ext: String
-  name: String
-  relativeDirectory: String
-  dev: Int
-  mode: Int
-  nlink: Int
-  uid: Int
-  gid: Int
-  rdev: Int
-  blksize: Int
-  ino: Float
-  blocks: Int
-  atimeMs: Float
-  mtimeMs: Float
-  ctimeMs: Float
-  atime: Date @dateformat
-  mtime: Date @dateformat
-  ctime: Date @dateformat
 }
 
 type MarkdownRemarkFrontmatterSectionsInfo {
@@ -299,6 +335,7 @@ type MarkdownRemarkFrontmatterSectionsElement {
   body: String
   icon: String
   title: String
+  link: String
 }
 
 type MarkdownRemarkFrontmatterSectionsNodes {
@@ -323,54 +360,18 @@ type DataYamlMenu_entry @derivedTypes {
 }
 
 type DataYamlMenu_entryMenu_entry @derivedTypes {
-  title: String
   page: String
+  title: String
   menu_entry: [DataYamlMenu_entryMenu_entryMenu_entry]
 }
 
 type DataYamlMenu_entryMenu_entryMenu_entry {
-  title: String
   page: String
+  title: String
 }
 
 type EventsYaml implements Node @dontInfer {
   description: String
   label: String
   date: Date @dateformat
-}
-
-type Directory implements Node @dontInfer {
-  sourceInstanceName: String
-  absolutePath: String
-  relativePath: String
-  extension: String
-  size: Int
-  prettySize: String
-  modifiedTime: Date @dateformat
-  accessTime: Date @dateformat
-  changeTime: Date @dateformat
-  birthTime: Date @dateformat
-  root: String
-  dir: String
-  base: String
-  ext: String
-  name: String
-  relativeDirectory: String
-  dev: Int
-  mode: Int
-  nlink: Int
-  uid: Int
-  gid: Int
-  rdev: Int
-  blksize: Int
-  ino: Float
-  blocks: Int
-  atimeMs: Float
-  mtimeMs: Float
-  ctimeMs: Float
-  birthtimeMs: Float
-  atime: Date @dateformat
-  mtime: Date @dateformat
-  ctime: Date @dateformat
-  birthtime: Date @dateformat
 }
