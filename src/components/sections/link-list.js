@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Link from "../link";
 
 class LinkList extends React.Component {
   admin() {
@@ -47,7 +46,7 @@ class LinkList extends React.Component {
           {this.props.element.map(function(post, j) {
             return (
               <li key={j}>
-                <Link to={post.link}>{post.title}</Link>
+                <a href={post.link}>{post.title}</a>
               </li>
             );
           })}
