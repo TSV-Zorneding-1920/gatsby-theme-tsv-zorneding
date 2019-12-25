@@ -9,6 +9,7 @@ import Body from "../src/components/sections/body";
 import Carousel from "../src/components/sections/carousel";
 import Contact from "../src/components/sections/contact";
 import IconList from "../src/components/sections/icon-list";
+import LinkList from "../src/components/sections/link-list";
 import IFrame from "../src/components/sections/iframe";
 import Image from "../src/components/sections/image";
 import ImageText from "../src/components/sections/image-text";
@@ -23,6 +24,7 @@ const staticBlocks = [
   new Carousel().admin(),
   new Contact().admin(),
   new IconList().admin(),
+  new LinkList().admin(),
   new IFrame().admin(),
   new Image().admin(),
   new ImageText().admin(),
