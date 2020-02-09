@@ -6,7 +6,7 @@ const Link = props => {
   const regex = new RegExp(expression);
   if (props.to.match(regex)) {
     return (
-      <a {...props} href={props.to}>
+      <a {...props} href={props.to} target="_blank">
         {props.children}
       </a>
     );
