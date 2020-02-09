@@ -1,4 +1,4 @@
-### Type definitions saved at 2019-12-24T08:48:27.778Z ###
+### Type definitions saved at 2020-02-09T14:51:46.122Z ###
 
 type File implements Node @dontInfer {
   sourceInstanceName: String!
@@ -70,6 +70,14 @@ type Directory implements Node @dontInfer {
   birthtimeMs: Float @deprecated(reason: "Use `birthTime` instead")
   blksize: Int
   blocks: Int
+}
+
+type SitePage implements Node @dontInfer {
+  path: String!
+  component: String!
+  internalComponentName: String!
+  componentChunkName: String!
+  matchPath: String
 }
 
 enum ImageFormat {
@@ -191,10 +199,10 @@ type ImageSharpFixed {
   base64: String
   tracedSVG: String
   aspectRatio: Float
-  width: Float
-  height: Float
-  src: String
-  srcSet: String
+  width: Float!
+  height: Float!
+  src: String!
+  srcSet: String!
   srcWebp: String
   srcSetWebp: String
   originalName: String
@@ -204,10 +212,10 @@ type ImageSharpResolutions {
   base64: String
   tracedSVG: String
   aspectRatio: Float
-  width: Float
-  height: Float
-  src: String
-  srcSet: String
+  width: Float!
+  height: Float!
+  src: String!
+  srcSet: String!
   srcWebp: String
   srcSetWebp: String
   originalName: String
@@ -216,12 +224,12 @@ type ImageSharpResolutions {
 type ImageSharpFluid {
   base64: String
   tracedSVG: String
-  aspectRatio: Float
-  src: String
-  srcSet: String
+  aspectRatio: Float!
+  src: String!
+  srcSet: String!
   srcWebp: String
   srcSetWebp: String
-  sizes: String
+  sizes: String!
   originalImg: String
   originalName: String
   presentationWidth: Int
@@ -231,12 +239,12 @@ type ImageSharpFluid {
 type ImageSharpSizes {
   base64: String
   tracedSVG: String
-  aspectRatio: Float
-  src: String
-  srcSet: String
+  aspectRatio: Float!
+  src: String!
+  srcSet: String!
   srcWebp: String
   srcSetWebp: String
-  sizes: String
+  sizes: String!
   originalImg: String
   originalName: String
   presentationWidth: Int
@@ -307,12 +315,12 @@ type MarkdownRemarkFrontmatter @derivedTypes {
 type MarkdownRemarkFrontmatterSections @derivedTypes {
   body: String
   type: String
+  images: [MarkdownRemarkFrontmatterSectionsImages]
   count: Int
   offset: Int
+  tags: [String]
   image: File @fileByRelativePath
   html: String
-  images: [MarkdownRemarkFrontmatterSectionsImages]
-  tags: [String]
   title: String
   info: [MarkdownRemarkFrontmatterSectionsInfo]
   link: String
@@ -336,6 +344,7 @@ type MarkdownRemarkFrontmatterSectionsElement {
   icon: String
   title: String
   link: String
+  file: File @fileByRelativePath
 }
 
 type MarkdownRemarkFrontmatterSectionsNodes {

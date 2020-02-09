@@ -46,8 +46,7 @@ class LinkList extends React.Component {
           {this.props.element.map(function(post, j) {
             return (
               <li key={j}>
-                <a href={post.link} download></a>
-                <a href={file.node.publicURL} download>
+                <a href={post.file.publicURL} download>
                   {post.title}
                 </a>
               </li>
