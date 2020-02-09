@@ -9,6 +9,7 @@ import IFrame from "./sections/iframe";
 import Carousel from "./sections/carousel";
 import IconList from "./sections/icon-list";
 import LinkList from "./sections/link-list";
+import FileList from "./sections/file-list";
 import ImageTextSmall from "./sections/image-text-small";
 import Image from "./sections/image";
 import TeaserList from "./sections/teaser-list";
@@ -93,6 +94,11 @@ const Sections = ({ sections }) => {
         <LinkList key={i} element={section.element} title={section.title} />
       );
     }
+    if (section.type === "file_list") {
+      return (
+        <FileList key={i} element={section.element} title={section.title} />
+      );
+    }
     return <></>;
   });
   return <>{content}</>;
@@ -118,6 +124,7 @@ export const query = graphql`
     ...SectionTeaserListFragment
     ...SectionBannerListFragment
     ...SectionImageTextFragment
+    ...SectionFileListFragment
     sections {
       type
     }

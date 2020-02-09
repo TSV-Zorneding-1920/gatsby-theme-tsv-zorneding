@@ -4,8 +4,8 @@ import { graphql } from "gatsby";
 class LinkList extends React.Component {
   admin() {
     return {
-      label: "Link Liste",
-      name: "link_list",
+      label: "Datei Liste",
+      name: "file_list",
       widget: "object",
       fields: [
         {
@@ -46,7 +46,8 @@ class LinkList extends React.Component {
           {this.props.element.map(function(post, j) {
             return (
               <li key={j}>
-                <a href={post.link} download>
+                <a href={post.link} download></a>
+                <a href={file.node.publicURL} download>
                   {post.title}
                 </a>
               </li>
@@ -61,11 +62,13 @@ class LinkList extends React.Component {
 export default LinkList;
 
 export const query = graphql`
-  fragment SectionLinkListFragment on MarkdownRemarkFrontmatter {
+  fragment SectionFileListFragment on MarkdownRemarkFrontmatter {
     sections {
       title
       element {
-        link
+        file {
+          publicURL
+        }
         title
       }
     }
