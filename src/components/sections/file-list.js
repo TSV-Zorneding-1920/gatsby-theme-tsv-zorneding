@@ -25,9 +25,9 @@ class LinkList extends React.Component {
               widget: "string"
             },
             {
-              label: "Link",
-              name: "link",
-              widget: "string"
+              label: "Datei",
+              name: "file",
+              widget: "file"
             }
           ]
         }

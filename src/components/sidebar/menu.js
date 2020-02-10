@@ -2,6 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Link from "../link";
 import PropTypes from "prop-types";
+import { useBlogPages } from "../../hooks/use-blog-pages";
 
 class SubMenu extends React.Component {
   constructor(props) {
@@ -54,6 +55,8 @@ const Menu = ({ title }) => {
       }
     `
   );
+
+  const posts = useBlogPages();
   return (
     <nav id="menu">
       <header className="major">
@@ -65,9 +68,12 @@ const Menu = ({ title }) => {
         <li>
           <Link to="/">Startseite</Link>
         </li>
-        <li>
-          <Link to="/blog">Aktuelles</Link>
-        </li>
+        {posts.length > 0 && (
+          <li>
+            <Link to="/blog">Aktuelles</Link>
+          </li>
+        )}
+
         {nav.childDataYaml.menu_entry &&
           nav.childDataYaml.menu_entry.map(function(entry, i) {
             return entry.menu_entry ? (
