@@ -98,7 +98,14 @@ module.exports = ({ NETLIFY_ENV, title }) => ({
         crossOrigin: `use-credentials`
       }
     },
-    "gatsby-plugin-offline",
+    {
+      resolve: "gatsby-plugin-offline",
+      options: {
+        workboxConfig: {
+          navigateFallbackBlacklist: [/^\/admin/]
+        }
+      }
+    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
