@@ -4,7 +4,6 @@
   "author": "Christian Fritsch",
   "license": "MIT",
   "dependencies": {
-    "@raae/gatsby-remark-oembed": "^0.1.1",
     "bulma": "^0.7.0",
     "dotenv": "^8.0.0",
     "gatsby-image": "^2.2.19",
