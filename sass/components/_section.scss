@@ -23,6 +23,8 @@
 		}
 
 		&.major {
+			flex-basis: 100%;
+			
 			> :last-child {
 				border-bottom: solid 3px _palette(accent);
 				display: inline-block;
