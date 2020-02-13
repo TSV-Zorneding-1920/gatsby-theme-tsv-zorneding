@@ -12,7 +12,7 @@ const BlogPost = ({ data }) => {
 
   let image = {};
   if (post.frontmatter.seoimage) {
-    image = post.frontmatter.seoimage.childImageSharp.fixed;
+    image = Object.assign({}, post.frontmatter.seoimage.childImageSharp.fixed);
     image["@type"] = "ImageObject";
     image["url"] = `${data.site.siteMetadata.siteUrl}${image.src}`;
     delete image.src;
