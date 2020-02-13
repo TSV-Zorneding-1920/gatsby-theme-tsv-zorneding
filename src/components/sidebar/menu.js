@@ -23,6 +23,9 @@ class SubMenu extends React.Component {
         <span
           className={this.state.active ? "opener active" : "opener"}
           onClick={this.toggleMenu}
+          onKeyDown={this.toggleMenu}
+          role="button"
+          tabIndex="0"
         >
           {this.props.text}
         </span>
@@ -88,11 +91,13 @@ const Menu = ({ title }) => {
                   } else if (subentry.menu_entry) {
                     return (
                       <SubMenu text={subentry.title} key={`sub ${i}`}>
-                        {subentry.menu_entry.map(function(subentry, k) {
-                          if (subentry.page) {
+                        {subentry.menu_entry.map(function(subsubentry, k) {
+                          if (subsubentry.page) {
                             return (
                               <li key={k}>
-                                <Link to={subentry.page}>{subentry.title}</Link>
+                                <Link to={subsubentry.page}>
+                                  {subsubentry.title}
+                                </Link>
                               </li>
                             );
                           } else {
