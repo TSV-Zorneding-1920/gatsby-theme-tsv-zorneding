@@ -1,6 +1,7 @@
 import React from "react";
 import PreviewCompatibleImage from "../preview-compatible-image";
 import { graphql } from "gatsby";
+import Link from "../link";
 
 class Image extends React.Component {
   admin() {
@@ -20,6 +21,12 @@ class Image extends React.Component {
           name: "image",
           widget: "image",
           default: "/img/default.jpg"
+        },
+        {
+          label: "Link",
+          name: "link",
+          widget: "string",
+          required: false
         }
       ]
     };
@@ -32,12 +39,23 @@ class Image extends React.Component {
             <h2>{this.props.title}</h2>
           </header>
         )}
-        <PreviewCompatibleImage
-          imageInfo={{
-            image: this.props.image,
-            alt: `featured image thumbnail for post`
-          }}
-        />
+        {this.props.link ? (
+          <Link to={this.props.link} className="">
+            <PreviewCompatibleImage
+              imageInfo={{
+                image: this.props.image,
+                alt: `featured image thumbnail for post`
+              }}
+            />
+          </Link>
+        ) : (
+          <PreviewCompatibleImage
+            imageInfo={{
+              image: this.props.image,
+              alt: `featured image thumbnail for post`
+            }}
+          />
+        )}
         <hr />
       </>
     );
@@ -50,6 +68,7 @@ export const query = graphql`
   fragment SectionImageFragment on MarkdownRemarkFrontmatter {
     sections {
       title
+      link
       image_large: image {
         childImageSharp {
           fluid(maxWidth: 1180, quality: 100) {
