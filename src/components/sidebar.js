@@ -4,6 +4,7 @@ import Menu from "./sidebar/menu";
 import MiniPosts from "./sidebar/mini-posts";
 import logo from "../../img/logo.png";
 import jubilogo from "../../img/190910_TSV_100Jahre_logo.png";
+import { Link } from "gatsby";
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -65,21 +66,8 @@ class Sidebar extends React.Component {
               © {new Date().getFullYear()} - TSV Zorneding
             </p>
             <p>
-              <a
-                href="https://www.tsv-zorneding.de/?Impressum"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Impressum
-              </a>{" "}
-              -{" "}
-              <a
-                href="https://www.tsv-zorneding.de/?Datenschutz"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Datenschutzerklärung
-              </a>
+              <Link to="impressum">Impressum</Link> -{" "}
+              <Link to="datenschutz">Datenschutzerklärung</Link>
             </p>
           </footer>
         </div>
