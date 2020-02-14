@@ -161,12 +161,6 @@ module.exports = ({ NETLIFY_ENV, title }) => ({
       }
     },
     {
-      resolve: `gatsby-plugin-schema-snapshot`,
-      options: {
-        path: `${__dirname}/schema.gql`
-      }
-    },
-    {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
         modulePath: `${__dirname}/cms/cms.js`,

@@ -96,3 +96,96 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
   }
 };
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+
+  type MarkdownRemarkFrontmatter @derivedTypes {
+    title: String
+    templateKey: String
+    showTitle: Boolean
+    sections: [MarkdownRemarkFrontmatterSections]
+    date: Date @dateformat
+    featured: Boolean
+    sticky: Boolean
+    featuredimage: File @fileByRelativePath
+    tags: [String]
+  }
+  
+  type MarkdownRemarkFrontmatterSections @derivedTypes {
+    body: String
+    type: String
+    images: [MarkdownRemarkFrontmatterSectionsImages]
+    count: Int
+    offset: Int
+    tags: [String]
+    image: File @fileByRelativePath
+    html: String
+    title: String
+    info: [MarkdownRemarkFrontmatterSectionsInfo]
+    link: String
+    headline: String
+    element: [MarkdownRemarkFrontmatterSectionsElement]
+    nodes: [MarkdownRemarkFrontmatterSectionsNodes]
+  }
+  
+  type MarkdownRemarkFrontmatterSectionsImages {
+    image: File @fileByRelativePath
+  }
+  
+  type MarkdownRemarkFrontmatterSectionsInfo {
+    image_small: File @fileByRelativePath
+    body: String
+    title: String
+  }
+  
+  type MarkdownRemarkFrontmatterSectionsElement {
+    body: String
+    icon: String
+    title: String
+    link: String
+    file: File @fileByRelativePath
+  }
+  
+  type MarkdownRemarkFrontmatterSectionsNodes {
+    body: String
+    image: File @fileByRelativePath
+    title: String
+    link: String
+  }
+  
+  type MarkdownRemarkFields {
+    slug: String
+  }
+  
+  type DataYaml implements Node @derivedTypes @dontInfer {
+    menu_entry: [DataYamlMenu_entry]
+  }
+  
+  type DataYamlMenu_entry @derivedTypes {
+    page: String
+    title: String
+    menu_entry: [DataYamlMenu_entryMenu_entry]
+  }
+  
+  type DataYamlMenu_entryMenu_entry @derivedTypes {
+    page: String
+    title: String
+    menu_entry: [DataYamlMenu_entryMenu_entryMenu_entry]
+  }
+  
+  type DataYamlMenu_entryMenu_entryMenu_entry {
+    page: String
+    title: String
+  }
+  
+  type EventsYaml implements Node @dontInfer {
+    description: String
+    label: String
+    date: Date @dateformat
+  }
+  
+  `;
+  createTypes(typeDefs);
+};
