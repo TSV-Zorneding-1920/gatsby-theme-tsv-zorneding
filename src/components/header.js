@@ -15,7 +15,7 @@ const Header = ({ siteTitle, socialPages }) => (
             style={{ cursor: "pointer" }}
             href={socialPages.facebook}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer me"
             aria-label={siteTitle + " Facebook Seite"}
           >
             <span className="label">Facebook</span>
@@ -29,7 +29,7 @@ const Header = ({ siteTitle, socialPages }) => (
             style={{ cursor: "pointer" }}
             href={socialPages.instagram}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer me"
             aria-label={siteTitle + " Instagram Seite"}
           >
             <span className="label">Instagram</span>
@@ -43,7 +43,7 @@ const Header = ({ siteTitle, socialPages }) => (
             style={{ cursor: "pointer" }}
             href={socialPages.twitter}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer me"
             aria-label={siteTitle + " Twitter Seite"}
           >
             <span className="label">Twitter</span>
@@ -57,7 +57,7 @@ const Header = ({ siteTitle, socialPages }) => (
             style={{ cursor: "pointer" }}
             href={socialPages.youtube}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer me"
             aria-label={siteTitle + " YouTube Seite"}
           >
             <span className="label">YouTube</span>
@@ -73,7 +73,7 @@ const Header = ({ siteTitle, socialPages }) => (
           rel="noopener noreferrer"
           aria-label={siteTitle + " RSS Feed"}
         >
-          <span className="label">YouTube</span>
+          <span className="label">RSS</span>
         </a>
       </li>
     </ul>

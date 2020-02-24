@@ -169,6 +169,7 @@ module.exports = ({ NETLIFY_ENV, title, NETLIFY_SITE_URL }) => ({
         htmlFavicon: `${__dirname}/img/favicon-32x32.png`
       }
     },
+    "gatsby-plugin-netlify-cache",
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
