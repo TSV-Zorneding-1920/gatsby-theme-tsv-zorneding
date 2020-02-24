@@ -1,4 +1,4 @@
-module.exports = ({ NETLIFY_ENV, title }) => ({
+module.exports = ({ NETLIFY_ENV, title, NETLIFY_SITE_URL }) => ({
   plugins: [
     "gatsby-theme-seo",
     "gatsby-plugin-sass",
@@ -169,6 +169,19 @@ module.exports = ({ NETLIFY_ENV, title }) => ({
         htmlFavicon: `${__dirname}/img/favicon-32x32.png`
       }
     },
-    "gatsby-plugin-netlify" // make sure to keep it last in the array
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          "/*": [`X-Frame-Options: allow-from ${NETLIFY_SITE_URL}`]
+        },
+        allPageHeaders: [], // option to add headers for all pages. `Link` headers are transformed by the below criteria
+        mergeSecurityHeaders: true, // boolean to turn off the default security headers
+        mergeLinkHeaders: true, // boolean to turn off the default gatsby js headers
+        mergeCachingHeaders: true, // boolean to turn off the default caching headers
+        transformHeaders: (headers, path) => headers, // optional transform for manipulating headers under each path (e.g.sorting), etc.
+        generateMatchPathRewrites: true // boolean to turn off automatic creation of redirect rules for client only paths
+      }
+    }
   ]
 });
