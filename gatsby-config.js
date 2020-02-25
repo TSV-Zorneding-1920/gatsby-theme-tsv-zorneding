@@ -1,4 +1,4 @@
-module.exports = ({ NETLIFY_ENV, title, NETLIFY_SITE_URL }) => ({
+module.exports = ({ ENV, title }) => ({
   plugins: [
     "gatsby-theme-seo",
     "gatsby-plugin-sass",
@@ -89,14 +89,7 @@ module.exports = ({ NETLIFY_ENV, title, NETLIFY_SITE_URL }) => ({
         crossOrigin: `use-credentials`
       }
     },
-    {
-      resolve: "gatsby-plugin-offline",
-      options: {
-        workboxConfig: {
-          navigateFallbackBlacklist: [/^\/admin/]
-        }
-      }
-    },
+    "gatsby-plugin-offline",
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -142,20 +135,10 @@ module.exports = ({ NETLIFY_ENV, title, NETLIFY_SITE_URL }) => ({
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        resolveEnv: () => NETLIFY_ENV,
+        resolveEnv: () => ENV,
         env: {
           production: {
             policy: [{ userAgent: "*" }]
-          },
-          "branch-deploy": {
-            policy: [{ userAgent: "*", disallow: ["/"] }],
-            sitemap: null,
-            host: null
-          },
-          "deploy-preview": {
-            policy: [{ userAgent: "*", disallow: ["/"] }],
-            sitemap: null,
-            host: null
           }
         }
       }
@@ -166,7 +149,8 @@ module.exports = ({ NETLIFY_ENV, title, NETLIFY_SITE_URL }) => ({
         modulePath: `${__dirname}/cms/cms.js`,
         manualInit: true,
         htmlTitle: `Administration TSV Zorneding`,
-        htmlFavicon: `${__dirname}/img/favicon-32x32.png`
+        htmlFavicon: `${__dirname}/img/favicon-32x32.png`,
+        enableIdentityWidget: false
       }
     }
   ]
