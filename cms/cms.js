@@ -39,7 +39,8 @@ const staticBlocks = [
 CMS.init({
   config: {
     backend: {
-      name: "git-gateway",
+      name: "github",
+      repo: "TSV-Zorneding-1920/tsv-zorneding-tischtennis",
       branch: "master",
       commit_messages: {
         create: "Create {{collection}} '{{slug}}'",
