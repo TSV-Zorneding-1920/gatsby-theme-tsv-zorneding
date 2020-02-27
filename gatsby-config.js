@@ -149,7 +149,8 @@ module.exports = ({ ENV, title }) => ({
         modulePath: `${__dirname}/cms/cms.js`,
         manualInit: true,
         htmlTitle: `Administration TSV Zorneding`,
-        htmlFavicon: `${__dirname}/img/favicon-32x32.png`
+        htmlFavicon: `${__dirname}/img/favicon-32x32.png`,
+        enableIdentityWidget: false
       }
     }
   ]

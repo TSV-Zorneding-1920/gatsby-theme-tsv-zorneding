@@ -42,6 +42,7 @@ CMS.init({
       name: "github",
       repo: "TSV-Zorneding-1920/tsv-zorneding-tischtennis",
       branch: "master",
+      base_url: "https://login.tsv-zorneding.de/",
       commit_messages: {
         create: "Create {{collection}} '{{slug}}'",
         update: "Update {{collection}} '{{slug}}'",
