@@ -132,6 +132,7 @@ module.exports = ({ ENV, title }) => ({
         ]
       }
     },
+    "gatsby-plugin-htaccess",
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
