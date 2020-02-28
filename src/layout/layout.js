@@ -33,6 +33,7 @@ const PrimaryLayout = ({ children }) => (
           title="Startseite"
           description={data.site.siteMetadata.description}
           lang="de"
+          pathname=""
         />
         <JSONLD dangerouslyExposeHtml={true}>
           <Generic
