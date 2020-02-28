@@ -40,7 +40,6 @@ CMS.init({
   config: {
     backend: {
       name: "github",
-      repo: "TSV-Zorneding-1920/tsv-zorneding-tischtennis",
       branch: "master",
       base_url: "https://login.tsv-zorneding.de/",
       commit_messages: {
@@ -55,8 +54,7 @@ CMS.init({
     locale: "de",
     media_folder: "static/img",
     public_folder: "/img",
-    logo_url: "https://angry-galileo-a8762c.netlify.com/icons/icon-144x144.png",
-    //display_url: "https://angry-galileo-a8762c.netlify.com",
+    logo_url: "https://www.tsv-zorneding.de/icons/icon-144x144.png",
     show_preview_links: false,
     collections: [
       {
