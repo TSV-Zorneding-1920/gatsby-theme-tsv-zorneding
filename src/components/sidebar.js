@@ -66,7 +66,7 @@ class Sidebar extends React.Component {
             </p>
             <p>
               <a
-                href="https://www.tsv-zorneding.de/?Impressum"
+                href="https://www.tsv-zorneding.de/impressum"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -74,7 +74,7 @@ class Sidebar extends React.Component {
               </a>{" "}
               -{" "}
               <a
-                href="https://www.tsv-zorneding.de/?Datenschutz"
+                href="https://www.tsv-zorneding.de/datenschutz"
                 target="_blank"
                 rel="noopener noreferrer"
               >
