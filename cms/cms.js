@@ -41,6 +41,7 @@ CMS.init({
     backend: {
       name: "github",
       branch: "master",
+      repo: process.env.GATSBY_GIT_REPO,
       base_url: "https://login.tsv-zorneding.de/",
       commit_messages: {
         create: "Create {{collection}} '{{slug}}'",
@@ -54,7 +55,7 @@ CMS.init({
     locale: "de",
     media_folder: "static/img",
     public_folder: "/img",
-    logo_url: "https://www.tsv-zorneding.de/icons/icon-144x144.png",
+    logo_url: `${process.env.GATSBY_SITE_URL}/icons/icon-144x144.png`,
     show_preview_links: false,
     collections: [
       {
