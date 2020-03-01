@@ -55,7 +55,7 @@ CMS.init({
     locale: "de",
     media_folder: "static/img",
     public_folder: "/img",
-    logo_url: `${process.env.GATSBY_SITE_URL}/icons/icon-144x144.png`,
+    logo_url: `${process.env.GATSBY_SITE_URL}/favicons/icon-144x144.png`,
     show_preview_links: false,
     collections: [
       {
