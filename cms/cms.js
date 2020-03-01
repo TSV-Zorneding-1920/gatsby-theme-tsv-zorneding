@@ -36,8 +36,12 @@ const staticBlocks = [
   new TeaserList().admin()
 ];
 
+const activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
+
 CMS.init({
   config: {
+    local_backend: activeEnv === "development",
     backend: {
       name: "github",
       branch: "master",
@@ -183,6 +187,60 @@ CMS.init({
               }
             ]
           }, */
+          {
+            file: "src/data/settings.json",
+            label: "Einstellungen",
+            name: "settings",
+            fields: [
+              {
+                label: "Titel",
+                name: "title",
+                widget: "string"
+              },
+              {
+                label: "Abteilung",
+                name: "section",
+                widget: "string"
+              },
+              {
+                label: "Beschreibung",
+                name: "description",
+                widget: "string"
+              },
+              {
+                label: "Author",
+                name: "author",
+                widget: "string"
+              },
+              {
+                label: "Social Links",
+                name: "social",
+                widget: "object",
+                fields: [
+                  {
+                    label: "Facebook",
+                    name: "facebook",
+                    widget: "string"
+                  },
+                  {
+                    label: "Instagram",
+                    name: "instagram",
+                    widget: "string"
+                  },
+                  {
+                    label: "Twitter",
+                    name: "twitter",
+                    widget: "string"
+                  },
+                  {
+                    label: "YouTube",
+                    name: "youtube",
+                    widget: "string"
+                  }
+                ]
+              }
+            ]
+          },
           {
             file: "src/data/menu.yml",
             label: "Navigation",
