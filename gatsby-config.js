@@ -75,7 +75,7 @@ module.exports = ({ ENV, title }) => ({
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: title,
-        short_name: "TSV Zorneding",
+        short_name: title,
         start_url: "/",
         background_color: "#FFFFFF",
         theme_color: "#FFFFFF",
@@ -83,10 +83,7 @@ module.exports = ({ ENV, title }) => ({
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: "standalone",
         icon: `${__dirname}/img/logo-512x512.png`, // This path is relative to the root of the site.
-        // An optional attribute which provides support for CORS check.
-        // If you do not provide a crossOrigin option, it will skip CORS for manifest.
-        // Any invalid keyword or empty string defaults to `anonymous`
-        crossOrigin: `use-credentials`
+        icons: generateFavicons([48, 72, 96, 144, 192, 256, 384, 512])
       }
     },
     "gatsby-plugin-offline",
@@ -149,10 +146,20 @@ module.exports = ({ ENV, title }) => ({
       options: {
         modulePath: `${__dirname}/cms/cms.js`,
         manualInit: true,
-        htmlTitle: `Administration TSV Zorneding`,
+        htmlTitle: `Administration ${title}`,
         htmlFavicon: `${__dirname}/img/favicon-32x32.png`,
         enableIdentityWidget: false
       }
     }
   ]
 });
+
+const generateFavicons = sizes => {
+  return sizes.map(size => {
+    return {
+      src: `favicons/icon-${size}x${size}.png`,
+      sizes: `${size}x${size}`,
+      type: "image/png"
+    };
+  });
+};
