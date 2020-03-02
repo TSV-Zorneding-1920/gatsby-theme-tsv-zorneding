@@ -33,8 +33,8 @@ class Carousel extends React.Component {
   render() {
     const images = this.props.images.map(function(image) {
       return {
-        original: image.image.childImageSharp.orig.src,
-        thumbnail: image.image.childImageSharp.thumb.src
+        srcSet: image.image.childImageSharp.fixed.srcSet,
+        thumbnail: image.image.childImageSharp.fixed.src
       };
     });
 
@@ -67,11 +67,8 @@ export const query = graphql`
       images {
         image {
           childImageSharp {
-            thumb: fixed(width: 100, height: 60) {
-              src
-            }
-            orig: fixed(width: 700, height: 400, quality: 100) {
-              src
+            fixed(width: 700, height: 400, quality: 100) {
+              ...GatsbyImageSharpFixed_withWebp_noBase64
             }
           }
         }
