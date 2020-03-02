@@ -137,6 +137,12 @@ CMS.init({
             widget: "string"
           },
           {
+            label: "URL",
+            name: "slug",
+            widget: "string",
+            required: false
+          },
+          {
             label: "Überschrift anzeigen",
             name: "showTitle",
             widget: "boolean",

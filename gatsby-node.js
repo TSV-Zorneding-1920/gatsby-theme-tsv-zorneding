@@ -88,11 +88,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode });
+    let slug;
+    if (node.frontmatter && node.frontmatter.slug) {
+      slug = `/${node.frontmatter.slug}`;
+    } else {
+      slug = createFilePath({ node, getNode });
+    }
     createNodeField({
       name: `slug`,
       node,
-      value
+      value: slug
     });
   }
 };
@@ -105,6 +110,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     title: String
     templateKey: String
     author: String
+    slug: String
     showTitle: Boolean
     sections: [MarkdownRemarkFrontmatterSections]
     date: Date @dateformat
