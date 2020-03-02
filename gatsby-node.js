@@ -104,6 +104,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   type MarkdownRemarkFrontmatter @derivedTypes {
     title: String
     templateKey: String
+    author: String
     showTitle: Boolean
     sections: [MarkdownRemarkFrontmatterSections]
     date: Date @dateformat

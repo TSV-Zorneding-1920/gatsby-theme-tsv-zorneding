@@ -13,7 +13,8 @@ const BlogPostTemplate = ({
   title,
   slug,
   date,
-  featuredimage
+  featuredimage,
+  author
 }) => {
   const PostContent = contentComponent || Content;
   return (
@@ -30,7 +31,7 @@ const BlogPostTemplate = ({
         />
       </span>
       <PostContent content={content} />
-      <p>{date}</p>
+      <i>Veröffentlicht am {author ? `${date} von ${author}` : `${date}`}</i>
       <hr />
 
       {tags && tags.length ? (
@@ -56,10 +57,11 @@ BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   tags: PropTypes.array,
-  title: PropTypes.string,
-  slug: PropTypes.string,
-  date: PropTypes.string,
-  featuredimage: PropTypes.object
+  title: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  featuredimage: PropTypes.object,
+  author: PropTypes.string
 };
 
 export default BlogPostTemplate;

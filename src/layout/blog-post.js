@@ -65,6 +65,7 @@ const BlogPost = ({ data }) => {
         slug={post.fields.slug}
         date={post.frontmatter.date_formatted}
         featuredimage={post.frontmatter.featuredimage}
+        author={post.frontmatter.author}
       />
     </Layout>
   );
@@ -110,6 +111,7 @@ export const pageQuery = graphql`
             }
           }
         }
+        author
         seoimage: featuredimage {
           childImageSharp {
             fixed(width: 700, height: 400, quality: 100) {
