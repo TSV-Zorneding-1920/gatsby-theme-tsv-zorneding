@@ -2,7 +2,7 @@ const sharp = require(`sharp`);
 const glob = require(`glob`);
 const fs = require(`fs-extra`);
 const matches = glob.sync(`static/img/**/*.{png,jpg,jpeg}`);
-const MAX_WIDTH = 1180;
+const MAX_WIDTH = 1180 * 2;
 const QUALITY = 75;
 Promise.all(
   matches.map(async match => {
