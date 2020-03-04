@@ -44,7 +44,8 @@ const PrimaryLayout = ({ children }) => (
               url: data.site.siteMetadata.siteUrl,
               publisher: {
                 "@type": "Organization",
-                name: data.site.siteMetadata.author
+                name: data.site.siteMetadata.author,
+                logo: `${data.site.siteMetadata.siteUrl}/favicons/icon-192x192.png`
               }
             }}
           />

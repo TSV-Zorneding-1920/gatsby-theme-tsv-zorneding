@@ -5,9 +5,11 @@ const MenuLink = props => {
   const regex = new RegExp(expression);
   if (props.to.match(regex)) {
     return (
-      <a {...props} href={props.to} target="_blank" rel="noopener noreferrer">
-        {props.children}
-      </a>
+      <li>
+        <a {...props} href={props.to} target="_blank" rel="noopener noreferrer">
+          {props.children}
+        </a>
+      </li>
     );
   }
 

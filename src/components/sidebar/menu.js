@@ -68,7 +68,11 @@ const Menu = ({ title }) => {
           <Link to="/">{title}</Link>
         </h2>
       </header>
-      <ul itemScope itemType="https://schema.org/BreadcrumbList">
+      <ul
+        itemScope
+        itemType="https://schema.org/BreadcrumbList"
+        name="Hauptnavigation"
+      >
         <MenuLink to="/" content="1">
           Startseite
         </MenuLink>
