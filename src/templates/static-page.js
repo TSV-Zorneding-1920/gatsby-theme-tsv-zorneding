@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Sections from "../components/sections";
 
-const StaticPageTemplate = ({ title, showTitle, sections }) => {
+const StaticPageTemplate = ({ title, showTitle, sections, admin = false }) => {
   return (
     <section>
       {showTitle && (
@@ -10,7 +10,7 @@ const StaticPageTemplate = ({ title, showTitle, sections }) => {
           <h1>{title}</h1>
         </header>
       )}
-      <Sections sections={sections} />
+      <Sections sections={sections} admin={admin} />
     </section>
   );
 };

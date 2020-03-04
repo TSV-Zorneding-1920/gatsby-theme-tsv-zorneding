@@ -31,7 +31,7 @@ class Body extends React.Component {
             <h2>{this.props.title}</h2>
           </header>
         )}
-        <MarkdownContent content={this.props.content} />
+        <MarkdownContent content={this.props.body} />
       </div>
     );
   }

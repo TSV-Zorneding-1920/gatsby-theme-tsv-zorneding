@@ -43,15 +43,16 @@ class LinkList extends React.Component {
           </header>
         )}
         <ul>
-          {this.props.element.map(function(post, j) {
-            return (
-              <li key={j}>
-                <a href={post.link} download>
-                  {post.title}
-                </a>
-              </li>
-            );
-          })}
+          {this.props.element &&
+            this.props.element.map(function(post, j) {
+              return (
+                <li key={j}>
+                  <a href={post.link} download>
+                    {post.title}
+                  </a>
+                </li>
+              );
+            })}
         </ul>
       </>
     );

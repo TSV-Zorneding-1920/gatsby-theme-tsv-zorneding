@@ -31,12 +31,26 @@ class Carousel extends React.Component {
     };
   }
   render() {
-    const images = this.props.images.map(function(image) {
-      return {
-        srcSet: image.image.childImageSharp.fixed.srcSet,
-        thumbnail: image.image.childImageSharp.fixed.src
-      };
-    });
+    let images = [];
+    if (this.props.images) {
+      images = this.props.images.filter(function(image) {
+        return image.image;
+      });
+      images = images.map(function(image) {
+        if (image.image && image.image.childImageSharp) {
+          return {
+            srcSet: image.image.childImageSharp.fixed.srcSet,
+            thumbnail: image.image.childImageSharp.fixed.src
+          };
+        } else {
+          // This is for the admin view.
+          return {
+            original: image.image,
+            thumbnail: image.image
+          };
+        }
+      });
+    }
 
     return (
       <>

@@ -1,5 +1,6 @@
 import React from "react";
 import TeaserListComponent from "../teaser-list";
+import Teaser from "../teaser";
 import { graphql } from "gatsby";
 
 class TeaserList extends React.Component {
@@ -40,6 +41,28 @@ class TeaserList extends React.Component {
     };
   }
   render() {
+    let content;
+    if (this.props.admin) {
+      content = [...Array(this.props.count)].map(function(k) {
+        return (
+          <Teaser
+            title="Platzhalter Titel"
+            description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            featuredimage="/img/default.jpg"
+            key={k}
+          />
+        );
+      });
+      //content = [<div className="posts"></div>];
+    } else {
+      content = (
+        <TeaserListComponent
+          offset={this.props.offset}
+          count={this.props.count}
+          tags={this.props.tags}
+        />
+      );
+    }
     return (
       <>
         {this.props.title && (
@@ -47,11 +70,7 @@ class TeaserList extends React.Component {
             <h2>{this.props.title}</h2>
           </header>
         )}
-        <TeaserListComponent
-          offset={this.props.offset}
-          count={this.props.count}
-          tags={this.props.tags}
-        />
+        {content}
         <hr />
       </>
     );

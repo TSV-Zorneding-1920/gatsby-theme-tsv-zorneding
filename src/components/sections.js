@@ -15,94 +15,49 @@ import Image from "./sections/image";
 import TeaserList from "./sections/teaser-list";
 import ImageText from "./sections/image-text";
 
-const Sections = ({ sections }) => {
+const Sections = ({ sections, admin }) => {
   if (!sections) {
     return <></>;
   }
   const content = sections.map(function(section, i) {
     if (section.type === "body") {
-      return <Body content={section.body} key={i} title={section.title} />;
+      return <Body key={i} {...section} />;
     }
-
     if (section.type === "iframe") {
-      return <IFrame html={section.html} key={i} title={section.title} />;
+      return <IFrame key={i} {...section} />;
     }
-
     if (section.type === "carousel") {
-      return <Carousel images={section.images} key={i} title={section.title} />;
+      return <Carousel key={i} {...section} />;
     }
-
     if (section.type === "teaser_list") {
-      return (
-        <TeaserList
-          key={i}
-          offset={section.offset}
-          count={section.count}
-          tags={section.tags}
-          title={section.title}
-        />
-      );
+      return <TeaserList key={i} {...section} admin={admin} />;
     }
-
     if (section.type === "banner") {
-      return (
-        <Banner
-          key={i}
-          featuredimage={section.image}
-          title={section.title}
-          headline={section.headline}
-          link={section.link}
-          body={section.body}
-        />
-      );
+      return <Banner key={i} {...section} />;
     }
-
     if (section.type === "banner_list") {
-      return (
-        <BannerList
-          key={i}
-          offset={section.offset}
-          count={section.count}
-          title={section.title}
-        />
-      );
+      return <BannerList key={i} {...section} admin={admin} />;
     }
-
     if (section.type === "image") {
-      return (
-        <Image
-          key={i}
-          image={section.image_large}
-          title={section.title}
-          link={section.link}
-        />
-      );
+      return <Image key={i} {...section} />;
     }
     if (section.type === "icon_list") {
-      return (
-        <IconList key={i} element={section.element} title={section.title} />
-      );
+      return <IconList key={i} {...section} />;
     }
     if (section.type === "contact") {
-      return <Contact key={i} title={section.title} />;
+      return <Contact key={i} {...section} />;
     }
     if (section.type === "image_text_small") {
-      return (
-        <ImageTextSmall key={i} info={section.info} title={section.title} />
-      );
+      return <ImageTextSmall key={i} {...section} />;
     }
     if (section.type === "image_text") {
-      return <ImageText key={i} nodes={section.nodes} title={section.title} />;
+      return <ImageText key={i} {...section} />;
     }
     if (section.type === "link_list") {
-      return (
-        <LinkList key={i} element={section.element} title={section.title} />
-      );
+      return <LinkList key={i} {...section} />;
     }
     if (section.type === "file_list") {
-      return (
-        <FileList key={i} element={section.element} title={section.title} />
-      );
+      return <FileList key={i} {...section} />;
     }
     return <></>;
   });

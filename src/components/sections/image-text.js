@@ -57,17 +57,18 @@ class ImageText extends React.Component {
           </header>
         )}
         <div className="posts">
-          {this.props.nodes.map(function(post, i) {
-            return (
-              <Teaser
-                key={i}
-                title={post.title}
-                link={post.link}
-                description={post.body}
-                featuredimage={post.image}
-              />
-            );
-          })}
+          {this.props.nodes &&
+            this.props.nodes.map(function(post, i) {
+              return (
+                <Teaser
+                  key={i}
+                  title={post.title}
+                  link={post.link}
+                  description={post.body}
+                  featuredimage={post.image}
+                />
+              );
+            })}
         </div>
         <hr />
       </>

@@ -1,6 +1,7 @@
 import CMS from "netlify-cms-app";
 
 import BlogPostPreview from "./preview-templates/BlogPostPreview";
+import StaticPagePreview from "./preview-templates/StaticPagePreview";
 import styles from "!css-loader!sass-loader!./../sass/main.scss";
 import { de } from "netlify-cms-locales";
 
@@ -115,9 +116,6 @@ let config = {
       label: "Statische Seiten",
       folder: "src/pages",
       create: true,
-      editor: {
-        preview: false
-      },
       fields: [
         {
           label: "Template Key",
@@ -300,3 +298,4 @@ CMS.init({ config });
 
 CMS.registerPreviewStyle(styles.toString(), { raw: true });
 CMS.registerPreviewTemplate("blog", BlogPostPreview);
+CMS.registerPreviewTemplate("pages", StaticPagePreview);

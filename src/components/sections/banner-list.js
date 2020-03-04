@@ -1,6 +1,7 @@
 import React from "react";
 import BannerListComponent from "../banner-list";
 import { graphql } from "gatsby";
+import Banner from "../banner";
 
 class BannerList extends React.Component {
   admin() {
@@ -34,6 +35,26 @@ class BannerList extends React.Component {
     };
   }
   render() {
+    let content;
+    if (this.props.admin) {
+      content = [...Array(this.props.count)].map(function(k) {
+        return (
+          <Banner
+            title="Platzhalter Titel"
+            description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+            featuredimage="/img/default.jpg"
+            key={k}
+          />
+        );
+      });
+    } else {
+      content = (
+        <BannerListComponent
+          offset={this.props.offset}
+          count={this.props.count}
+        />
+      );
+    }
     return (
       <>
         {this.props.title && (
@@ -41,10 +62,7 @@ class BannerList extends React.Component {
             <h2>{this.props.title}</h2>
           </header>
         )}
-        <BannerListComponent
-          offset={this.props.offset}
-          count={this.props.count}
-        />
+        {content}
         <hr />
       </>
     );

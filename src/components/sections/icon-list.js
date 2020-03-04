@@ -50,17 +50,18 @@ class IconList extends React.Component {
           </header>
         )}
         <div className="features">
-          {this.props.element.map(function(post, j) {
-            return (
-              <article key={j}>
-                <span className={post.icon + " icon solid"}></span>
-                <div className="content">
-                  <h3>{post.title}</h3>
-                  <MarkdownContent content={post.body} />
-                </div>
-              </article>
-            );
-          })}
+          {this.props.element &&
+            this.props.element.map(function(post, j) {
+              return (
+                <article key={j}>
+                  <span className={post.icon + " icon solid"}></span>
+                  <div className="content">
+                    <h3>{post.title}</h3>
+                    <MarkdownContent content={post.body} />
+                  </div>
+                </article>
+              );
+            })}
         </div>
         <hr />
       </>

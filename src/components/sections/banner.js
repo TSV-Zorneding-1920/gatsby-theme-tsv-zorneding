@@ -53,7 +53,7 @@ class BannerList extends React.Component {
           title={this.props.headline}
           description={this.props.body}
           link={this.props.link}
-          featuredimage={this.props.featuredimage}
+          featuredimage={this.props.image}
         />
         <hr />
       </>

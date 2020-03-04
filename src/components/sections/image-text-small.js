@@ -52,25 +52,26 @@ class ImageTextSmall extends React.Component {
           </header>
         )}
         <div className="features">
-          {this.props.info.map(function(post, j) {
-            return (
-              <article key={j}>
-                <span style={{ margin: 10 + "px" }}>
-                  <PreviewCompatibleImage
-                    imageInfo={{
-                      image: post.image_small,
-                      alt: `featured image thumbnail for post`
-                    }}
-                  />
-                </span>
+          {this.props.info &&
+            this.props.info.map(function(post, j) {
+              return (
+                <article key={j}>
+                  <span style={{ margin: 10 + "px" }}>
+                    <PreviewCompatibleImage
+                      imageInfo={{
+                        image: post.image_small,
+                        alt: `featured image thumbnail for post`
+                      }}
+                    />
+                  </span>
 
-                <div className="content">
-                  <h3>{post.title}</h3>
-                  <MarkdownContent content={post.body} />
-                </div>
-              </article>
-            );
-          })}
+                  <div className="content">
+                    <h3>{post.title}</h3>
+                    <MarkdownContent content={post.body} />
+                  </div>
+                </article>
+              );
+            })}
         </div>
         <hr />
       </>
