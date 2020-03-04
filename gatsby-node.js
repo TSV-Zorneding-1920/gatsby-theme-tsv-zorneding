@@ -208,3 +208,11 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     ]
   });
 };
+
+const {
+  registerLocalFs
+} = require("netlify-cms-proxy-server/dist/middlewares");
+
+exports.onCreateDevServer = async ({ app }) => {
+  await registerLocalFs(app);
+};
