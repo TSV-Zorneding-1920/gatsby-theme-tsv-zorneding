@@ -1,6 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Link from "../link";
+import MenuLink from "../menu-link";
 import PropTypes from "prop-types";
 import { useBlogPages } from "../../hooks/use-blog-pages";
 
@@ -67,14 +68,14 @@ const Menu = ({ title }) => {
           <Link to="/">{title}</Link>
         </h2>
       </header>
-      <ul>
-        <li>
-          <Link to="/">Startseite</Link>
-        </li>
+      <ul itemScope itemType="https://schema.org/BreadcrumbList">
+        <MenuLink to="/" content="1">
+          Startseite
+        </MenuLink>
         {posts.length > 0 && (
-          <li>
-            <Link to="/blog">Aktuelles</Link>
-          </li>
+          <MenuLink to="/blog" content="1">
+            Aktuelles
+          </MenuLink>
         )}
 
         {nav.childDataYaml.menu_entry &&
@@ -84,9 +85,9 @@ const Menu = ({ title }) => {
                 {entry.menu_entry.map(function(subentry, k) {
                   if (subentry.page) {
                     return (
-                      <li key={k}>
-                        <Link to={subentry.page}>{subentry.title}</Link>
-                      </li>
+                      <MenuLink to={subentry.page} content="2">
+                        {subentry.title}
+                      </MenuLink>
                     );
                   } else if (subentry.menu_entry) {
                     return (
@@ -94,11 +95,9 @@ const Menu = ({ title }) => {
                         {subentry.menu_entry.map(function(subsubentry, k) {
                           if (subsubentry.page) {
                             return (
-                              <li key={k}>
-                                <Link to={subsubentry.page}>
-                                  {subsubentry.title}
-                                </Link>
-                              </li>
+                              <MenuLink to={subsubentry.page} content="3">
+                                {subsubentry.title}
+                              </MenuLink>
                             );
                           } else {
                             return <></>;
@@ -112,14 +111,14 @@ const Menu = ({ title }) => {
                 })}
               </SubMenu>
             ) : (
-              <li key={i}>
-                <Link to={entry.page}>{entry.title}</Link>
-              </li>
+              <MenuLink to={entry.page} content="1">
+                {entry.title}
+              </MenuLink>
             );
           })}
-        <li>
-          <Link to="/kontakt">Kontakt</Link>
-        </li>
+        <MenuLink to="/kontakt" content="1">
+          Kontakt
+        </MenuLink>
       </ul>
     </nav>
   );

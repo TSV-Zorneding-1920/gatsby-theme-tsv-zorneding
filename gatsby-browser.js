@@ -7,8 +7,8 @@ import "./../gatsby-theme-tsv-zorneding/sass/main.scss";
 
 export const onServiceWorkerUpdateReady = () => {
   const answer = window.confirm(
-    `This application has been updated. ` +
-      `Reload to display the latest version?`
+    `Die Anwendung wurde aktualisiert. ` +
+      `Neuladen um die neuste Version anzuzeigen?`
   );
   if (answer === true) {
     window.location.reload();
