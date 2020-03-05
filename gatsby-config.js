@@ -92,6 +92,28 @@ module.exports = ({ ENV, title }) => ({
       options: {
         feeds: [
           {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  author: edge.node.frontmatter.author,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  enclosure: {
+                    url:
+                      site.siteMetadata.siteUrl +
+                      edge.node.frontmatter.featuredimage.childImageSharp.fluid
+                        .src
+                  },
+                  custom_elements: [
+                    {
+                      "content:encoded": edge.node.html
+                    }
+                  ]
+                });
+              });
+            },
             query: `
               {
                 allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}, filter: {frontmatter: {templateKey: {eq: "blog-post"}}}) {
@@ -105,6 +127,18 @@ module.exports = ({ ENV, title }) => ({
                       frontmatter {
                         title
                         date
+                        featuredimage {
+                          childImageSharp {
+                            fluid(
+                              maxWidth: 500
+                              maxHeight: 300
+                              srcSetBreakpoints: [350, 500]
+                            ) {
+                              src
+                            }
+                          }
+                        }
+                        author
                       }
                     }
                   }
