@@ -6,8 +6,32 @@ const NotFoundPage = () => (
   <Layout>
     <SEO title="Seite nicht gefunden" lang="de" />
     <div>
-      <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <h1>
+        Seite nicht gefunden{" "}
+        <span role="img" aria-label="sad smiley">
+          😕
+        </span>
+      </h1>
+
+      <div
+        style={{
+          width: "100%",
+          height: 0,
+          paddingBottom: "72%",
+          position: "relative"
+        }}
+      >
+        <iframe
+          src="https://giphy.com/embed/yQNJ8HpJ32ztK"
+          width="100%"
+          height="100%"
+          style={{ position: "absolute" }}
+          frameBorder="0"
+          class="giphy-embed"
+          allowFullScreen
+          title="giphy"
+        ></iframe>
+      </div>
     </div>
   </Layout>
 );
