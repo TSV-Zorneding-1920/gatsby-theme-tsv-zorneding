@@ -18,9 +18,15 @@ class Image extends React.Component {
         },
         {
           label: "Bild",
-          name: "image",
+          name: "image_large",
           widget: "image",
           default: "/img/default.jpg"
+        },
+        {
+          label: "Bildunterschrift",
+          name: "caption",
+          widget: "string",
+          required: false
         },
         {
           label: "Link",
@@ -56,6 +62,7 @@ class Image extends React.Component {
             }}
           />
         )}
+        <span>{this.props.caption}</span>
         <hr />
       </>
     );
@@ -69,7 +76,8 @@ export const query = graphql`
     sections {
       title
       link
-      image_large: image {
+      caption
+      image_large {
         childImageSharp {
           fluid(
             maxWidth: 1180

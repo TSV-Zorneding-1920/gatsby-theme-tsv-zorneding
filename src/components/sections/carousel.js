@@ -24,6 +24,12 @@ class Carousel extends React.Component {
               label: "Bild",
               name: "image",
               widget: "image"
+            },
+            {
+              label: "Bildunterschrift",
+              name: "caption",
+              widget: "string",
+              required: false
             }
           ]
         }
@@ -40,13 +46,15 @@ class Carousel extends React.Component {
         if (image.image && image.image.childImageSharp) {
           return {
             srcSet: image.image.childImageSharp.fixed.srcSet,
-            thumbnail: image.image.childImageSharp.fixed.src
+            thumbnail: image.image.childImageSharp.fixed.src,
+            description: image.caption
           };
         } else {
           // This is for the admin view.
           return {
             original: image.image,
-            thumbnail: image.image
+            thumbnail: image.image,
+            description: image.caption
           };
         }
       });
@@ -79,6 +87,7 @@ export const query = graphql`
     sections {
       title
       images {
+        caption
         image {
           childImageSharp {
             fixed(width: 700, height: 400, quality: 100) {

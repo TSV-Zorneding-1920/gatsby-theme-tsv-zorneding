@@ -123,11 +123,13 @@ exports.createSchemaCustomization = ({ actions }) => {
   type MarkdownRemarkFrontmatterSections @derivedTypes {
     body: String
     type: String
+    caption: String
     images: [MarkdownRemarkFrontmatterSectionsImages]
     count: Int
     offset: Int
     tags: [String]
     image: File @fileByRelativePath
+    image_large: File @fileByRelativePath
     html: String
     title: String
     info: [MarkdownRemarkFrontmatterSectionsInfo]
@@ -138,6 +140,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   }
   
   type MarkdownRemarkFrontmatterSectionsImages {
+    caption: String
     image: File @fileByRelativePath
   }
   
