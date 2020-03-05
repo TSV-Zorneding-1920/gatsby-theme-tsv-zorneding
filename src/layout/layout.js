@@ -15,6 +15,7 @@ const PrimaryLayout = ({ children }) => (
             title
             section
             description
+            image
             siteUrl
             author
             social {
@@ -32,6 +33,7 @@ const PrimaryLayout = ({ children }) => (
         <SEO
           title="Startseite"
           description={data.site.siteMetadata.description}
+          image={{ src: data.site.siteMetadata.image }}
           lang="de"
           pathname=""
         />

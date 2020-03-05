@@ -58,7 +58,7 @@ module.exports = ({ ENV, title }) => ({
               maxWidth: 1180,
               wrapperStyle: "width:100%;",
               linkImagesToOriginal: false,
-              quality: 75,
+              quality: 100,
               withWebp: true
             }
           },

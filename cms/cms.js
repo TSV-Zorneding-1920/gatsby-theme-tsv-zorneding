@@ -206,6 +206,12 @@ let config = {
               widget: "string"
             },
             {
+              label: "Bild",
+              name: "image",
+              widget: "image",
+              required: false
+            },
+            {
               label: "Author",
               name: "author",
               widget: "string"
@@ -218,22 +224,26 @@ let config = {
                 {
                   label: "Facebook",
                   name: "facebook",
-                  widget: "string"
+                  widget: "string",
+                  required: false
                 },
                 {
                   label: "Instagram",
                   name: "instagram",
-                  widget: "string"
+                  widget: "string",
+                  required: false
                 },
                 {
                   label: "Twitter",
                   name: "twitter",
-                  widget: "string"
+                  widget: "string",
+                  required: false
                 },
                 {
                   label: "YouTube",
                   name: "youtube",
-                  widget: "string"
+                  widget: "string",
+                  required: false
                 }
               ]
             }

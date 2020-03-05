@@ -43,7 +43,7 @@ class Image extends React.Component {
           <Link to={this.props.link} className="">
             <PreviewCompatibleImage
               imageInfo={{
-                image: this.props.image,
+                image: this.props.image_large,
                 alt: `featured image thumbnail for post`
               }}
             />
@@ -51,7 +51,7 @@ class Image extends React.Component {
         ) : (
           <PreviewCompatibleImage
             imageInfo={{
-              image: this.props.image,
+              image: this.props.image_large,
               alt: `featured image thumbnail for post`
             }}
           />
