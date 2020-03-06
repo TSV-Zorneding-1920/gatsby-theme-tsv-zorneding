@@ -1,4 +1,4 @@
-import { Link } from "gatsby";
+import Link from "./link";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -10,71 +10,36 @@ const Header = ({ siteTitle, socialPages }) => (
     <ul className="icons">
       {socialPages.facebook && (
         <li>
-          <a
-            className="icon icon-facebook"
-            style={{ cursor: "pointer" }}
-            href={socialPages.facebook}
-            target="_blank"
-            rel="noopener noreferrer me"
-            aria-label={siteTitle + " Facebook Seite"}
-          >
+          <Link to={socialPages.facebook} className="icon icon-facebook">
             <span className="label">Facebook</span>
-          </a>
+          </Link>
         </li>
       )}
       {socialPages.instagram && (
         <li>
-          <a
-            className="icon icon-instagram"
-            style={{ cursor: "pointer" }}
-            href={socialPages.instagram}
-            target="_blank"
-            rel="noopener noreferrer me"
-            aria-label={siteTitle + " Instagram Seite"}
-          >
+          <Link to={socialPages.instagram} className="icon icon-instagram">
             <span className="label">Instagram</span>
-          </a>
+          </Link>
         </li>
       )}
       {socialPages.twitter && (
         <li>
-          <a
-            className="icon icon-twitter"
-            style={{ cursor: "pointer" }}
-            href={socialPages.twitter}
-            target="_blank"
-            rel="noopener noreferrer me"
-            aria-label={siteTitle + " Twitter Seite"}
-          >
+          <Link to={socialPages.twitter} className="icon icon-twitter">
             <span className="label">Twitter</span>
-          </a>
+          </Link>
         </li>
       )}
       {socialPages.youtube && (
         <li>
-          <a
-            className="icon icon-youtube"
-            style={{ cursor: "pointer" }}
-            href={socialPages.youtube}
-            target="_blank"
-            rel="noopener noreferrer me"
-            aria-label={siteTitle + " YouTube Seite"}
-          >
+          <Link to={socialPages.youtube} className="icon icon-youtube">
             <span className="label">YouTube</span>
-          </a>
+          </Link>
         </li>
       )}
       <li>
-        <a
-          className="icon icon-feed"
-          style={{ cursor: "pointer" }}
-          href="/rss.xml"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={siteTitle + " RSS Feed"}
-        >
+        <Link to="/rss.xml" className="icon icon-feed">
           <span className="label">RSS</span>
-        </a>
+        </Link>
       </li>
     </ul>
   </header>

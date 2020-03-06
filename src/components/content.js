@@ -1,25 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const HTMLContent = ({ content, className }) => (
-  <div className={className} dangerouslySetInnerHTML={{ __html: content }} />
-);
-
-export const MarkdownContent = ({ content, className }) => {
-  const remark = require("remark");
-  const remarkHTML = require("remark-html");
-  const html = remark()
-    .use(remarkHTML)
-    .processSync(content)
-    .toString();
-  return (
-    <div className={className} dangerouslySetInnerHTML={{ __html: html }} />
-  );
+export const HTMLContent = ({ content, className }) => {
+  if (content) {
+    return (
+      <div
+        className={className}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+    );
+  }
+  return <></>;
 };
 
-const Content = ({ content, className }) => (
-  <div className={className}>{content}</div>
-);
+export const MarkdownContent = ({ content, className }) => {
+  if (content) {
+    const remark = require("remark");
+    const remarkHTML = require("remark-html");
+    const html = remark()
+      .use(remarkHTML)
+      .processSync(content)
+      .toString();
+
+    return (
+      <div className={className} dangerouslySetInnerHTML={{ __html: html }} />
+    );
+  }
+  return <></>;
+};
+
+const Content = ({ content, className }) => {
+  if (content) {
+    return <div className={className}>{content}</div>;
+  }
+  return <></>;
+};
 
 Content.propTypes = {
   content: PropTypes.node,

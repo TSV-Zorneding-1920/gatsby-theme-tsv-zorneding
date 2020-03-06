@@ -59,7 +59,7 @@ const PreviewCompatibleImage = ({ imageInfo, className, link }) => {
 
   if (imageObject && link) {
     imageObject = (
-      <Link to={link} className="image">
+      <Link to={link.url} className={link.class || "image"}>
         {imageObject}
       </Link>
     );
@@ -76,7 +76,7 @@ PreviewCompatibleImage.propTypes = {
     style: PropTypes.object
   }).isRequired,
   className: PropTypes.string,
-  link: PropTypes.string
+  link: PropTypes.object
 };
 
 export default PreviewCompatibleImage;

@@ -12,14 +12,13 @@ class BlogRoll extends React.Component {
         {posts &&
           posts.map(({ node: post }) => (
             <div className="box" key={post.id}>
-              <Link to={post.fields.slug} className="image left fit">
-                <PreviewCompatibleImage
-                  imageInfo={{
-                    image: post.frontmatter.featuredimage,
-                    alt: `featured image thumbnail for post ${post.frontmatter.title}`
-                  }}
-                />
-              </Link>
+              <PreviewCompatibleImage
+                imageInfo={{
+                  image: post.frontmatter.featuredimage,
+                  alt: `featured image thumbnail for post ${post.frontmatter.title}`
+                }}
+                link={{ url: post.fields.slug, class: "image left fit" }}
+              />
               <p className="post-meta">
                 <Link
                   className="title has-text-primary is-size-4"

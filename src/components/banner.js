@@ -16,7 +16,7 @@ const Banner = ({ description, link, title, featuredimage }) => (
           <h1>{title}</h1>
         )}
       </header>
-      {description && <MarkdownContent content={description} />}
+      <MarkdownContent content={description} />
       {link && (
         <ul className="actions">
           <li>
@@ -27,15 +27,13 @@ const Banner = ({ description, link, title, featuredimage }) => (
         </ul>
       )}
     </div>
-    {featuredimage && (
-      <PreviewCompatibleImage
-        imageInfo={{
-          image: featuredimage,
-          alt: `featured image thumbnail for post ${title}`
-        }}
-        link={link}
-      />
-    )}
+    <PreviewCompatibleImage
+      imageInfo={{
+        image: featuredimage,
+        alt: `featured image thumbnail for post ${title}`
+      }}
+      link={{ url: link }}
+    />
   </section>
 );
 
