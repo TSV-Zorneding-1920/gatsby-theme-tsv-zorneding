@@ -5,27 +5,15 @@ import PreviewCompatibleImage from "./preview-compatible-image";
 
 const Teaser = ({ description, link, title, featuredimage }) => (
   <article>
-    {link ? (
-      <Link to={link} className="image">
-        <PreviewCompatibleImage
-          imageInfo={{
-            image: featuredimage,
-            alt: `featured image thumbnail for post ${title}`,
-            style: { maxHeight: 250 }
-          }}
-          className="image object"
-        />
-      </Link>
-    ) : (
-      <PreviewCompatibleImage
-        imageInfo={{
-          image: featuredimage,
-          alt: `featured image thumbnail for post ${title}`,
-          style: { maxHeight: 250 }
-        }}
-        className="image object"
-      />
-    )}
+    <PreviewCompatibleImage
+      imageInfo={{
+        image: featuredimage,
+        alt: `featured image thumbnail for post ${title}`,
+        style: { maxHeight: 250 }
+      }}
+      className="image object"
+      link={link}
+    />
     <h3>{title}</h3>
     {description && <p>{description}</p>}
     {link && (

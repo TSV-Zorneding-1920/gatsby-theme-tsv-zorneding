@@ -27,25 +27,14 @@ const Banner = ({ description, link, title, featuredimage }) => (
         </ul>
       )}
     </div>
-    {featuredimage && link ? (
-      <Link to={link} className="image">
-        <PreviewCompatibleImage
-          imageInfo={{
-            image: featuredimage,
-            alt: `featured image thumbnail for post ${title}`
-          }}
-        />
-      </Link>
-    ) : (
-      featuredimage && (
-        <PreviewCompatibleImage
-          imageInfo={{
-            image: featuredimage,
-            alt: `featured image thumbnail for post ${title}`
-          }}
-          className="image object"
-        />
-      )
+    {featuredimage && (
+      <PreviewCompatibleImage
+        imageInfo={{
+          image: featuredimage,
+          alt: `featured image thumbnail for post ${title}`
+        }}
+        link={link}
+      />
     )}
   </section>
 );
