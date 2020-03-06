@@ -1,17 +1,26 @@
 import React from "react";
 import GatsbyLink from "gatsby-link";
 
-const Link = props => {
-  const expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
-  const regex = new RegExp(expression);
-  if (props.to.match(regex)) {
+class Link extends React.Component {
+  static isExternal(url) {
+    const expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+    return url.match(new RegExp(expression));
+  }
+
+  static renderExternal(props) {
     return (
       <a {...props} href={props.to} target="_blank" rel="noopener noreferrer">
         {props.children}
       </a>
     );
   }
-  return <GatsbyLink {...props}>{props.children}</GatsbyLink>;
-};
+
+  render() {
+    if (Link.isExternal(this.props.to)) {
+      return Link.renderExternal();
+    }
+    return <GatsbyLink {...this.props}>{this.props.children}</GatsbyLink>;
+  }
+}
 
 export default Link;

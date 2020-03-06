@@ -1,16 +1,9 @@
 import React from "react";
+import Link from "./link";
 
 const MenuLink = props => {
-  const expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
-  const regex = new RegExp(expression);
-  if (props.to.match(regex)) {
-    return (
-      <li>
-        <a {...props} href={props.to} target="_blank" rel="noopener noreferrer">
-          {props.children}
-        </a>
-      </li>
-    );
+  if (Link.isExternal(props.to)) {
+    return Link.renderExternal(props);
   }
 
   const { to, content, ...cleanProps } = props;
