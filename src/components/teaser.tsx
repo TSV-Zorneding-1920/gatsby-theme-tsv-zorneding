@@ -3,6 +3,14 @@ import Link from "./link";
 import PropTypes from "prop-types";
 import PreviewCompatibleImage from "./preview-compatible-image";
 
+interface Teaser {
+  description: string
+  link: string
+  title: string
+  children?: any
+}
+
+
 const Teaser = ({ description, link, title, featuredimage }) => (
   <article>
     <PreviewCompatibleImage
