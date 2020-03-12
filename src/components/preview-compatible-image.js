@@ -15,7 +15,7 @@ const PreviewCompatibleImage = ({ imageInfo, className, link }) => {
           style={imageStyle}
           fluid={image.childImageSharp.fluid}
           alt={alt}
-          className={className}
+          className={link && link.url ? "" : className}
         />
       );
     } else if (image.childImageSharp.fixed) {
@@ -24,7 +24,7 @@ const PreviewCompatibleImage = ({ imageInfo, className, link }) => {
           style={imageStyle}
           fixed={image.childImageSharp.fixed}
           alt={alt}
-          className={className}
+          className={link && link.url ? "" : className}
         />
       );
     }
@@ -37,7 +37,7 @@ const PreviewCompatibleImage = ({ imageInfo, className, link }) => {
           style={imageStyle}
           fluid={childImageSharp.fluid}
           alt={alt}
-          className={className}
+          className={link && link.url ? "" : className}
         />
       );
     } else if (childImageSharp.fixed) {
@@ -46,7 +46,7 @@ const PreviewCompatibleImage = ({ imageInfo, className, link }) => {
           style={imageStyle}
           fixed={childImageSharp.fixed}
           alt={alt}
-          className={className}
+          className={link && link.url ? "" : className}
         />
       );
     }
@@ -54,13 +54,18 @@ const PreviewCompatibleImage = ({ imageInfo, className, link }) => {
 
   if (!!image && typeof image === "string") {
     imageObject = (
-      <img style={imageStyle} src={image} alt={alt} className={className} />
+      <img
+        style={imageStyle}
+        src={image}
+        alt={alt}
+        className={link && link.url ? "" : className}
+      />
     );
   }
 
   if (imageObject && link && link.url) {
     imageObject = (
-      <Link to={link.url} className={link.class || "image"}>
+      <Link to={link.url} className={className}>
         {imageObject}
       </Link>
     );

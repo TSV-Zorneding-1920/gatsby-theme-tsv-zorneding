@@ -32,6 +32,7 @@ const Banner = ({ description, link, title, featuredimage }) => (
         image: featuredimage,
         alt: `featured image thumbnail for post ${title}`
       }}
+      className="image object"
       link={{ url: link }}
     />
   </section>
