@@ -52,12 +52,13 @@ const PreviewCompatibleImage = ({ imageInfo, className, link }) => {
     }
   }
 
-  if (!!image && typeof image === "string")
+  if (!!image && typeof image === "string") {
     imageObject = (
       <img style={imageStyle} src={image} alt={alt} className={className} />
     );
+  }
 
-  if (imageObject && link) {
+  if (imageObject && link && link.url) {
     imageObject = (
       <Link to={link.url} className={link.class || "image"}>
         {imageObject}
