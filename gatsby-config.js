@@ -86,7 +86,7 @@ module.exports = ({ ENV, title }) => ({
         icons: generateFavicons([48, 72, 96, 144, 192, 256, 384, 512])
       }
     },
-    "gatsby-plugin-offline",
+    "gatsby-plugin-remove-serviceworker",
     {
       resolve: `gatsby-plugin-feed`,
       options: {
