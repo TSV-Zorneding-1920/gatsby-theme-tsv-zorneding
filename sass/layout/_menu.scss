@@ -23,7 +23,6 @@
 				color: inherit;
 				cursor: pointer;
 				display: block;
-				font-size: 0.9em;
 				padding: 0.625em 0;
 
 				&:hover {
@@ -79,7 +78,7 @@
 					padding-left: 1em;
 
 					a, span {
-						font-size: 0.8em;
+						font-size: 0.9em;
 					}
 
 					> li {
@@ -91,9 +90,6 @@
 							display: none;
 							margin: 0.5em 0 1.5em 0;
 							padding-left: 1em;
-							a, span {
-								font-size: 0.8em;
-							}
 							> li {
 								margin: 0.125em 0 0 0;
 								padding: 0.125em 0 0 0;

@@ -17,7 +17,8 @@ class BlogRoll extends React.Component {
                   image: post.frontmatter.featuredimage,
                   alt: `featured image thumbnail for post ${post.frontmatter.title}`
                 }}
-                link={{ url: post.fields.slug, class: "image left fit" }}
+                className="image left fit"
+                link={post.fields.slug}
               />
               <p className="post-meta">
                 <Link

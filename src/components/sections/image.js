@@ -49,7 +49,7 @@ class Image extends React.Component {
             image: this.props.image_large,
             alt: `featured image thumbnail for post`
           }}
-          link={{ url: this.props.link }}
+          link={this.props.link}
         />
         <span>{this.props.caption}</span>
         <hr />

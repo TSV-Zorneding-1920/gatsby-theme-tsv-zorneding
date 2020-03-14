@@ -15,7 +15,7 @@ const PreviewCompatibleImage = ({ imageInfo, className, link }) => {
           style={imageStyle}
           fluid={image.childImageSharp.fluid}
           alt={alt}
-          className={link && link.url ? "" : className}
+          className={link ? "" : className}
         />
       );
     } else if (image.childImageSharp.fixed) {
@@ -24,7 +24,7 @@ const PreviewCompatibleImage = ({ imageInfo, className, link }) => {
           style={imageStyle}
           fixed={image.childImageSharp.fixed}
           alt={alt}
-          className={link && link.url ? "" : className}
+          className={link ? "" : className}
         />
       );
     }
@@ -37,7 +37,7 @@ const PreviewCompatibleImage = ({ imageInfo, className, link }) => {
           style={imageStyle}
           fluid={childImageSharp.fluid}
           alt={alt}
-          className={link && link.url ? "" : className}
+          className={link ? "" : className}
         />
       );
     } else if (childImageSharp.fixed) {
@@ -46,7 +46,7 @@ const PreviewCompatibleImage = ({ imageInfo, className, link }) => {
           style={imageStyle}
           fixed={childImageSharp.fixed}
           alt={alt}
-          className={link && link.url ? "" : className}
+          className={link ? "" : className}
         />
       );
     }
@@ -58,14 +58,14 @@ const PreviewCompatibleImage = ({ imageInfo, className, link }) => {
         style={imageStyle}
         src={image}
         alt={alt}
-        className={link && link.url ? "" : className}
+        className={link ? "" : className}
       />
     );
   }
 
-  if (imageObject && link && link.url) {
+  if (imageObject && link) {
     imageObject = (
-      <Link to={link.url} className={className}>
+      <Link to={link} className={className}>
         {imageObject}
       </Link>
     );
@@ -82,7 +82,7 @@ PreviewCompatibleImage.propTypes = {
     style: PropTypes.object
   }).isRequired,
   className: PropTypes.string,
-  link: PropTypes.object
+  link: PropTypes.string
 };
 
 export default PreviewCompatibleImage;

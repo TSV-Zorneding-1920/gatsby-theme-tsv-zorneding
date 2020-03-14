@@ -12,7 +12,7 @@ const Teaser = ({ description, link, title, featuredimage }) => (
         style: { maxHeight: 250 }
       }}
       className="image object"
-      link={{ url: link }}
+      link={link}
     />
     <h3>{title}</h3>
     {description && <p>{description}</p>}

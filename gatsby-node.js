@@ -111,6 +111,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     templateKey: String
     author: String
     slug: String
+    canonical: String
     showTitle: Boolean
     sections: [MarkdownRemarkFrontmatterSections]
     date: Date @dateformat

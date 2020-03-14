@@ -23,7 +23,7 @@ const MiniPosts = () => {
                   style: { maxHeight: 250 }
                 }}
                 className="image object"
-                link={{ url: post.node.fields.slug }}
+                link={post.node.fields.slug}
               />
               <h3>{post.node.frontmatter.title}</h3>
             </article>

@@ -6,6 +6,7 @@ import { SEO } from "gatsby-theme-seo";
 import BlogPostTemplate from "../templates/blog-post";
 import { JSONLD, Generic } from "react-structured-data";
 import { HTMLContent } from "../components/content";
+import { Helmet } from "react-helmet";
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data;
@@ -29,6 +30,13 @@ const BlogPost = ({ data }) => {
           post.frontmatter.seoimage.childImageSharp.fixed
         }
       />
+
+      {post.frontmatter.canonical && (
+        <Helmet>
+          <link rel="canonical" href={post.frontmatter.canonical} />
+        </Helmet>
+      )}
+
       <JSONLD dangerouslyExposeHtml={true}>
         <Generic
           type="blogPosting"
@@ -104,6 +112,7 @@ export const pageQuery = graphql`
         date_formatted: date(formatString: "DD. MMMM YYYY", locale: "de")
         title
         tags
+        canonical
         featuredimage {
           childImageSharp {
             fluid(

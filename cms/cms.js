@@ -93,6 +93,12 @@ let config = {
           default: false
         },
         {
+          label: "Canonical",
+          name: "canonical",
+          widget: "string",
+          required: false
+        },
+        {
           label: "Teaser Bild",
           name: "featuredimage",
           widget: "image",
