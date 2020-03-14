@@ -273,7 +273,8 @@ let config = {
                 {
                   label: "Seite",
                   name: "page",
-                  widget: "string"
+                  widget: "string",
+                  required: false
                 },
                 {
                   label: "Eintrag",
@@ -288,7 +289,25 @@ let config = {
                     {
                       label: "Seite",
                       name: "page",
-                      widget: "string"
+                      widget: "string",
+                      required: false
+                    },
+                    {
+                      label: "Eintrag",
+                      name: "menu_entry",
+                      widget: "list",
+                      fields: [
+                        {
+                          label: "Titel",
+                          name: "title",
+                          widget: "string"
+                        },
+                        {
+                          label: "Seite",
+                          name: "page",
+                          widget: "string"
+                        }
+                      ]
                     }
                   ]
                 }

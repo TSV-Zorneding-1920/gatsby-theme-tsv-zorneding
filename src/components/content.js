@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ReactCommonmark from "react-commonmark";
 
 export const HTMLContent = ({ content, className }) => {
   if (content) {
@@ -15,16 +16,7 @@ export const HTMLContent = ({ content, className }) => {
 
 export const MarkdownContent = ({ content, className }) => {
   if (content) {
-    const remark = require("remark");
-    const remarkHTML = require("remark-html");
-    const html = remark()
-      .use(remarkHTML)
-      .processSync(content)
-      .toString();
-
-    return (
-      <div className={className} dangerouslySetInnerHTML={{ __html: html }} />
-    );
+    return <ReactCommonmark source={content} className={className} />;
   }
   return <></>;
 };
