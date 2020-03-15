@@ -60,7 +60,8 @@ class ImageTextSmall extends React.Component {
                     <PreviewCompatibleImage
                       imageInfo={{
                         image: post.image_small,
-                        alt: `featured image thumbnail for post`
+                        alt: `featured image thumbnail for post`,
+                        imageStyle: { maxHeight: 100, maxWidth: 100 }
                       }}
                     />
                   </span>

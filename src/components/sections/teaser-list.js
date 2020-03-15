@@ -53,7 +53,7 @@ class TeaserList extends React.Component {
           />
         );
       });
-      //content = [<div className="posts"></div>];
+      content = [<div className="posts">{content}</div>];
     } else {
       content = (
         <TeaserListComponent

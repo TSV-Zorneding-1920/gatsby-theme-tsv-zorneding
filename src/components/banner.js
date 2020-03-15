@@ -30,7 +30,8 @@ const Banner = ({ description, link, title, featuredimage }) => (
     <PreviewCompatibleImage
       imageInfo={{
         image: featuredimage,
-        alt: `featured image thumbnail for post ${title}`
+        alt: `featured image thumbnail for post ${title}`,
+        imageStyle: { maxHeight: 300, maxWidth: 500 }
       }}
       className="image object"
       link={link}
