@@ -3,18 +3,13 @@ import Layout from "./layout";
 import { SEO } from "gatsby-theme-seo";
 import BlogRoll from "../components/blog-roll";
 import { graphql } from "gatsby";
-import { Link } from "gatsby";
+import Pager from "../components/pager";
 
 export default class BlogList extends React.Component {
   render() {
     const posts = this.props.data.posts.edges;
 
-    const { currentPage, numPages } = this.props.pageContext;
-    const isFirst = currentPage === 1;
-    const isLast = currentPage === numPages;
-    const prevPage =
-      currentPage - 1 === 1 ? "/blog" : "/blog/" + (currentPage - 1).toString();
-    const nextPage = (currentPage + 1).toString();
+    const { currentPage } = this.props.pageContext;
 
     return (
       <Layout>
@@ -30,38 +25,7 @@ export default class BlogList extends React.Component {
           </header>
           <BlogRoll posts={posts} />
 
-          <ul className="pagination">
-            <li>
-              {!isFirst ? (
-                <Link to={prevPage} rel="prev" className="button">
-                  Zurück
-                </Link>
-              ) : (
-                <span className="button disabled">Zurück</span>
-              )}
-            </li>
-
-            {Array.from({ length: numPages }, (_, i) => (
-              <li key={`pagination-number${i + 1}`}>
-                <Link
-                  to={`/blog/${i === 0 ? "" : i + 1}`}
-                  className={`page ${i + 1 === currentPage ? "active" : ""}`}
-                >
-                  {i + 1}
-                </Link>
-              </li>
-            ))}
-
-            <li>
-              {!isLast ? (
-                <Link to={`/blog/${nextPage}`} rel="next" className="button">
-                  Nächste
-                </Link>
-              ) : (
-                <span className="button disabled">Nächste</span>
-              )}
-            </li>
-          </ul>
+          <Pager {...this.props.pageContext} />
         </section>
       </Layout>
     );
