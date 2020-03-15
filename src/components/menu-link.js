@@ -3,7 +3,7 @@ import Link from "./link";
 
 const MenuLink = props => {
   if (Link.isExternal(props.to)) {
-    return Link.renderExternal(props);
+    return <li>{Link.renderExternal(props)}</li>;
   }
 
   const { to, content, ...cleanProps } = props;
