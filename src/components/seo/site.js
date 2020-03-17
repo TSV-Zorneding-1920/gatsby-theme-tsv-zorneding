@@ -35,7 +35,7 @@ class Site extends React.Component {
         <meta name="description" content={this.props.description} />
         {image && <meta name="image" content={image} />}
 
-        <meta property="og:url" content={this.props.url} />
+        <meta property="og:url" content={fullUrl} />
         <meta property="og:type" content={this.type} />
         <meta property="og:title" content={this.props.title} />
         <meta property="og:description" content={this.props.description} />
