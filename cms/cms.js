@@ -56,6 +56,10 @@ let config = {
   public_folder: "/img",
   logo_url: `${process.env.GATSBY_SITE_URL}/favicons/icon-144x144.png`,
   show_preview_links: false,
+  slug: {
+    encoding: "ascii",
+    clean_accents: true
+  },
   collections: [
     {
       name: "blog",
@@ -81,7 +85,9 @@ let config = {
         {
           label: "Erstellungsdatum",
           name: "date",
-          widget: "datetime"
+          widget: "datetime",
+          dateFormat: "DD.MM.YYYY",
+          timeFormat: "HH:mm"
         },
         {
           label: "Oben anpinnen",
@@ -161,6 +167,40 @@ let config = {
       ]
     },
     {
+      name: "events",
+      label: "Veranstaltungen",
+      label_singular: "Veranstaltung",
+      folder: "src/data/events",
+      extension: "yml",
+      create: true,
+      editor: {
+        preview: false
+      },
+      slug: "{{date}}-{{label}}",
+      description:
+        "Veranstaltungen werden in der rechten Seitenleiste unterhalb der Navigation angezeigt.",
+      fields: [
+        {
+          label: "Veranstaltung",
+          name: "label",
+          widget: "string"
+        },
+        {
+          label: "Datum",
+          name: "date",
+          widget: "datetime",
+          dateFormat: "DD.MM.YYYY",
+          timeFormat: "HH:mm"
+        },
+        {
+          label: "Beschreibung",
+          name: "description",
+          widget: "string",
+          required: false
+        }
+      ]
+    },
+    {
       name: "settings",
       label: "Einstellungen",
       editor: {
@@ -168,35 +208,6 @@ let config = {
       },
       delete: false,
       files: [
-        /*           {
-          file: "src/data/events.yml",
-          label: "Veranstaltungen",
-          name: "events",
-          fields: [
-            {
-              label: "Veranstaltung",
-              name: "event_items",
-              widget: "list",
-              fields: [
-                {
-                  label: "Veranstaltung",
-                  name: "label",
-                  widget: "string"
-                },
-                {
-                  label: "Datum",
-                  name: "date",
-                  widget: "datetime"
-                },
-                {
-                  label: "Beschreibung",
-                  name: "description",
-                  widget: "string"
-                }
-              ]
-            }
-          ]
-        }, */
         {
           file: "src/data/settings.json",
           label: "Einstellungen",
