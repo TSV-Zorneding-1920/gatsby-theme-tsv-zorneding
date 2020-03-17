@@ -39,7 +39,14 @@ class Site extends React.Component {
         <meta property="og:type" content={this.type} />
         <meta property="og:title" content={this.props.title} />
         <meta property="og:description" content={this.props.description} />
+        <meta property="og:locale" content="de_DE" />
         {image && <meta property="og:image" content={image} />}
+        {image && this.props.image.width && (
+          <meta property="og:image:width" content={this.props.image.width} />
+        )}
+        {image && this.props.image.height && (
+          <meta property="og:image:height" content={this.props.image.height} />
+        )}
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content={this.props.author} />
@@ -51,8 +58,6 @@ class Site extends React.Component {
   }
 
   renderJsonLdWebSite() {
-    const fullUrl = `${this.props.url}`;
-
     return (
       <JSONLD dangerouslyExposeHtml={true} key={this.type}>
         <Generic
@@ -60,7 +65,7 @@ class Site extends React.Component {
           jsonldtype="Website"
           schema={{
             name: "TSV Zorneding e.V. 1920",
-            url: fullUrl,
+            url: this.props.url,
             publisher: this.getPublisher()
           }}
         />
