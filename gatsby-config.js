@@ -1,6 +1,6 @@
 module.exports = ({ ENV, title }) => ({
   plugins: [
-    "gatsby-theme-seo",
+    "gatsby-plugin-sitemap",
     "gatsby-plugin-sass",
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support

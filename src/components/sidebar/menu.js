@@ -73,7 +73,7 @@ const Menu = ({ title }) => {
         itemType="https://schema.org/BreadcrumbList"
         name="Hauptnavigation"
       >
-        <MenuLink to="/" content="1">
+        <MenuLink to="/" content="0">
           Startseite
         </MenuLink>
         {posts.length > 0 && (
@@ -89,7 +89,7 @@ const Menu = ({ title }) => {
                 {entry.menu_entry.map(function(subentry, k) {
                   if (subentry.page) {
                     return (
-                      <MenuLink to={subentry.page} content="2">
+                      <MenuLink to={subentry.page} content="2" key={`sub ${k}`}>
                         {subentry.title}
                       </MenuLink>
                     );
@@ -115,7 +115,7 @@ const Menu = ({ title }) => {
                 })}
               </SubMenu>
             ) : (
-              <MenuLink to={entry.page} content="1">
+              <MenuLink to={entry.page} content="1" key={i}>
                 {entry.title}
               </MenuLink>
             );

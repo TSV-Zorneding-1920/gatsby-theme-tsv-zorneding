@@ -1,7 +1,7 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { Link, graphql } from "gatsby";
 import Layout from "./layout";
+import SEO from "../components/seo/site";
 
 class TagRoute extends React.Component {
   render() {
@@ -21,7 +21,13 @@ class TagRoute extends React.Component {
     return (
       <Layout>
         <section className="section">
-          <Helmet title={`${tag} | ${title}`} />
+          <SEO
+            title={`${tag} | ${title}`}
+            description={`${tag} | ${title}`}
+            url={this.props.data.site.siteMetadata.siteUrl}
+            slug={"/tags"}
+            author={this.props.data.site.siteMetadata.author}
+          />
           <div className="container content">
             <div className="columns">
               <div
@@ -49,6 +55,8 @@ export const tagPageQuery = graphql`
     site {
       siteMetadata {
         title
+        author
+        siteUrl
       }
     }
     allMarkdownRemark(

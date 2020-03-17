@@ -2,19 +2,25 @@ import React from "react";
 import { kebabCase } from "lodash";
 import { Link, graphql } from "gatsby";
 import Layout from "../../layout/layout";
-import { SEO } from "gatsby-theme-seo";
+import SEO from "../../components/seo/site";
 
 const TagsPage = ({
   data: {
     allMarkdownRemark: { group },
     site: {
-      siteMetadata: { title }
+      siteMetadata: { title, siteUrl, author }
     }
   }
 }) => (
   <Layout>
     <section className="section">
-      <SEO title={`Schlagwörter | ${title}`} lang="de" pathname="/tags" />
+      <SEO
+        title={`Schlagwörter | ${title}`}
+        description={`Schlagwörter | ${title}`}
+        url={siteUrl}
+        slug={"/tags"}
+        author={author}
+      />
       <div className="container content">
         <div className="columns">
           <div
@@ -45,6 +51,9 @@ export const tagPageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
+        author
+        siteUrl
       }
     }
     allMarkdownRemark(limit: 1000) {

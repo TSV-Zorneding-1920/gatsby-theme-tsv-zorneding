@@ -60,7 +60,10 @@ let config = {
     {
       name: "blog",
       label: "Blog",
+      label_singular: "Blogeintrag",
       folder: "src/pages/blog",
+      description:
+        "Blogeinträge sind Neuigkeiten, Ankündigungen oder Berichte von Turnieren oder Veranstaltungen. Alles was in eurer Abteilung so passiert.",
       create: true,
       slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
       fields: [
@@ -120,8 +123,11 @@ let config = {
     {
       name: "pages",
       label: "Statische Seiten",
+      label_singular: "Statische Seite",
       folder: "src/pages",
       create: true,
+      description:
+        'Statische Seiten sind Seiten welche sich wenig verändern. "Wir über uns", Trainingszeiten oder eure Mannschaften. Statische Seiten werden über "Einstellungen" > "Navigation" in das linke Seitenmenü eingebunden.',
       fields: [
         {
           label: "Template Key",

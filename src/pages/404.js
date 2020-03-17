@@ -1,10 +1,10 @@
 import React from "react";
 import Layout from "../layout/layout";
-import { SEO } from "gatsby-theme-seo";
+import SEO from "../components/seo/site";
 
 const NotFoundPage = () => (
   <Layout>
-    <SEO title="Seite nicht gefunden" lang="de" />
+    <SEO title="Seite nicht gefunden" />
     <div>
       <h1>
         Seite nicht gefunden{" "}

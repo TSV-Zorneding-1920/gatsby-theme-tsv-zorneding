@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "./layout";
-import { SEO } from "gatsby-theme-seo";
+import SEO from "../components/seo/site";
 import BlogRoll from "../components/blog-roll";
 import { graphql } from "gatsby";
 import Pager from "../components/pager";
@@ -16,8 +16,9 @@ export default class BlogList extends React.Component {
         <SEO
           title="Aktuelle Neuigkeiten"
           description="Aktuelle Neuigkeiten"
-          lang="de"
-          pathname={"/blog/" + currentPage.toString()}
+          url={this.props.data.site.siteMetadata.siteUrl}
+          author={this.props.data.site.siteMetadata.author}
+          slug={"/blog/" + currentPage.toString()}
         />
         <section>
           <header className="main">
@@ -34,6 +35,14 @@ export default class BlogList extends React.Component {
 
 export const blogListQuery = graphql`
   query blogListQuery($skip: Int!, $limit: Int!) {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+        siteUrl
+      }
+    }
     posts: allMarkdownRemark(
       sort: {
         order: [DESC, DESC]

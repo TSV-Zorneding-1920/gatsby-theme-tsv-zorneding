@@ -2,69 +2,31 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "./layout";
-import { SEO } from "gatsby-theme-seo";
+import SEO from "../components/seo/blog";
 import BlogPostTemplate from "../templates/blog-post";
-import { JSONLD, Generic } from "react-structured-data";
 import { HTMLContent } from "../components/content";
-import { Helmet } from "react-helmet";
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data;
-
-  let image = {};
-  if (post.frontmatter.seoimage) {
-    image = Object.assign({}, post.frontmatter.seoimage.childImageSharp.fixed);
-    image["@type"] = "ImageObject";
-    image["url"] = `${data.site.siteMetadata.siteUrl}${image.src}`;
-    delete image.src;
-  }
 
   return (
     <Layout>
       <SEO
         title={post.frontmatter.title}
         description={post.excerpt}
-        pathname={post.fields.slug}
+        slug={post.fields.slug}
+        url={data.site.siteMetadata.siteUrl}
         image={
           post.frontmatter.seoimage &&
           post.frontmatter.seoimage.childImageSharp.fixed
         }
+        author={post.frontmatter.author}
+        wordCount={post.wordCount.words}
+        date={post.frontmatter.date}
+        canonical={post.frontmatter.canonical}
+        key="seo"
       />
 
-      {post.frontmatter.canonical && (
-        <Helmet>
-          <link rel="canonical" href={post.frontmatter.canonical} />
-        </Helmet>
-      )}
-
-      <JSONLD dangerouslyExposeHtml={true}>
-        <Generic
-          type="blogPosting"
-          jsonldtype="BlogPosting"
-          schema={{
-            author: data.site.siteMetadata.author,
-            headline: post.frontmatter.title,
-            wordCount: post.wordCount.words,
-            abstract: post.excerpt,
-            dateCreated: post.frontmatter.date,
-            datePublished: post.frontmatter.date,
-            dateModified: post.frontmatter.date,
-            publisher: {
-              "@type": "Organization",
-              name: data.site.siteMetadata.author,
-              logo: {
-                "@type": "ImageObject",
-                url: `${data.site.siteMetadata.siteUrl}/icons/icon-256x256.png`
-              }
-            },
-            mainEntityOfPage: {
-              "@type": "Website",
-              name: data.site.siteMetadata.title
-            },
-            image
-          }}
-        />
-      </JSONLD>
       <BlogPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
@@ -74,6 +36,7 @@ const BlogPost = ({ data }) => {
         date={post.frontmatter.date_formatted}
         featuredimage={post.frontmatter.featuredimage}
         author={post.frontmatter.author}
+        key="blog-template"
       />
     </Layout>
   );
