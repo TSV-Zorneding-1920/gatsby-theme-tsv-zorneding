@@ -36,6 +36,42 @@ class SubMenu extends React.Component {
   }
 }
 
+class DynamicMenu extends React.Component {
+  render() {
+    const that = this;
+
+    return this.props.items.map(function(entry, i) {
+      return that.renderItem(entry);
+    });
+  }
+
+  renderItem(item) {
+    const that = this;
+
+    return item.menu_entry ? (
+      <SubMenu text={item.title}>
+        {item.menu_entry.map(function(subentry, k) {
+          if (subentry.page) {
+            return (
+              <MenuLink to={subentry.page} content="2">
+                {subentry.title}
+              </MenuLink>
+            );
+          } else if (subentry.menu_entry) {
+            return that.renderItem(subentry);
+          } else {
+            return <></>;
+          }
+        })}
+      </SubMenu>
+    ) : (
+      <MenuLink to={item.page} content="1">
+        {item.title}
+      </MenuLink>
+    );
+  }
+}
+
 const Menu = ({ title }) => {
   const { nav } = useStaticQuery(
     graphql`
@@ -82,44 +118,8 @@ const Menu = ({ title }) => {
           </MenuLink>
         )}
 
-        {nav.childDataYaml.menu_entry &&
-          nav.childDataYaml.menu_entry.map(function(entry, i) {
-            return entry.menu_entry ? (
-              <SubMenu text={entry.title} key={i}>
-                {entry.menu_entry.map(function(subentry, k) {
-                  if (subentry.page) {
-                    return (
-                      <MenuLink to={subentry.page} content="2" key={`sub ${k}`}>
-                        {subentry.title}
-                      </MenuLink>
-                    );
-                  } else if (subentry.menu_entry) {
-                    return (
-                      <SubMenu text={subentry.title} key={`sub ${i}`}>
-                        {subentry.menu_entry.map(function(subsubentry, k) {
-                          if (subsubentry.page) {
-                            return (
-                              <MenuLink to={subsubentry.page} content="3">
-                                {subsubentry.title}
-                              </MenuLink>
-                            );
-                          } else {
-                            return <></>;
-                          }
-                        })}
-                      </SubMenu>
-                    );
-                  } else {
-                    return <></>;
-                  }
-                })}
-              </SubMenu>
-            ) : (
-              <MenuLink to={entry.page} content="1" key={i}>
-                {entry.title}
-              </MenuLink>
-            );
-          })}
+        <DynamicMenu items={nav.childDataYaml.menu_entry} />
+
         <MenuLink to="/kontakt" content="1">
           Kontakt
         </MenuLink>
