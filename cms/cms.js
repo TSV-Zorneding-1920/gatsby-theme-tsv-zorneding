@@ -1,4 +1,5 @@
 import CMS from "netlify-cms-app";
+import withEmotion from "./with-emotion";
 
 import BlogPostPreview from "./preview-templates/BlogPostPreview";
 import StaticPagePreview from "./preview-templates/StaticPagePreview";
@@ -349,5 +350,5 @@ if (activeEnv === "development") {
 CMS.init({ config });
 
 CMS.registerPreviewStyle(styles.toString(), { raw: true });
-CMS.registerPreviewTemplate("blog", BlogPostPreview);
-CMS.registerPreviewTemplate("pages", StaticPagePreview);
+CMS.registerPreviewTemplate("blog", withEmotion(BlogPostPreview));
+CMS.registerPreviewTemplate("pages", withEmotion(StaticPagePreview));
