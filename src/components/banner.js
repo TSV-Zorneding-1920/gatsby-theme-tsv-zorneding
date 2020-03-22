@@ -7,15 +7,13 @@ import { MarkdownContent } from "./content";
 const Banner = ({ description, link, title, featuredimage }) => (
   <section id="banner">
     <div className="content">
-      <header>
-        {link ? (
-          <Link to={link}>
-            <h1>{title}</h1>
-          </Link>
-        ) : (
+      {link ? (
+        <Link to={link}>
           <h1>{title}</h1>
-        )}
-      </header>
+        </Link>
+      ) : (
+        <h1>{title}</h1>
+      )}
       <MarkdownContent content={description} />
       {link && (
         <ul className="actions">

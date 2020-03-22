@@ -27,7 +27,7 @@ const EventList = () => {
   return (
     <section>
       <header className="major">
-        <h3>Veranstaltungen</h3>
+        <h2>Veranstaltungen</h2>
       </header>
       <div>
         {filteredEvents.map(function(event, i) {

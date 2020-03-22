@@ -1,5 +1,5 @@
 import React from "react";
-import EventList from "./event-list";
+import EventList from "./eventList";
 import Menu from "./menu";
 import MiniPosts from "./miniPosts";
 import logo from "../../../img/logo.png";
@@ -70,5 +70,4 @@ class Sidebar extends React.Component {
   }
 }
 
-const Content = ({ site }) => <Sidebar site={site} />;
-export default Content;
+export default Sidebar;
