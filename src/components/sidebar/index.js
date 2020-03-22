@@ -1,9 +1,10 @@
 import React from "react";
-import EventList from "./sidebar/event-list";
-import Menu from "./sidebar/menu";
-import MiniPosts from "./sidebar/mini-posts";
-import logo from "../../img/logo.png";
-import jubilogo from "../../img/190910_TSV_100Jahre_logo.png";
+import EventList from "./event-list";
+import Menu from "./menu";
+import MiniPosts from "./miniPosts";
+import logo from "../../../img/logo.png";
+import jubilogo from "../../../img/190910_TSV_100Jahre_logo.png";
+import Footer from "../footer";
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -59,29 +60,7 @@ class Sidebar extends React.Component {
           <Menu title={this.props.site.section} />
           <EventList />
           <MiniPosts />
-
-          <footer id="footer">
-            <p className="copyright">
-              © {new Date().getFullYear()} - TSV Zorneding
-            </p>
-            <p>
-              <a
-                href="https://www.tsv-zorneding.de/impressum"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Impressum
-              </a>{" "}
-              -{" "}
-              <a
-                href="https://www.tsv-zorneding.de/datenschutz"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Datenschutzerklärung
-              </a>
-            </p>
-          </footer>
+          <Footer />
         </div>
         <a href="#sidebar" onClick={this.toggleSidebar} className="toggle">
           Toggle

@@ -1,31 +1,9 @@
 import React from "react";
-import { useBlogPages } from "../../hooks/use-blog-pages";
-import PreviewCompatibleImage from "../preview-compatible-image";
+import { useBlogPages } from "../../../hooks/use-blog-pages";
+import PreviewCompatibleImage from "../../preview-compatible-image";
 import { ThemeProvider } from "emotion-theming";
-import styled from "@emotion/styled";
-import theme from "../../../theme";
-
-const Article = styled.div`
-  border-top: solid 1px ${props => props.theme.palette.border};
-  margin-top: ${props => props.theme.size.elementMargin};
-  padding-top: ${props => props.theme.size.elementMargin};
-
-  .image {
-    display: block;
-    margin: 0 0 ${props => props.theme.size.elementMargin} 0;
-
-    img {
-      display: block;
-      width: 100%;
-    }
-  }
-
-  &:first-child {
-    border-top: 0;
-    margin-top: 0;
-    padding-top: 0;
-  }
-`;
+import theme from "../../../../theme";
+import { Article } from "./style";
 
 const MiniPosts = () => {
   let posts = useBlogPages();
