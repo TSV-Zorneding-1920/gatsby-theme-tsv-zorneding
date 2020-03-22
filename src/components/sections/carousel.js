@@ -1,6 +1,7 @@
 import React from "react";
 import ImageGallery from "react-image-gallery";
 import { graphql } from "gatsby";
+import { H2 } from "../globals";
 
 class Carousel extends React.Component {
   admin() {
@@ -64,7 +65,7 @@ class Carousel extends React.Component {
       <>
         {this.props.title && (
           <header className="major">
-            <h2>{this.props.title}</h2>
+            <H2>{this.props.title}</H2>
           </header>
         )}
         <div style={{ maxWidth: "700px", margin: "auto" }}>

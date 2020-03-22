@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Teaser from "../teaser";
+import { H2 } from "../globals";
 
 class ImageText extends React.Component {
   admin() {
@@ -53,7 +54,7 @@ class ImageText extends React.Component {
       <>
         {this.props.title && (
           <header className="major">
-            <h2>{this.props.title}</h2>
+            <H2>{this.props.title}</H2>
           </header>
         )}
         <div className="posts">

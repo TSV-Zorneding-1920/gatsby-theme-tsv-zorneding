@@ -5,6 +5,7 @@ import TeaserList from "../components/teaser-list";
 import PreviewCompatibleImage from "../components/preview-compatible-image";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
+import { H1, H2, H4 } from "../components/globals";
 
 const BlogPostTemplate = ({
   content,
@@ -20,7 +21,7 @@ const BlogPostTemplate = ({
   return (
     <section>
       <header className="main">
-        <h1>{title}</h1>
+        <H1>{title}</H1>
       </header>
       <span className="image object main">
         <PreviewCompatibleImage
@@ -36,10 +37,10 @@ const BlogPostTemplate = ({
 
       {tags && tags.length ? (
         <>
-          <h2>Mehr zum Thema</h2>
+          <H2>Mehr zum Thema</H2>
           <TeaserList offset={0} count={6} tags={tags} slug={slug} />
-          <hr className="major"></hr>
-          <h4>Schlagwörter:</h4>
+          <hr />
+          <H4>Schlagwörter:</H4>
           <ul className="taglist">
             {tags.map(tag => (
               <li key={tag + `tag`}>

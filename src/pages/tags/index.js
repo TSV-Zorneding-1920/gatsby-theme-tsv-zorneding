@@ -3,6 +3,7 @@ import { kebabCase } from "lodash";
 import { Link, graphql } from "gatsby";
 import Layout from "../../layout/layout";
 import SEO from "../../components/seo/site";
+import { H1 } from "../../components/globals";
 
 const TagsPage = ({
   data: {
@@ -27,7 +28,7 @@ const TagsPage = ({
             className="column is-10 is-offset-1"
             style={{ marginBottom: "6rem" }}
           >
-            <h1 className="title is-size-2 is-bold-light">Schlagwörter</h1>
+            <H1 className="title is-size-2 is-bold-light">Schlagwörter</H1>
             <ul className="taglist">
               {group.map(tag => (
                 <li key={tag.fieldValue}>

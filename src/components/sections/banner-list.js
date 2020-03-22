@@ -2,6 +2,7 @@ import React from "react";
 import BannerListComponent from "../banner-list";
 import { graphql } from "gatsby";
 import Banner from "../banner";
+import { H2 } from "../globals";
 
 class BannerList extends React.Component {
   admin() {
@@ -59,7 +60,7 @@ class BannerList extends React.Component {
       <>
         {this.props.title && (
           <header className="major">
-            <h2>{this.props.title}</h2>
+            <H2>{this.props.title}</H2>
           </header>
         )}
         {content}

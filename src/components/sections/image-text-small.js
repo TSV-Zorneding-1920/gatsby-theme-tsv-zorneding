@@ -2,6 +2,7 @@ import React from "react";
 import { MarkdownContent } from "../content";
 import { graphql } from "gatsby";
 import PreviewCompatibleImage from "../preview-compatible-image";
+import { H2, H3 } from "../globals";
 
 class ImageTextSmall extends React.Component {
   admin() {
@@ -48,7 +49,7 @@ class ImageTextSmall extends React.Component {
       <>
         {this.props.title && (
           <header className="major">
-            <h2>{this.props.title}</h2>
+            <H2>{this.props.title}</H2>
           </header>
         )}
         <div className="features">
@@ -67,7 +68,7 @@ class ImageTextSmall extends React.Component {
                   </span>
 
                   <div className="content">
-                    <h3>{post.title}</h3>
+                    <H3>{post.title}</H3>
                     <MarkdownContent content={post.body} />
                   </div>
                 </article>

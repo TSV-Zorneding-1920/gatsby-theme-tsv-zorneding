@@ -1,5 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import { H2, H4 } from "../../globals";
 
 const EventList = () => {
   const { events } = useStaticQuery(
@@ -27,13 +28,13 @@ const EventList = () => {
   return (
     <section>
       <header className="major">
-        <h2>Veranstaltungen</h2>
+        <H2>Veranstaltungen</H2>
       </header>
       <div>
         {filteredEvents.map(function(event, i) {
           return (
             <div key={i}>
-              <h4>{event.label}</h4>
+              <H4>{event.label}</H4>
               <p>
                 {event.date_formatted} {event.description}
               </p>

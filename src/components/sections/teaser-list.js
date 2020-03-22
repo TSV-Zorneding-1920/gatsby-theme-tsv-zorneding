@@ -2,6 +2,7 @@ import React from "react";
 import TeaserListComponent from "../teaser-list";
 import Teaser from "../teaser";
 import { graphql } from "gatsby";
+import { H2 } from "../globals";
 
 class TeaserList extends React.Component {
   admin() {
@@ -67,7 +68,7 @@ class TeaserList extends React.Component {
       <>
         {this.props.title && (
           <header className="major">
-            <h2>{this.props.title}</h2>
+            <H2>{this.props.title}</H2>
           </header>
         )}
         {content}

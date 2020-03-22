@@ -1,6 +1,7 @@
 import React from "react";
 import { MarkdownContent } from "../content";
 import { graphql } from "gatsby";
+import { H2, H3 } from "../globals";
 
 class IconList extends React.Component {
   admin() {
@@ -46,7 +47,7 @@ class IconList extends React.Component {
       <>
         {this.props.title && (
           <header className="major">
-            <h2>{this.props.title}</h2>
+            <H2>{this.props.title}</H2>
           </header>
         )}
         <div className="features">
@@ -56,7 +57,7 @@ class IconList extends React.Component {
                 <article key={j}>
                   <span className={post.icon + " icon solid"}></span>
                   <div className="content">
-                    <h3>{post.title}</h3>
+                    <H3>{post.title}</H3>
                     <MarkdownContent content={post.body} />
                   </div>
                 </article>

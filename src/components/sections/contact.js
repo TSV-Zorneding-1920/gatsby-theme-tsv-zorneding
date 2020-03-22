@@ -1,6 +1,7 @@
 import React from "react";
 import ContactComponent from "../contact";
 import { graphql } from "gatsby";
+import { H2 } from "../globals";
 
 class Contact extends React.Component {
   admin() {
@@ -23,7 +24,7 @@ class Contact extends React.Component {
       <>
         {this.props.title && (
           <header className="major">
-            <h2>{this.props.title}</h2>
+            <H2>{this.props.title}</H2>
           </header>
         )}
         <ContactComponent />

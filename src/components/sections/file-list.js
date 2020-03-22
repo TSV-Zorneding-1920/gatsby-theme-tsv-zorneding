@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { H2 } from "../globals";
 
 class LinkList extends React.Component {
   admin() {
@@ -39,7 +40,7 @@ class LinkList extends React.Component {
       <>
         {this.props.title && (
           <header className="major">
-            <h2>{this.props.title}</h2>
+            <H2>{this.props.title}</H2>
           </header>
         )}
         <ul>

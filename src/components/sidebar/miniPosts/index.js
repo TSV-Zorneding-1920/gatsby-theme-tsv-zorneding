@@ -4,6 +4,7 @@ import PreviewCompatibleImage from "../../preview-compatible-image";
 import { ThemeProvider } from "emotion-theming";
 import theme from "../../../../theme";
 import { Article } from "./style";
+import { H3 } from "../../globals";
 
 const MiniPosts = () => {
   let posts = useBlogPages();
@@ -28,7 +29,7 @@ const MiniPosts = () => {
                 className="image object"
                 link={post.node.fields.slug}
               />
-              <h3>{post.node.frontmatter.title}</h3>
+              <H3>{post.node.frontmatter.title}</H3>
             </Article>
           );
         })}

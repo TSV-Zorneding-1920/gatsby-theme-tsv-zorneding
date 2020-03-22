@@ -5,6 +5,7 @@ import MenuLink from "./menuLink";
 import PropTypes from "prop-types";
 import { useBlogPages } from "../../../hooks/use-blog-pages";
 import DynamicMenu from "./dynamicMenu";
+import { H2 } from "../../globals";
 
 const Menu = ({ title }) => {
   const { nav } = useStaticQuery(
@@ -34,9 +35,9 @@ const Menu = ({ title }) => {
   return (
     <nav id="menu">
       <header className="major">
-        <h2>
+        <H2>
           <Link to="/">{title}</Link>
-        </h2>
+        </H2>
       </header>
       <ul
         itemScope

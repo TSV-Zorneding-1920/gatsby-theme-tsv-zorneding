@@ -4,6 +4,7 @@ import SEO from "../components/seo/site";
 import BlogRoll from "../components/blog-roll";
 import { graphql } from "gatsby";
 import Pager from "../components/pager";
+import { H1 } from "../components/globals";
 
 export default class BlogList extends React.Component {
   render() {
@@ -22,7 +23,7 @@ export default class BlogList extends React.Component {
         />
         <section>
           <header className="main">
-            <h1>Aktuelle Neuigkeiten</h1>
+            <H1>Aktuelle Neuigkeiten</H1>
           </header>
           <BlogRoll posts={posts} />
 

@@ -1,17 +1,18 @@
 import React from "react";
 import Layout from "../layout/layout";
 import SEO from "../components/seo/site";
+import { H1 } from "../components/globals";
 
 const NotFoundPage = () => (
   <Layout>
     <SEO title="Seite nicht gefunden" />
     <div>
-      <h1>
+      <H1>
         Seite nicht gefunden{" "}
         <span role="img" aria-label="sad smiley">
           😕
         </span>
-      </h1>
+      </H1>
 
       <div
         style={{

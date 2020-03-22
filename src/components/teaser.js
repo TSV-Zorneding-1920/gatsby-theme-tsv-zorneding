@@ -2,6 +2,7 @@ import React from "react";
 import Link from "./link";
 import PropTypes from "prop-types";
 import PreviewCompatibleImage from "./preview-compatible-image";
+import { H3 } from "./globals";
 
 const Teaser = ({ description, link, title, featuredimage }) => (
   <article>
@@ -14,7 +15,7 @@ const Teaser = ({ description, link, title, featuredimage }) => (
       className="image object"
       link={link}
     />
-    <h3>{title}</h3>
+    <H3>{title}</H3>
     {description && <p>{description}</p>}
     {link && (
       <ul className="actions">

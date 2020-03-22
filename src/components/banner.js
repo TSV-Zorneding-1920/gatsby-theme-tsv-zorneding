@@ -3,16 +3,17 @@ import Link from "./link";
 import PropTypes from "prop-types";
 import PreviewCompatibleImage from "./preview-compatible-image";
 import { MarkdownContent } from "./content";
+import { H1 } from "./globals";
 
 const Banner = ({ description, link, title, featuredimage }) => (
   <section id="banner">
     <div className="content">
       {link ? (
         <Link to={link}>
-          <h1>{title}</h1>
+          <H1>{title}</H1>
         </Link>
       ) : (
-        <h1>{title}</h1>
+        <H1>{title}</H1>
       )}
       <MarkdownContent content={description} />
       {link && (
