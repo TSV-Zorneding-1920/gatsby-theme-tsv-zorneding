@@ -29,7 +29,7 @@ const EventList = () => {
       <header className="major">
         <h3>Veranstaltungen</h3>
       </header>
-      <div className="mini-posts">
+      <div>
         {filteredEvents.map(function(event, i) {
           return (
             <div key={i}>

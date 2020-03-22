@@ -3,6 +3,13 @@ import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 import Sidebar from "../components/sidebar";
 import Header from "../components/header";
+import styled from "@emotion/styled";
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  min-height: 100vh;
+`;
 
 const PrimaryLayout = ({ children }) => (
   <StaticQuery
@@ -27,7 +34,7 @@ const PrimaryLayout = ({ children }) => (
       }
     `}
     render={data => (
-      <div id="wrapper">
+      <Wrapper>
         <div id="main">
           <div className="inner">
             <Header
@@ -38,7 +45,7 @@ const PrimaryLayout = ({ children }) => (
           </div>
         </div>
         <Sidebar site={data.site.siteMetadata} />
-      </div>
+      </Wrapper>
     )}
   />
 );

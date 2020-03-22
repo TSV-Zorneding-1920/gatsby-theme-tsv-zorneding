@@ -1,5 +1,6 @@
 module.exports = ({ ENV, title }) => ({
   plugins: [
+    "gatsby-plugin-emotion",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
