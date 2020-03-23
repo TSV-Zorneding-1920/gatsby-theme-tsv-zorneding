@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "./layout";
 import SEO from "../components/seo/blog";
 import BlogPostTemplate from "../templates/blog-post";
-import { HTMLContent } from "../components/content";
+import { ComponentContent } from "../components/content";
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data;
@@ -28,8 +28,8 @@ const BlogPost = ({ data }) => {
       />
 
       <BlogPostTemplate
-        content={post.html}
-        contentComponent={HTMLContent}
+        content={post.htmlAst}
+        contentComponent={ComponentContent}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
         slug={post.fields.slug}
@@ -63,7 +63,7 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 200)
-      html
+      htmlAst
       fields {
         slug
       }
