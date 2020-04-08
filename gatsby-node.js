@@ -36,7 +36,7 @@ exports.createPages = async ({ actions, graphql }) => {
   // Make post pages
   const posts = result.data.allMarkdownRemark.edges;
   let countBlogs = 0;
-  posts.forEach(edge => {
+  posts.forEach((edge) => {
     if (edge.node.frontmatter.templateKey === "blog-post") {
       countBlogs++;
     }
@@ -49,20 +49,20 @@ exports.createPages = async ({ actions, graphql }) => {
       ),
       // additional data can be passed via context
       context: {
-        id
-      }
+        id,
+      },
     });
   });
 
   // Make tag pages
   const tags = result.data.tagsGroup.group;
-  tags.forEach(tag => {
+  tags.forEach((tag) => {
     createPage({
       path: `/tag/${_.kebabCase(tag.fieldValue)}/`,
       component: require.resolve(`./src/layout/tag.js`),
       context: {
-        tag: tag.fieldValue
-      }
+        tag: tag.fieldValue,
+      },
     });
   });
 
@@ -77,8 +77,8 @@ exports.createPages = async ({ actions, graphql }) => {
         limit: postsPerPage,
         skip: i * postsPerPage,
         numPages,
-        currentPage: i + 1
-      }
+        currentPage: i + 1,
+      },
     });
   });
 };
@@ -97,7 +97,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value: slug
+      value: slug,
     });
   }
 };
@@ -207,14 +207,14 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     plugins: [
       new webpack.IgnorePlugin({
-        resourceRegExp: /^netlify-identity-widget$/
-      })
-    ]
+        resourceRegExp: /^netlify-identity-widget$/,
+      }),
+    ],
   });
 };
 
 const {
-  registerLocalFs
+  registerLocalFs,
 } = require("netlify-cms-proxy-server/dist/middlewares");
 
 exports.onCreateDevServer = async ({ app }) => {

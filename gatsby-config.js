@@ -9,36 +9,36 @@ module.exports = ({ ENV, title }) => ({
       resolve: "gatsby-source-filesystem",
       options: {
         path: `static/img`,
-        name: "uploads"
-      }
+        name: "uploads",
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `src/pages`,
-        name: "pages"
-      }
+        name: "pages",
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/pages`,
-        name: "pages"
-      }
+        name: "pages",
+      },
     },
     `gatsby-transformer-yaml`,
     {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `src/data`,
-        name: "data"
-      }
+        name: "data",
+      },
     },
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
-        defaultQuality: 75
-      }
+        defaultQuality: 75,
+      },
     },
     "gatsby-transformer-sharp",
     {
@@ -49,8 +49,8 @@ module.exports = ({ ENV, title }) => ({
           {
             resolve: "gatsby-remark-relative-images",
             options: {
-              name: "uploads"
-            }
+              name: "uploads",
+            },
           },
           {
             resolve: "gatsby-remark-images",
@@ -62,17 +62,17 @@ module.exports = ({ ENV, title }) => ({
               wrapperStyle: "width:100%;",
               linkImagesToOriginal: false,
               quality: 100,
-              withWebp: true
-            }
+              withWebp: true,
+            },
           },
           {
             resolve: "gatsby-remark-copy-linked-files",
             options: {
-              destinationDir: "static"
-            }
-          }
-        ]
-      }
+              destinationDir: "static",
+            },
+          },
+        ],
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -86,8 +86,8 @@ module.exports = ({ ENV, title }) => ({
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: "standalone",
         icon: `${__dirname}/img/logo-512x512.png`, // This path is relative to the root of the site.
-        icons: generateFavicons([48, 72, 96, 144, 192, 256, 384, 512])
-      }
+        icons: generateFavicons([48, 72, 96, 144, 192, 256, 384, 512]),
+      },
     },
     "gatsby-plugin-remove-serviceworker",
     {
@@ -96,7 +96,7 @@ module.exports = ({ ENV, title }) => ({
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
+              return allMarkdownRemark.edges.map((edge) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
                   date: edge.node.frontmatter.date,
@@ -107,13 +107,13 @@ module.exports = ({ ENV, title }) => ({
                     url:
                       site.siteMetadata.siteUrl +
                       edge.node.frontmatter.featuredimage.childImageSharp.fluid
-                        .src
+                        .src,
                   },
                   custom_elements: [
                     {
-                      "content:encoded": edge.node.html
-                    }
-                  ]
+                      "content:encoded": edge.node.html,
+                    },
+                  ],
                 });
               });
             },
@@ -149,10 +149,10 @@ module.exports = ({ ENV, title }) => ({
               }
             `,
             output: "/rss.xml",
-            title
-          }
-        ]
-      }
+            title,
+          },
+        ],
+      },
     },
     // must be after other CSS plugins
     {
@@ -162,9 +162,9 @@ module.exports = ({ ENV, title }) => ({
         develop: true,
         content: [
           `${__dirname}/src/**/!(*.d).{ts,js,jsx,tsx}`,
-          `node_modules/react-image-gallery/src/!(*.d).{ts,js,jsx,tsx}`
-        ]
-      }
+          `node_modules/react-image-gallery/src/!(*.d).{ts,js,jsx,tsx}`,
+        ],
+      },
     },
     "gatsby-plugin-htaccess",
     {
@@ -173,10 +173,10 @@ module.exports = ({ ENV, title }) => ({
         resolveEnv: () => ENV,
         env: {
           production: {
-            policy: [{ userAgent: "*" }]
-          }
-        }
-      }
+            policy: [{ userAgent: "*" }],
+          },
+        },
+      },
     },
     {
       resolve: "gatsby-plugin-netlify-cms",
@@ -185,18 +185,18 @@ module.exports = ({ ENV, title }) => ({
         manualInit: true,
         htmlTitle: `Administration ${title}`,
         htmlFavicon: `${__dirname}/img/favicon-32x32.png`,
-        enableIdentityWidget: false
-      }
-    }
-  ]
+        enableIdentityWidget: false,
+      },
+    },
+  ],
 });
 
-const generateFavicons = sizes => {
-  return sizes.map(size => {
+const generateFavicons = (sizes) => {
+  return sizes.map((size) => {
     return {
       src: `favicons/icon-${size}x${size}.png`,
       sizes: `${size}x${size}`,
-      type: "image/png"
+      type: "image/png",
     };
   });
 };

@@ -5,7 +5,7 @@ export default {
     elementMargin: "1em",
     sidebarWidth: "26em",
     sidebarWidthAlt: "24em",
-    gutter: "3em"
+    gutter: "3em",
   },
   palette: {
     bg: "#ffffff",
@@ -15,7 +15,7 @@ export default {
     fgLight: "#656e75",
     border: "rgba(210,215,217,0.75)",
     accent: "#b04949",
-    borderBg: "transparentize(#e6ebed, 0.75)"
+    borderBg: "transparentize(#e6ebed, 0.75)",
   },
   font: {
     family: "Helvetica, sans-serif",
@@ -25,6 +25,6 @@ export default {
     weightBold: 600,
     weightHeading: 700,
     weightHeadingAlt: 400,
-    kerningHeading: "0.075em"
-  }
+    kerningHeading: "0.075em",
+  },
 };
