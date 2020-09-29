@@ -15,7 +15,7 @@ class ImageTextSmall extends React.Component {
           label: "Titel",
           name: "title",
           widget: "string",
-          required: false
+          required: false,
         },
         {
           label: "Element",
@@ -25,23 +25,23 @@ class ImageTextSmall extends React.Component {
             {
               label: "Titel",
               name: "title",
-              widget: "string"
+              widget: "string",
             },
             {
               label: "Bild",
               name: "image_small",
               widget: "image",
-              default: "/img/default.jpg"
+              default: "/img/default.jpg",
             },
             {
               label: "Text",
               name: "body",
               widget: "markdown",
-              required: false
-            }
-          ]
-        }
-      ]
+              required: false,
+            },
+          ],
+        },
+      ],
     };
   }
   render() {
@@ -54,7 +54,7 @@ class ImageTextSmall extends React.Component {
         )}
         <div className="features">
           {this.props.info &&
-            this.props.info.map(function(post, j) {
+            this.props.info.map(function (post, j) {
               return (
                 <article key={j}>
                   <span style={{ margin: 10 + "px" }}>
@@ -62,7 +62,7 @@ class ImageTextSmall extends React.Component {
                       imageInfo={{
                         image: post.image_small,
                         alt: `featured image thumbnail for post`,
-                        imageStyle: { maxHeight: 100, maxWidth: 100 }
+                        imageStyle: { maxHeight: 100, maxWidth: 100 },
                       }}
                     />
                   </span>
@@ -92,7 +92,7 @@ export const query = graphql`
         title
         image_small {
           childImageSharp {
-            fixed(width: 100, height: 100, cropFocus: ENTROPY) {
+            fixed(height: 100) {
               ...GatsbyImageSharpFixed_withWebp_noBase64
             }
           }
