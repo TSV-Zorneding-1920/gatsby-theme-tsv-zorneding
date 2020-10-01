@@ -19,7 +19,7 @@ const Sections = ({ sections, admin }) => {
   if (!sections) {
     return <></>;
   }
-  const content = sections.map(function(section, i) {
+  const content = sections.map(function (section, i) {
     if (section.type === "body") {
       return <Body key={i} {...section} />;
     }
@@ -65,7 +65,7 @@ const Sections = ({ sections, admin }) => {
 };
 
 Sections.propTypes = {
-  sections: PropTypes.array.isRequired
+  sections: PropTypes.array,
 };
 
 export default Sections;
