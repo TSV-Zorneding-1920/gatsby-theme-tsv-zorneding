@@ -10,7 +10,7 @@ const Teaser = ({ description, link, title, featuredimage }) => (
       imageInfo={{
         image: featuredimage,
         alt: `featured image thumbnail for post ${title}`,
-        imageStyle: { maxHeight: 300, maxWidth: 500 }
+        imageStyle: { maxHeight: 300, maxWidth: 500 },
       }}
       className="image object"
       link={link}
@@ -33,7 +33,7 @@ Teaser.propTypes = {
   description: PropTypes.string,
   link: PropTypes.string,
   title: PropTypes.string.isRequired,
-  featuredimage: PropTypes.object
+  featuredimage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
 export default Teaser;

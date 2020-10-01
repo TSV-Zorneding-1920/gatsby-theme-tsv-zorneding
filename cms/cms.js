@@ -6,37 +6,9 @@ import StaticPagePreview from "./preview-templates/StaticPagePreview";
 import styles from "!css-loader!sass-loader!./../sass/main.scss";
 import { de } from "netlify-cms-locales";
 
-import BannerList from "../src/components/sections/banner-list";
-import Banner from "../src/components/sections/banner";
-import Body from "../src/components/sections/body";
-import Carousel from "../src/components/sections/carousel";
-import Contact from "../src/components/sections/contact";
-import IconList from "../src/components/sections/icon-list";
-import LinkList from "../src/components/sections/link-list";
-import FileList from "../src/components/sections/file-list";
-import IFrame from "../src/components/sections/iframe";
-import Image from "../src/components/sections/image";
-import ImageText from "../src/components/sections/image-text";
-import ImageTextSmall from "../src/components/sections/image-text-small";
-import TeaserList from "../src/components/sections/teaser-list";
+import { adminBlocks } from "../src/components/admin-sections";
 
 CMS.registerLocale("de", de);
-
-const staticBlocks = [
-  new BannerList().admin(),
-  new Banner().admin(),
-  new Body().admin(),
-  new Carousel().admin(),
-  new Contact().admin(),
-  new IconList().admin(),
-  new LinkList().admin(),
-  new FileList().admin(),
-  new IFrame().admin(),
-  new Image().admin(),
-  new ImageText().admin(),
-  new ImageTextSmall().admin(),
-  new TeaserList().admin(),
-];
 
 let config = {
   backend: {
@@ -165,7 +137,7 @@ let config = {
           label: "Sektionen",
           name: "sections",
           widget: "list",
-          types: staticBlocks,
+          types: adminBlocks,
         },
       ],
     },
