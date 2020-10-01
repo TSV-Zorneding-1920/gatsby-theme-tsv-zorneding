@@ -6,9 +6,11 @@ class DynamicMenu extends React.Component {
   render() {
     const that = this;
 
-    return this.props.items.map(function(entry, i) {
-      return that.renderItem(entry);
-    });
+    return this.props.items
+      ? this.props.items.map(function (entry, i) {
+          return that.renderItem(entry);
+        })
+      : "";
   }
 
   renderItem(item) {
@@ -16,7 +18,7 @@ class DynamicMenu extends React.Component {
 
     return item.menu_entry ? (
       <SubMenu text={item.title}>
-        {item.menu_entry.map(function(subentry, k) {
+        {item.menu_entry.map(function (subentry, k) {
           if (subentry.page) {
             return (
               <MenuLink to={subentry.page} content="2">

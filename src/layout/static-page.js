@@ -12,14 +12,17 @@ const StaticPage = ({ data }) => {
     _.join(_.map(post.frontmatter.sections, "body"), " "),
     {
       length: 140,
-      separator: " "
+      separator: " ",
     }
   );
+  const description = _.trim(excerpt)
+    ? _.trim(excerpt)
+    : data.site.siteMetadata.description;
   return (
     <Layout>
       <SEO
         title={post.frontmatter.title}
-        description={_.trim(excerpt)}
+        description={description}
         url={data.site.siteMetadata.siteUrl}
         image={{ src: data.site.siteMetadata.image }}
         slug={post.fields.slug}
@@ -37,7 +40,7 @@ const StaticPage = ({ data }) => {
 };
 
 StaticPage.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default StaticPage;

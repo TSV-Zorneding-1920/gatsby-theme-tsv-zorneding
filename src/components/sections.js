@@ -65,7 +65,7 @@ const Sections = ({ sections, admin }) => {
 };
 
 Sections.propTypes = {
-  sections: PropTypes.array.isRequired,
+  sections: PropTypes.array,
 };
 
 export default Sections;
