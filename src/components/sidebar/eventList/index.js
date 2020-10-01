@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { H2, H4 } from "../../globals";
+import { H2, H3 } from "../../globals";
 
 const EventList = () => {
   const { events } = useStaticQuery(
@@ -18,7 +18,7 @@ const EventList = () => {
     `
   );
   const filteredEvents = events.nodes.filter(
-    a => new Date(a.date) - new Date() > 0
+    (a) => new Date(a.date) - new Date() > 0
   );
 
   if (!filteredEvents.length) {
@@ -31,10 +31,10 @@ const EventList = () => {
         <H2>Veranstaltungen</H2>
       </header>
       <div>
-        {filteredEvents.map(function(event, i) {
+        {filteredEvents.map(function (event, i) {
           return (
             <div key={i}>
-              <H4>{event.label}</H4>
+              <H3>{event.label}</H3>
               <p>
                 {event.date_formatted} {event.description}
               </p>

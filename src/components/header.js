@@ -10,34 +10,54 @@ const Header = ({ siteTitle, socialPages }) => (
     <ul className="icons">
       {socialPages.facebook && (
         <li>
-          <Link to={socialPages.facebook} className="icon icon-facebook">
+          <Link
+            to={socialPages.facebook}
+            className="icon icon-facebook"
+            aria-label="Facebook Icon"
+          >
             <span className="label">Facebook</span>
           </Link>
         </li>
       )}
       {socialPages.instagram && (
         <li>
-          <Link to={socialPages.instagram} className="icon icon-instagram">
+          <Link
+            to={socialPages.instagram}
+            className="icon icon-instagram"
+            aria-label="Instagram Icon"
+          >
             <span className="label">Instagram</span>
           </Link>
         </li>
       )}
       {socialPages.twitter && (
         <li>
-          <Link to={socialPages.twitter} className="icon icon-twitter">
+          <Link
+            to={socialPages.twitter}
+            className="icon icon-twitter"
+            aria-label="Twitter Icon"
+          >
             <span className="label">Twitter</span>
           </Link>
         </li>
       )}
       {socialPages.youtube && (
         <li>
-          <Link to={socialPages.youtube} className="icon icon-youtube">
+          <Link
+            to={socialPages.youtube}
+            className="icon icon-youtube"
+            aria-label="YouTube Icon"
+          >
             <span className="label">YouTube</span>
           </Link>
         </li>
       )}
       <li>
-        <Link to="/rss.xml" className="icon icon-feed">
+        <Link
+          to="/rss.xml"
+          className="icon icon-feed"
+          aria-label="RSS Feed Icon"
+        >
           <span className="label">RSS</span>
         </Link>
       </li>
@@ -47,12 +67,12 @@ const Header = ({ siteTitle, socialPages }) => (
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-  socialPages: PropTypes.object
+  socialPages: PropTypes.object,
 };
 
 Header.defaultProps = {
   siteTitle: ``,
-  socialPages: {}
+  socialPages: {},
 };
 
 export default Header;
