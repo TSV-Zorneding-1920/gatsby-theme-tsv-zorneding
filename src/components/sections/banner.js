@@ -20,6 +20,7 @@ class BannerList extends React.Component {
           label: "Überschrift",
           name: "headline",
           widget: "string",
+          required: false,
         },
         {
           label: "Bild",

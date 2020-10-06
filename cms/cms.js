@@ -125,7 +125,8 @@ let config = {
           label: "URL",
           name: "slug",
           widget: "string",
-          required: false,
+          required: true,
+          hint: "URL zur Seite. z.B 'trainingszeiten'",
         },
         {
           label: "Überschrift anzeigen",

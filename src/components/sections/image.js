@@ -14,27 +14,27 @@ class Image extends React.Component {
           label: "Titel",
           name: "title",
           widget: "string",
-          required: false
+          required: false,
         },
         {
           label: "Bild",
           name: "image_large",
           widget: "image",
-          default: "/img/default.jpg"
+          default: "/img/default.jpg",
         },
         {
           label: "Bildunterschrift",
           name: "caption",
           widget: "string",
-          required: false
+          required: false,
         },
         {
           label: "Link",
           name: "link",
           widget: "string",
-          required: false
-        }
-      ]
+          required: false,
+        },
+      ],
     };
   }
   render() {
@@ -48,7 +48,7 @@ class Image extends React.Component {
         <PreviewCompatibleImage
           imageInfo={{
             image: this.props.image_large,
-            alt: `featured image thumbnail for post`
+            alt: `featured image thumbnail for post`,
           }}
           link={this.props.link}
         />
@@ -73,6 +73,8 @@ export const query = graphql`
             maxWidth: 1180
             quality: 100
             srcSetBreakpoints: [300, 600, 900, 1180]
+            fit: CONTAIN
+            background: "rgb(255,255,255)"
           ) {
             ...GatsbyImageSharpFluid_withWebp_noBase64
           }

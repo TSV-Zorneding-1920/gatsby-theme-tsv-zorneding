@@ -14,7 +14,7 @@ class ImageText extends React.Component {
           label: "Titel",
           name: "title",
           widget: "string",
-          required: false
+          required: false,
         },
         {
           label: "Element",
@@ -24,29 +24,29 @@ class ImageText extends React.Component {
             {
               label: "Titel",
               name: "title",
-              widget: "string"
+              widget: "string",
             },
             {
               label: "Bild",
               name: "image",
               widget: "image",
-              default: "/img/default.jpg"
+              default: "/img/default.jpg",
             },
             {
               label: "Text",
               name: "body",
               widget: "markdown",
-              required: false
+              required: false,
             },
             {
               label: "Link",
               name: "link",
               widget: "string",
-              required: false
-            }
-          ]
-        }
-      ]
+              required: false,
+            },
+          ],
+        },
+      ],
     };
   }
   render() {
@@ -59,7 +59,7 @@ class ImageText extends React.Component {
         )}
         <div className="posts">
           {this.props.nodes &&
-            this.props.nodes.map(function(post, i) {
+            this.props.nodes.map(function (post, i) {
               return (
                 <Teaser
                   key={i}
