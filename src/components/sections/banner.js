@@ -14,32 +14,32 @@ class BannerList extends React.Component {
           label: "Titel",
           name: "title",
           widget: "string",
-          required: false
+          required: false,
         },
         {
           label: "Überschrift",
           name: "headline",
-          widget: "string"
+          widget: "string",
         },
         {
           label: "Bild",
           name: "image",
           widget: "image",
-          default: "/img/default.jpg"
+          default: "/img/default.jpg",
         },
         {
           label: "Text",
           name: "body",
           widget: "markdown",
-          required: false
+          required: false,
         },
         {
           label: "Link",
           name: "link",
           widget: "string",
-          required: false
-        }
-      ]
+          required: false,
+        },
+      ],
     };
   }
   render() {
@@ -73,7 +73,13 @@ export const query = graphql`
       title
       image {
         childImageSharp {
-          fluid(maxWidth: 500, maxHeight: 300, srcSetBreakpoints: [350, 500]) {
+          fluid(
+            maxWidth: 500
+            maxHeight: 300
+            srcSetBreakpoints: [350, 500]
+            fit: CONTAIN
+            background: "rgb(255,255,255)"
+          ) {
             ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
