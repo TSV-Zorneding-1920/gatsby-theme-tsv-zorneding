@@ -58,6 +58,11 @@ let config = {
           widget: "string",
         },
         {
+          label: "Autor",
+          name: "author",
+          widget: "string",
+        },
+        {
           label: "Erstellungsdatum",
           name: "date",
           widget: "datetime",
