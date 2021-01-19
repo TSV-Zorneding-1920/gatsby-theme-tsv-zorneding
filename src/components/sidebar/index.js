@@ -10,7 +10,7 @@ class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false
+      active: false,
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
@@ -27,7 +27,7 @@ class Sidebar extends React.Component {
   }
   toggleSidebar() {
     this.setState({
-      active: !this.state.active
+      active: !this.state.active,
     });
   }
 
@@ -37,18 +37,11 @@ class Sidebar extends React.Component {
         <div className="inner">
           <section style={{ textAlign: "center", paddingBottom: "2em" }}>
             <img src={logo} alt="Logo vom TSV Zorneding" />
-            <a
-              href="https://www.100jahretsv.de"
-              target="_blank"
-              className="image"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={jubilogo}
-                alt="Logo 100 Jahre TSV Zorneding"
-                width="148px"
-              />
-            </a>
+            <img
+              src={jubilogo}
+              alt="Logo 100 Jahre TSV Zorneding"
+              width="148px"
+            />
           </section>
 
           {/*           <section id="search" className="alt">
