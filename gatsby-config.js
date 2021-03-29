@@ -48,9 +48,6 @@ module.exports = ({ ENV, title }) => ({
           `gatsby-remark-component`,
           {
             resolve: "gatsby-remark-relative-images",
-            options: {
-              name: "uploads",
-            },
           },
           {
             resolve: "gatsby-remark-images",
