@@ -89,7 +89,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     let slug;
-    if (node.frontmatter && node.frontmatter.slug) {
+    if (
+      node.frontmatter &&
+      node.frontmatter.slug &&
+      node.frontmatter.slug !== "/"
+    ) {
       slug = `/${node.frontmatter.slug}`;
     } else {
       slug = createFilePath({ node, getNode });
